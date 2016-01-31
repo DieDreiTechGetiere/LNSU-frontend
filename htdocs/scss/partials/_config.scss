@@ -1,0 +1,15 @@
+@import "susy";
+@import "breakpoint";
+
+$susy: (
+    columns: 25,
+    gutters: 1/5,
+    math: fluid,
+    output: float,
+   	debug: (image: hide),
+);
+// debug; show or hide to display grid //
+$smartphone: 460px;
+$portrait: 680px;
+$landscape: 950px;
+$height: span(16);

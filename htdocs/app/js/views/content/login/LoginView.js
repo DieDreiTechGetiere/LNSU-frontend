@@ -1,0 +1,63 @@
+
+
+define(function(require){
+    
+    var Backbone = require("backbone");
+    var Marionette = require("marionette");
+    
+    var app = require("app");
+    var notification = require("notification");
+    
+    var LoginView = Backbone.Marionette.ItemView.extend({
+        
+        /* @Properties ----------------------------------------------------------------------- */
+        
+        template: require("text!views/content/login/loginView.html"),
+        /**
+         * 
+         */
+        rendered: false,
+        
+        
+        
+        /* @Initialize ----------------------------------------------------------------------- */
+        
+        initialize: function()
+        {
+            this.listenTo(this.model, "change", this.render);
+            
+            this.render();
+        },
+        
+        
+        /* @Methods -------------------------------------------------------------------------- */
+        
+        
+        
+        /* @Finalize ------------------------------------------------------------------------- */
+        
+        finalize: function()
+        {
+            
+        },
+        
+        
+        /**
+         * 
+         */
+        render: function()
+        {
+            if(!this.rendered)
+            {
+                var renderedTemplate = _.template(this.template)(this.model.toJSON());
+                
+                this.$el.append(renderedTemplate);
+                this.rendered = true;
+            }
+            else
+            {}
+        }
+    });
+    
+    return LoginView;
+})
