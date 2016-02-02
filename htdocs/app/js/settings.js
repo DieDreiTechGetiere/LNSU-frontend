@@ -11,10 +11,6 @@ define(function(require){
             dev: "dev"
         },
         
-        devs: {
-            niklas: true
-        },
-        
         defaultConfig: {
             release: false,
             loglevel: 'trace', //trace, debug, info, warn, error
