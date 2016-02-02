@@ -8,7 +8,7 @@ define(function(require){
     var Backbone = require("backbone");
     var notification = require("notification");
 
-    var LoginModel = require("LoginModel");
+    var SigninModel = require("SigninModel");
 
     var ApplicationModel = Backbone.Model.extend
     ({
@@ -25,7 +25,16 @@ define(function(require){
         {
             this.on("change:appReady", this.appIsReady, this);
             
-            this.set("login", new LoginModel());
+            this.setModels();
+        },
+        
+        
+        /**
+         * 
+         */
+        setModels: function()
+        {
+            this.set("signin", new SigninModel());
         },
         
         

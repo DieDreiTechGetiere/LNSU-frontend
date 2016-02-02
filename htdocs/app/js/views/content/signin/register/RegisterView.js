@@ -12,7 +12,7 @@ define(function(require){
         
         /* @Properties ----------------------------------------------------------------------- */
         
-        template: require("text!views/content/register/RegisterView.html"),
+        template: require("text!views/content/signin/register/RegisterView.html"),
         /**
          * 
          */

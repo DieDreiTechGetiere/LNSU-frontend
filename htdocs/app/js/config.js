@@ -38,6 +38,7 @@ require.config({
         'appModel':         '../js/models/ApplicationModel',
         'global':           '../js/models/general/GlobalEventsModel',
         'LoginModel':       '../js/models/content/login/LoginModel',
+        'SigninModel':      '../js/models/content/signin/SigninModel',
         
         // TESTING
         'testsFile':         '../js/tests/test',

@@ -76,7 +76,7 @@ define(function(require){
             var LoginView = app.mapper.getViewFor(this.views.LOGIN);
             this.viewInstances["loginView"] = this.loginView = new LoginView({
                 id: "loginView",
-                model: this.model.get("login")
+                model: this.model.get("signin")
             });
             
             // later set currentView somewhere else
@@ -84,12 +84,15 @@ define(function(require){
         },
 
 
+        /**
+         * 
+         */
         initRegisterView: function()
         {
             var RegisterView = app.mapper.getViewFor(this.views.REGISTER);
             this.viewInstances["registerView"] = this.registerView = new RegisterView({
                 id: "registerView",
-                model: this.model.get("register")
+                model: this.model.get("signin")
             });
             
             // later set currentView somewhere else

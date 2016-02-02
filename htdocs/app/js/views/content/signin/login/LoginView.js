@@ -12,11 +12,17 @@ define(function(require){
         
         /* @Properties ----------------------------------------------------------------------- */
         
-        template: require("text!views/content/login/loginView.html"),
+        template: require("text!views/content/signin/login/loginView.html"),
         /**
          * 
          */
         rendered: false,
+        /**
+         * 
+         */
+        ui: {
+            loginForm: ".login_form"
+        },
         
         
         
@@ -32,6 +38,15 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        handleFormSubmit: function(event)
+        {
+            event.preventDefault();
+            
+            this.model.set("username", event.originalEvent.srcElement[0].value);
+            this.model.set("password", event.originalEvent.srcElement[1].value);
+            
+            this.model.userSignin();
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -56,6 +71,11 @@ define(function(require){
             }
             else
             {}
+        },
+        
+        
+        events: {
+            "submit @ui.loginForm": "handleFormSubmit"
         }
     });
     

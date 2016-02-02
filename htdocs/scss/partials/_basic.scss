@@ -2,6 +2,7 @@ html
 {
 	
 }
+
 body
 {
 	width:100%;
@@ -31,15 +32,27 @@ body
         }
     }
 }
+
+.hidden {
+    display: none;
+}
+
 .button {
     margin-top:20px;
     border:0;
     background-color:#D39E41;
     padding:10px;
     color:#fff;
-    font-size:13px;
+    font-size:16px;
     box-shadow:none;
-    width:240px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: $b-rad;
+    background-color: $key-orange;
+    
+    &.active{
+        background-color: $inactive;
+    }
 }
 
 
@@ -47,18 +60,20 @@ body
     outline: none;
     position: relative;
     display: block;
-    height: 50px;
+    height: 60px;
     width: 100%;
 }
 
 .textfield{
-    padding: 0px 10px 0px 10px;
+    padding: 5px 14px 5px 14px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid $box-grey;
-    text-align: center;
-    font-size: 20px;
+    border-bottom: 1px solid $box-grey;
+    border-left: 1px solid $box-grey;
+    border-right: 1px solid $box-grey;
+    text-align: left;
+    font-size: 19px;
     color: $text-grey;
 
     &:first-child{
@@ -68,6 +83,7 @@ body
         -webkit-border-top-left-radius: $b-rad;
         -moz-border-radius-topleft: $b-rad;
         border-top-left-radius: $b-rad;
+        border-top: 1px solid $box-grey;
     }
     &:last-child{
         -webkit-border-bottom-right-radius: $b-rad;
@@ -76,24 +92,5 @@ body
         -webkit-border-bottom-left-radius: $b-rad;
         -moz-border-radius-bottomleft: $b-rad;
         border-bottom-left-radius: $b-rad;
-    }
-}
-
-
-.form_btn{
-    display: table;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: $b-rad;
-    background-color: $key-orange;
-    p{
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        color: $text-white;
-        font-size: 18px;
-    }
-    &.active{
-        background-color: $inactive;
     }
 }
