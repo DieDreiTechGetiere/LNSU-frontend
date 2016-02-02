@@ -22,7 +22,8 @@ define(function(require){
             mainRegion: "#main_region"
         },
         views: {
-            LOGIN: "loginView"
+            LOGIN: "loginView",
+            REGISTER: "registerView"
         },
         /**
          * 
@@ -80,6 +81,19 @@ define(function(require){
             
             // later set currentView somewhere else
             this.model.set("currentView", "loginView");
+        },
+
+
+        initRegisterView: function()
+        {
+            var RegisterView = app.mapper.getViewFor(this.views.REGISTER);
+            this.viewInstances["registerView"] = this.registerView = new RegisterView({
+                id: "registerView",
+                model: this.model.get("register")
+            });
+            
+            // later set currentView somewhere else
+            this.model.set("currentView", "registerView");
         },
         
         

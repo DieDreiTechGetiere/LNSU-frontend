@@ -1,15 +1,24 @@
-@import "susy";
-@import "breakpoint";
+ //  ###           ##                        
+ // #   #           #                        
+ // #       ###     #     ###   # ##    #### 
+ // #      #   #    #    #   #  ##     #     
+ // #      #   #    #    #   #  #       ###  
+ // #   #  #   #    #    #   #  #          # 
+ //  ###    ###    ###    ###   #      ####  
 
-$susy: (
-    columns: 25,
-    gutters: 1/5,
-    math: fluid,
-    output: float,
-   	debug: (image: hide),
-);
-// debug; show or hide to display grid //
-$smartphone: 460px;
-$portrait: 680px;
-$landscape: 950px;
-$height: span(16);
+$box-grey: #e5e5e5;
+$text-grey: #828282;
+$text-white: #ffffff;
+$key-orange: #f1705d;
+$inactive: #796570;
+
+
+//   ###     #                        
+//  #   #                             
+//  #       ##    #####   ###    #### 
+//   ###     #       #   #   #  #     
+//      #    #      #    #####   ###  
+//  #   #    #     #     #          # 
+//   ###    ###   #####   ###   ####  
+
+$b-rad: 5px; // Border-Radius der Form-Elemente
