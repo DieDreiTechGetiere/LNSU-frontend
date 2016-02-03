@@ -21,20 +21,20 @@ define(function(require){
         /**
          *
          */
-        initialize: function()
+        initialize: function(data)
         {
             this.on("change:appReady", this.appIsReady, this);
             
-            this.setModels();
+            this.setModels(data);
         },
         
         
         /**
          * 
          */
-        setModels: function()
+        setModels: function(data)
         {
-            this.set("signin", new SigninModel());
+            this.set("signin", new SigninModel(data.signin));
         },
         
         

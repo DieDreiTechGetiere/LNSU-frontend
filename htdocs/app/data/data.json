@@ -1,3 +1,42 @@
 {
-	
+	"signin": {
+        "registerLink": {
+            "label": "or register"
+        },
+        "backBtn": {
+            "label": "back to Log In"
+        },
+        
+        
+        "login": {
+            "headline": "Log In here:",
+            "textInputs": {
+                "username": {
+                    "placeholder": "Username"
+                },
+                "password": {
+                    "placeholder": "Password"
+                }
+            },
+            "submitBtn": {
+                "label": "Log In"
+            }
+        },
+        
+        
+        "register": {
+            "headline": "Register",
+            "textInputs": {
+                "username": {
+                    "placeholder": "Username"
+                },
+                "password": {
+                    "placeholder": "Password"
+                }
+            },
+            "submitBtn": {
+                "label": "Register Now"
+            }
+        }
+    }
 }

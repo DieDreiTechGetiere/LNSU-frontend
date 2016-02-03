@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 	
-	<title>To Do</title>
+	<title>LNSU - Frontend</title>
 
 	<!-- stylesheet resources -->
 	<!-- stylesheets -->

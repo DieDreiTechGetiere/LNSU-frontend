@@ -56,7 +56,7 @@ define(function(require)
         {
             app.log = require('loglevel');
             //app.log.disableAll();
-            app.log.setLevel(settings.defaultConfig.loglevel);
+            app.log.setLevel(settings.loglevel);
             //app.log.info("init application view");
         },
 
@@ -66,7 +66,7 @@ define(function(require)
          */
         initTesting: function()
         {
-            if (settings.defaultConfig.runTests)
+            if (settings.runTests)
             {
                 var specRunner = require("SpecRunner");
                 specRunner.start();
@@ -78,8 +78,7 @@ define(function(require)
 
         start: function()
         {
-            //this.fetchJsonData();
-            this.initAppModel();
+            this.fetchJsonData();
 
         //    this.initApplicationRouter();
         },
@@ -93,7 +92,7 @@ define(function(require)
             var self = this;
             $.ajax({
                 method: "GET",
-                url: "frontend/app/data/data.json",
+                url: settings.jsonPath,
 
                 success: function (data) {
                     self.initAppModel(data);
@@ -108,9 +107,9 @@ define(function(require)
         /**
          *
          */
-        initAppModel: function()
+        initAppModel: function(data)
         {
-            app.model = new ApplicationModel();
+            app.model = new ApplicationModel(data);
             this.instantiateApplicationView();
         },
 

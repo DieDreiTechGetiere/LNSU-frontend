@@ -6,13 +6,13 @@ define(function(require) {
 
     var app = require("app");
     var Backbone = require("backbone");
+    
+    var LoginModel = require("LoginModel");
+    var RegisterModel = require("RegisterModel");
 
     var SigninModel = Backbone.Model.extend
     ({
-        urlRoot: 'http://lnsu-backend.de/user/sign',
-        /**
-         * 
-         */
+        
         defaults: {
             id: undefined,
             username: "",
@@ -22,13 +22,14 @@ define(function(require) {
 
         initialize: function()
         {
-            
+            this.set("login", new LoginModel(this.get("login")));
+            this.set("register", new RegisterModel(this.get("register")))
+            console.log("login: ", this.get("login"));
         },
         
         
         userSignin: function()
         {
-            console.log("signinmodel: ", this);
             this.save(null, {
                 success: function(data)
                 {
