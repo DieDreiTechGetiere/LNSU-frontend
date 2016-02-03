@@ -24,7 +24,6 @@ define(function(require) {
         {
             this.set("login", new LoginModel(this.get("login")));
             this.set("register", new RegisterModel(this.get("register")))
-            console.log("login: ", this.get("login"));
         },
         
         

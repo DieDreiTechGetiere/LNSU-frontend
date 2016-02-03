@@ -32,14 +32,6 @@ define(function(require){
          * 
          */
         viewInstances: {},
-        /**
-         *
-         */
-        viewsReady: 0,
-        /**
-         * 
-         */
-        viewsToBeReady: 1,
 
 
         /* @Initialize ----------------------------------------------------------------------- */
@@ -59,7 +51,6 @@ define(function(require){
         initViewListeners: function()
         {
             this.listenTo(this.model, "change:currentView", this.showRegionView, this);
-            this.listenTo(app.vent, notification.event.SECTION_READY, this.countSectionsReady);
         },
 
 
@@ -102,7 +93,7 @@ define(function(require){
          */
         showRegionView: function()
         {
-            $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")]);
+            $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")].el);
         },
 
 
@@ -111,20 +102,7 @@ define(function(require){
         finalize: function ()
         {
             // later set currentView somewhere else
-            this.model.set("currentView", "registerView");
-        },
-
-
-        /**
-         * 
-         */
-        countSectionsReady: function()
-        {
-            this.viewsReady++;
-            if(this.viewsReady == this.viewsToBeReady)
-            {
-                this.finalize();
-            }
+            this.model.set("currentView", "loginView");
         },
         
         

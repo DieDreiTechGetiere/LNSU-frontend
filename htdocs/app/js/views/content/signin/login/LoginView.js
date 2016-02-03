@@ -62,7 +62,6 @@ define(function(require){
         {
             if(!this.rendered)
             {
-                console.log("loginModel: ", this.model);
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
                 this.$el.append(renderedTemplate);

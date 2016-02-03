@@ -90,6 +90,7 @@ define(function(require){
         showRegionView: function()
         {
             this.mainRegion.show(this.viewInstances[this.model.get("currentView")]);
+            this.viewInstances[this.model.get("currentView")].finalize();
         },
 
 
