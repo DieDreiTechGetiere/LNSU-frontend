@@ -10,16 +10,23 @@ define(function(require){
     var Marionette = require("marionette");
     var notification = require("notification");
 
-    var SigninView = Backbone.Marionette.LayoutView.extend({
+    var SigninView = Backbone.Marionette.ItemView.extend({
 
         /* @Properties ----------------------------------------------------------------------- */
 
-        regions: {
-            mainRegion: "#signin_region"
-        },
+        template: require("text!views/content/signin/signinView.html"),
+        /**
+         * 
+         */
         views: {
             LOGIN: "loginView",
             REGISTER: "registerView"
+        },
+        /**
+         * 
+         */
+        ui: {
+            signIn: "#signin_region"
         },
         /**
          * 
@@ -74,9 +81,6 @@ define(function(require){
                 id: "loginView",
                 model: this.model.get("login")
             });
-            
-            // later set currentView somewhere else
-            this.model.set("currentView", "loginView");
         },
 
 
@@ -90,9 +94,6 @@ define(function(require){
                 id: "registerView",
                 model: this.model.get("register")
             });
-            
-            // later set currentView somewhere else
-            this.model.set("currentView", "registerView");
         },
         
         
@@ -101,7 +102,7 @@ define(function(require){
          */
         showRegionView: function()
         {
-            this.mainRegion.show(this.viewInstances[this.model.get("currentView")]);
+            $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")]);
         },
 
 
@@ -109,9 +110,8 @@ define(function(require){
 
         finalize: function ()
         {
-            app.model.set("appReady", true);
-            app.global.hideLoader();
-            app.log.info("application ready");
+            // later set currentView somewhere else
+            this.model.set("currentView", "registerView");
         },
 
 
@@ -133,7 +133,15 @@ define(function(require){
          */
         render: function()
         {
-            
+            if(!this.rendered)
+            {
+                var renderedTemplate = _.template(this.template)(this.model.toJSON());
+                
+                this.$el.append(renderedTemplate);
+                this.rendered = true;
+            }
+            else
+            {}
         }
 
     });
