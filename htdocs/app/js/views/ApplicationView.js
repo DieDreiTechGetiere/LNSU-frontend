@@ -22,8 +22,7 @@ define(function(require){
             mainRegion: "#main_region"
         },
         views: {
-            LOGIN: "loginView",
-            REGISTER: "registerView"
+            SIGNIN: "signinView"
         },
         /**
          * 
@@ -65,39 +64,24 @@ define(function(require){
          */
         initViews: function()
         {
-            this.initLoginView();
+            this.initSigninView();
         },
         
 
         /* @Methods -------------------------------------------------------------------------- */
 
-        initLoginView: function()
+        initSigninView: function()
         {
-            var LoginView = app.mapper.getViewFor(this.views.LOGIN);
-            this.viewInstances["loginView"] = this.loginView = new LoginView({
-                id: "loginView",
-                model: this.model.get("login")
+            var SigninView = app.mapper.getViewFor(this.views.SIGNIN);
+            this.viewInstances["signinView"] = this.signinView = new SigninView({
+                id: "signinView",
+                model: this.model.get("signin")
             });
             
             // later set currentView somewhere else
-            this.model.set("currentView", "loginView");
+            this.model.set("currentView", "signinView");
         },
 
-
-        /**
-         * 
-         */
-        initRegisterView: function()
-        {
-            var RegisterView = app.mapper.getViewFor(this.views.REGISTER);
-            this.viewInstances["registerView"] = this.registerView = new RegisterView({
-                id: "registerView",
-                model: this.model.get("register")
-            });
-            
-            // later set currentView somewhere else
-            this.model.set("currentView", "registerView");
-        },
         
         
         /**
@@ -125,7 +109,7 @@ define(function(require){
         countSectionsReady: function()
         {
             this.viewsReady++;
-            if(this.viewsReady == this.viewsToBeReady)
+            if(this.viewsReady === this.viewsToBeReady)
             {
                 this.finalize();
             }
