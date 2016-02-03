@@ -94,6 +94,7 @@ define(function(require){
         showRegionView: function()
         {
             $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")].el);
+            this.viewInstances[this.model.get("currentView")].finalize();
         },
 
 
