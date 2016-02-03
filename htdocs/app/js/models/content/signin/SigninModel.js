@@ -14,9 +14,7 @@ define(function(require) {
     ({
         
         defaults: {
-            id: undefined,
-            username: "",
-            password: "",
+            currentView: "loginView"
         },
 
 

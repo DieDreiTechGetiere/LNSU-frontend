@@ -1,9 +1,9 @@
 {
 	"signin": {
-        "registerLink": {
+        "switchLink": {
             "label": "or register"
         },
-        "backBtn": {
+        "backLink": {
             "label": "back to Log In"
         },
         

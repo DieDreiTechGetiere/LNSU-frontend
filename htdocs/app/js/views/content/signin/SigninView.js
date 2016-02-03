@@ -26,7 +26,8 @@ define(function(require){
          * 
          */
         ui: {
-            signIn: "#signin_region"
+            signIn: "#signin_region",
+            switchLink: ".switch_link"
         },
         /**
          * 
@@ -60,6 +61,7 @@ define(function(require){
         initViews: function()
         {
             this.initLoginView();
+            this.initRegisterView();
         },
         
 
@@ -93,17 +95,42 @@ define(function(require){
          */
         showRegionView: function()
         {
+            if(this.model.get("currentView") == "registerView")
+            {
+                this.viewInstances["loginView"].remove();
+                this.initRegisterView();
+            }
+            else
+            {
+                this.viewInstances["registerView"].remove();
+                this.initLoginView();
+            }
+            
             $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")].el);
             this.viewInstances[this.model.get("currentView")].finalize();
         },
-
-
+        
+        
+        /**
+         * 
+         */
+        switchViews: function()
+        {
+            var viewToShow = this.model.get("currentView") === "loginView" ? "registerView" : "loginView";
+            console.log("viewToShow: ", viewToShow);
+            this.model.set("currentView", viewToShow);  
+        },
+        
+        
         /* @Finalize ------------------------------------------------------------------------- */
 
         finalize: function ()
         {
             // later set currentView somewhere else
-            this.model.set("currentView", "loginView");
+            //this.model.set("currentView", "loginView");
+            
+            $(this.ui.signIn).append(this.viewInstances["loginView"].el);
+            this.viewInstances["loginView"].finalize();
         },
         
         
@@ -121,6 +148,11 @@ define(function(require){
             }
             else
             {}
+        },
+        
+        
+        events: {
+            "click @ui.switchLink": "switchViews"
         }
 
     });

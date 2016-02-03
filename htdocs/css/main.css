@@ -1,6 +1,7 @@
 body {
   width: 100%;
-  position: relative; }
+  position: relative;
+}
 
 .loader-pos {
   width: 100%;
@@ -8,18 +9,22 @@ body {
   position: absolute;
   z-index: 9999;
   background-color: rgba(18, 19, 23, 0.9);
-  display: none; }
-  .loader-pos .loader {
-    width: 60px;
-    height: 60px;
-    margin: auto;
-    margin-top: 100px; }
-    .loader-pos .loader #loader-img {
-      width: 100%;
-      height: 100%; }
+  display: none;
+}
+.loader-pos .loader {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  margin-top: 100px;
+}
+.loader-pos .loader #loader-img {
+  width: 100%;
+  height: 100%;
+}
 
 .hidden {
-  display: none; }
+  display: none;
+}
 
 .button {
   margin-top: 20px;
@@ -32,16 +37,19 @@ body {
   margin-top: 20px;
   cursor: pointer;
   border-radius: 3px;
-  background-color: #f1705d; }
-  .button.active {
-    background-color: #796570; }
+  background-color: #f1705d;
+}
+.button.active {
+  background-color: #796570;
+}
 
 .form_element {
   outline: none;
   position: relative;
   display: block;
   height: 60px;
-  width: 100%; }
+  width: 100%;
+}
 
 .textfield {
   padding: 5px 14px 5px 14px;
@@ -52,22 +60,25 @@ body {
   border-top-width: 0px;
   text-align: left;
   font-size: 19px;
-  color: #828282; }
-  .textfield:first-child {
-    -webkit-border-top-right-radius: 3px;
-    -moz-border-radius-topright: 3px;
-    border-top-right-radius: 3px;
-    -webkit-border-top-left-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    border-top-left-radius: 3px;
-    border-top-width: 2px; }
-  .textfield:last-child {
-    -webkit-border-bottom-right-radius: 3px;
-    -moz-border-radius-bottomright: 3px;
-    border-bottom-right-radius: 3px;
-    -webkit-border-bottom-left-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-bottom-left-radius: 3px; }
+  color: #828282;
+}
+.textfield:first-child {
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  border-top-width: 2px;
+}
+.textfield:last-child {
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+}
 
 .stage {
   min-height: 320px;
@@ -75,11 +86,12 @@ body {
   z-index: 99;
   padding-top: 50px;
   margin: auto;
-  z-index: 5; }
+  z-index: 5;
+}
 
 .login_view .login_form_wrapper {
   position: relative;
   width: 300px;
-  height: 500px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}

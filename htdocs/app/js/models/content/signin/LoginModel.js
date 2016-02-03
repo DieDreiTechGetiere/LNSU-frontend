@@ -9,6 +9,12 @@ define(function(require){
         
         urlRoot: settings.backendBaseUrl + 'user/login',
         
+        defaults: {
+            id: undefined,
+            username: "",
+            password: "",
+        },
+        
         
         initialize: function()
         {
