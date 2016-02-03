@@ -69,9 +69,8 @@ body
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border-bottom: 1px solid $box-grey;
-    border-left: 1px solid $box-grey;
-    border-right: 1px solid $box-grey;
+    border: 2px solid $box-grey;
+    border-top-width: 0px;
     text-align: left;
     font-size: 19px;
     color: $text-grey;
@@ -83,7 +82,7 @@ body
         -webkit-border-top-left-radius: $b-rad;
         -moz-border-radius-topleft: $b-rad;
         border-top-left-radius: $b-rad;
-        border-top: 1px solid $box-grey;
+        border-top-width: 2px;
     }
     &:last-child{
         -webkit-border-bottom-right-radius: $b-rad;
