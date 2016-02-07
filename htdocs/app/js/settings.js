@@ -1,7 +1,7 @@
 
 define(function(require)
 {
-
+    var underscopre = require("underscore");
     var appEnvironment = "local";
         
     var appEnvironments = {

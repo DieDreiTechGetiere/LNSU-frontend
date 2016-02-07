@@ -10,8 +10,7 @@ define(function(require) {
     var LoginModel = require("LoginModel");
     var RegisterModel = require("RegisterModel");
 
-    var SigninModel = Backbone.Model.extend
-    ({
+    var SigninModel = Backbone.Model.extend({
         
         defaults: {
             currentView: "loginView"
@@ -22,21 +21,6 @@ define(function(require) {
         {
             this.set("login", new LoginModel(this.get("login")));
             this.set("register", new RegisterModel(this.get("register")))
-        },
-        
-        
-        userSignin: function()
-        {
-            this.save(null, {
-                success: function(data)
-                {
-                    
-                },
-                error: function(error)
-                {
-                    
-                }
-            })
         }
     });
 
