@@ -18,7 +18,27 @@ define(function(require){
         initialize: function()
         {
             
+        },
+        
+        
+        userSignin: function()
+        {
+            Date.now = function() { return new Date().getTime() };
+         //   this.set("timestamp", Date.now());
+            console.log("registerModel. ", this);
+            
+            this.save(null, {
+                success: function(data)
+                {
+                    
+                },
+                error: function(error)
+                {
+                    
+                }
+            })
         }
+        
     });
     return RegisterModel;
 })

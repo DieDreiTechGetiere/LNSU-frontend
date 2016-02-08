@@ -19,7 +19,9 @@ define(function(require){
          * 
          */
         ui: {
-            loginForm: ".login_form"
+            loginForm: ".login_form",
+            username: "#login_name",
+            password: "#password"
         },
         
         
@@ -40,8 +42,8 @@ define(function(require){
         {
             event.preventDefault();
             
-            this.model.set("username", event.originalEvent.srcElement[0].value);
-            this.model.set("password", event.originalEvent.srcElement[1].value);
+            this.model.set("username", $(this.ui.username).val());
+            this.model.set("password", $(this.ui.password).val());
             
             this.model.userSignin();
         },
@@ -64,7 +66,7 @@ define(function(require){
             {
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
-                this.$el.append(renderedTemplate);
+                this.$el.html(renderedTemplate);
                 this.rendered = true;
             }
             else

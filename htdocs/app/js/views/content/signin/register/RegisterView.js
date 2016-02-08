@@ -51,7 +51,7 @@ define(function(require){
             {
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
-                this.$el.append(renderedTemplate);
+                this.$el.html(renderedTemplate);
                 this.rendered = true;
             }
             else

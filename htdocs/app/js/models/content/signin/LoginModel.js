@@ -7,7 +7,7 @@ define(function(require){
     
     var LoginModel = Backbone.Model.extend({
         
-        urlRoot: settings.backendBaseUrl + 'login',
+        urlRoot: settings.backendBaseUrl + 'user/login',
         
         defaults: {
             id: undefined,
@@ -31,11 +31,11 @@ define(function(require){
             this.save(null, {
                 success: function(data)
                 {
-                    
+                    console.log("success: ", data);
                 },
-                error: function(error)
+                error: function(data, error)
                 {
-                    
+                    console.log("error: ", error);
                 }
             })
         }

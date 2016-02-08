@@ -106,7 +106,7 @@ define(function(require){
                 this.initLoginView();
             }
             
-            $(this.ui.signIn).append(this.viewInstances[this.model.get("currentView")].el);
+            $(this.ui.signIn).html(this.viewInstances[this.model.get("currentView")].el);
             this.viewInstances[this.model.get("currentView")].finalize();
         },
         
@@ -129,7 +129,7 @@ define(function(require){
             // later set currentView somewhere else
             //this.model.set("currentView", "loginView");
             
-            $(this.ui.signIn).append(this.viewInstances["loginView"].el);
+            $(this.ui.signIn).html(this.viewInstances["loginView"].el);
             this.viewInstances["loginView"].finalize();
         },
         
@@ -143,7 +143,7 @@ define(function(require){
             {
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
-                this.$el.append(renderedTemplate);
+                this.$el.html(renderedTemplate);
                 this.rendered = true;
             }
             else
