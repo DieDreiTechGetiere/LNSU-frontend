@@ -24,11 +24,8 @@ define(function(require){
         
         userSignin: function()
         {
-            Date.now = function() { return new Date().getTime() };
-         //   this.set("timestamp", Date.now());
-            console.log("loginModel. ", this);
-            
             this.save(null, {
+                data: "asdf",
                 success: function(data)
                 {
                     console.log("success: ", data);

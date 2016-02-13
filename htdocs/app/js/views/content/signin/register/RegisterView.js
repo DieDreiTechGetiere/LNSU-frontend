@@ -17,28 +17,46 @@ define(function(require){
          * 
          */
         rendered: false,
-        
+        /**
+         * 
+         */
+        ui: {
+            username: "#login_name",
+            ingameName: "#ingame_name",
+            password: "#password"
+        },
         
         
         /* @Initialize ----------------------------------------------------------------------- */
         
         initialize: function()
-        {
-            this.listenTo(this.model, "change", this.render);
-            
+        {   
             this.render();
         },
         
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        handleRegisterSubmit: function(event)
+        {
+            console.log("regitser submit");
+            event.preventDefault();
+            Date.now = function() { return new Date().getTime() };
+            
+            this.model.set("username", $(this.ui.username).val());
+            this.model.set("ingameName", $(this.ui.ingameName).val());
+            this.model.set("password", $(this.ui.password).val());
+            this.model.set("timestamp", Date.now());
+            
+            this.model.registerUser();
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
         {
-            
+            console.log("register fin");
         },
         
         
@@ -56,6 +74,11 @@ define(function(require){
             }
             else
             {}
+        },
+        
+        
+        events: {
+            "submit .register_form": "handleRegisterSubmit"
         }
     });
     

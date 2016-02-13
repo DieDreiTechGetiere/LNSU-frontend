@@ -30,8 +30,14 @@
                 "username": {
                     "placeholder": "Username"
                 },
+                "ingameName": {
+                    "placeholder": "Ingame Name"
+                },
                 "password": {
                     "placeholder": "Password"
+                },
+                "passwordRepeat": {
+                    "placeholder": "Password repeat"
                 }
             },
             "submitBtn": {

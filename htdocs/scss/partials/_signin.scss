@@ -1,0 +1,28 @@
+
+#signin_region {
+    
+    .login_view {
+    
+        .login_form_wrapper {
+            position: relative;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .register_view {
+        
+        .register_form_wrapper {
+            position: relative;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+.signin_link {
+    cursor: pointer;
+    padding: 10px;
+}

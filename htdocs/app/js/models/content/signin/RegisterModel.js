@@ -21,20 +21,16 @@ define(function(require){
         },
         
         
-        userSignin: function()
+        registerUser: function()
         {
-            Date.now = function() { return new Date().getTime() };
-         //   this.set("timestamp", Date.now());
-            console.log("registerModel. ", this);
-            
             this.save(null, {
                 success: function(data)
                 {
-                    
+                    console.log("register success: ", data);
                 },
-                error: function(error)
+                error: function(data, error)
                 {
-                    
+                    console.log("regiser error: ", error);
                 }
             })
         }
