@@ -43,7 +43,7 @@ define(function(require){
             event.preventDefault();
             Date.now = function() { return new Date().getTime() };
             
-            this.model.set("username", $(this.ui.username).val());
+            this.model.set("loginName", $(this.ui.username).val());
             this.model.set("ingameName", $(this.ui.ingameName).val());
             this.model.set("password", $(this.ui.password).val());
             this.model.set("timestamp", Date.now());

@@ -11,7 +11,7 @@ define(function(require){
         
         defaults: {
             id: undefined,
-            username: "",
+            loginName: "",
             password: "",
         },
         
@@ -24,8 +24,8 @@ define(function(require){
         
         userSignin: function()
         {
-            this.save(null, {
-                data: "asdf",
+            this.save(null, 
+            {
                 success: function(data)
                 {
                     console.log("success: ", data);

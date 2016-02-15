@@ -11,7 +11,7 @@ define(function(require){
         
         defaults: {
             id: undefined,
-            username: "",
+            loginName: "",
             password: "",
         },
         

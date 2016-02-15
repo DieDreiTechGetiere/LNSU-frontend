@@ -42,7 +42,7 @@ define(function(require){
         {
             event.preventDefault();
             
-            this.model.set("username", $(this.ui.username).val());
+            this.model.set("loginName", $(this.ui.username).val());
             this.model.set("password", $(this.ui.password).val());
             
             this.model.userSignin();
