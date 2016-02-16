@@ -1,8 +1,16 @@
-.stage {
-    min-height:320px;
-    position:relative;
-    z-index:99;
-    padding-top:50px;
-    margin:auto;
-    z-index: 5;
+
+p {
+    
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.error {
+    color: red;
+    line-height: 31px;
+    margin: 0;
+    height: 12px;
 }

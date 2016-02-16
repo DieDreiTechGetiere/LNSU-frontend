@@ -1,15 +1,12 @@
 {
 	"signin": {
-        "switchLink": {
-            "label": "or register"
-        },
+        "switchLink": "register here...",
         "backLink": {
             "label": "back to Log In"
         },
-        
-        
         "login": {
-            "headline": "Log In here:",
+            "headline": "Log In:",
+            "errorMessage": "please fill out every field",
             "textInputs": {
                 "username": {
                     "placeholder": "Username"
@@ -22,10 +19,9 @@
                 "label": "Log In"
             }
         },
-        
-        
         "register": {
-            "headline": "Register",
+            "headline": "Register:",
+            "errorMessage": "please fill out every field",
             "textInputs": {
                 "username": {
                     "placeholder": "Username"

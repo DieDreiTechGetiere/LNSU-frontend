@@ -21,7 +21,9 @@ define(function(require){
         ui: {
             loginForm: ".login_form",
             username: "#login_name",
-            password: "#password"
+            password: "#password",
+            error: ".error",
+            textInput: ".text_input"
         },
         
         
@@ -40,12 +42,37 @@ define(function(require){
         
         handleFormSubmit: function(event)
         {
-            event.preventDefault();
-            
-            this.model.set("username", $(this.ui.username).val());
+            this.model.set("loginName", $(this.ui.username).val());
             this.model.set("password", $(this.ui.password).val());
             
             this.model.userSignin();
+        },
+        
+        
+        /**
+         * 
+         */
+        validateFormInput: function(event)
+        {
+            event.preventDefault();
+            
+            var countEmptyFields = 0;
+            $.each($(this.ui.textInput), function(){
+                if($(this).val() == "")
+                {
+                    $(this).css("border", "1px solid red");
+                    countEmptyFields++;
+                }
+            });
+            if(countEmptyFields == 0)
+            {
+                app.global.showLoader();
+                this.handleFormSubmit();
+            }
+            else
+            {
+                $(this.ui.error).html(this.model.get("errorMessage"));
+            }
         },
         
         
@@ -75,7 +102,7 @@ define(function(require){
         
         
         events: {
-            "submit @ui.loginForm": "handleFormSubmit"
+            "submit @ui.loginForm": "validateFormInput"
         }
     });
     

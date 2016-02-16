@@ -8,7 +8,6 @@
 	<!-- stylesheet resources -->
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
-	<link rel="stylesheet" href="app/includes/libraries/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="app/includes/libraries/testing/mocha.css"/>
 
 	<!-- scripts -->

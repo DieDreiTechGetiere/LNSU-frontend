@@ -9,6 +9,7 @@ define(function(require){
     var notification = require("notification");
 
     var SigninModel = require("SigninModel");
+    var DashboardModel = require("models/content/dashboard/DashboardModel");
 
     var ApplicationModel = Backbone.Model.extend
     ({
@@ -35,6 +36,7 @@ define(function(require){
         setModels: function(data)
         {
             this.set("signin", new SigninModel(data.signin));
+            this.set("dashboard", new DashboardModel());
         },
         
         
@@ -46,15 +48,6 @@ define(function(require){
             // reset hash before starting router to not fuck it up
             window.location.hash = "";
             app.execute(notification.command.application.START_ROUTER);
-        },
-        
-        
-        /**
-         * 
-         */
-        handleLoginError: function()
-        {
-            this.trigger("loginError");
         },
         
     });

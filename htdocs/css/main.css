@@ -1,6 +1,7 @@
 body {
   width: 100%;
   position: relative;
+  font-family: 'Helvetica Neue', Helvetica, Arial;
 }
 
 .loader-pos {
@@ -43,12 +44,25 @@ body {
   background-color: #796570;
 }
 
+.main-stage {
+  min-height: 320px;
+  position: relative;
+  z-index: 99;
+  padding-top: 50px;
+  margin: auto;
+  z-index: 5;
+  max-width: 980px;
+  width: 100%;
+  margin: auto;
+}
+
 .form_element {
   outline: none;
   position: relative;
   display: block;
   height: 60px;
   width: 100%;
+  font-size: 19px;
 }
 
 .textfield {
@@ -80,29 +94,44 @@ body {
   border-bottom-left-radius: 3px;
 }
 
-.stage {
-  min-height: 320px;
-  position: relative;
-  z-index: 99;
-  padding-top: 50px;
+h1 {
+  font-size: 32px;
+  font-weight: normal;
+}
+
+.error {
+  color: red;
+  line-height: 31px;
+  margin: 0;
+  height: 12px;
+}
+
+.signin_view {
+  width: 100%;
+  width: 350px;
   margin: auto;
-  z-index: 5;
 }
-
-#signin_region .login_view .login_form_wrapper {
+.signin_view #signin_region .login_view .login_form_wrapper {
   position: relative;
-  width: 300px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-#signin_region .register_view .register_form_wrapper {
+.signin_view #signin_region .register_view .register_form_wrapper {
   position: relative;
-  width: 300px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-
-.signin_link {
+.signin_view .signin_link {
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 0;
+  color: #f1705d;
+  font-size: 18px;
+}
+.signin_view .signin_link:active {
+  color: #f1705d;
+}
+.signin_view .signin_link:visited, .signin_view .signin_link:hover {
+  color: #f1705d;
 }

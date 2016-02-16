@@ -8,9 +8,12 @@ define(function(require)
 
     // VIEWS
     var ApplicationView = require("views/ApplicationView");
+    
     var LoginView = require("views/content/signin/login/LoginView");
     var RegisterView = require("views/content/signin/register/RegisterView");
     var SigninView = require("views/content/signin/SigninView");
+    
+    var DashboardView = require("views/content/dashboard/DashboardView");
     // MODELS
 
 
@@ -26,7 +29,10 @@ define(function(require)
         },
         signinView: {
             defaultView: SigninView
-        }
+        },
+        dashboardView: {
+            defaultView: DashboardView
+        },
     };
 
     return {

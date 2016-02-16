@@ -13,6 +13,7 @@ define(function(require){
             id: undefined,
             username: "",
             password: "",
+            success: false
         },
         
         initialize: function()
@@ -23,13 +24,21 @@ define(function(require){
         
         registerUser: function()
         {
+            var self = this;
             this.save(null, {
                 success: function(data)
                 {
-                    console.log("register success: ", data);
+                    var jsonData = data.toJSON();
+                    app.global.hideLoader();
+                    if(jsonData.registerSuccess == true)
+                    {
+                        self.set("success", true);
+                        alert("Your registration has been saved, please wait for an admin to confirm it");
+                    }
                 },
                 error: function(data, error)
                 {
+                    app.global.hideLoader();
                     console.log("regiser error: ", error);
                 }
             })

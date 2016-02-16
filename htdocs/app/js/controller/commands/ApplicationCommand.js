@@ -6,7 +6,7 @@
 define(function(require)
 {
     var app = require("app");
-
+    var UserModel = require("models/UserModel");
 
     var ApplicationCommand = {
         //@methods----------------------------------------------------------------------
@@ -14,11 +14,23 @@ define(function(require)
         /**
          *
          */
-        renderToDo: function()
+        handleLoginSuccess: function(userData)
         {
-         //   app.view.initToDoView();
+            app.userModel = new UserModel({
+                id: userData.id,
+                accountName: userData.accountName
+            });
+            app.model.get("dashboard").fetchDashboardData();
         },
 
+
+        /**
+         * 
+         */
+        initDashboardView: function()
+        {
+            app.view.initDashboardView();
+        }
     };
     return ApplicationCommand;
 });

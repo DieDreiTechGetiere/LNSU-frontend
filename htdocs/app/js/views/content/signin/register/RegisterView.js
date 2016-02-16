@@ -23,7 +23,9 @@ define(function(require){
         ui: {
             username: "#login_name",
             ingameName: "#ingame_name",
-            password: "#password"
+            password: "#password",
+            error: ".error",
+            textInput: ".text_input"
         },
         
         
@@ -31,19 +33,31 @@ define(function(require){
         
         initialize: function()
         {   
+            this.listenTo(this.model, "change:success", this.handleFormSuccess, this);
             this.render();
         },
         
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        handleFormSuccess: function()
+        {
+            console.log("success true");
+            $.each($(this.ui.textInput), function(){
+                console.log("each");
+                $(this).val("");
+            })
+        },
+        
+        
+        /**
+         * 
+         */
         handleRegisterSubmit: function(event)
         {
-            console.log("regitser submit");
-            event.preventDefault();
             Date.now = function() { return new Date().getTime() };
             
-            this.model.set("username", $(this.ui.username).val());
+            this.model.set("loginName", $(this.ui.username).val());
             this.model.set("ingameName", $(this.ui.ingameName).val());
             this.model.set("password", $(this.ui.password).val());
             this.model.set("timestamp", Date.now());
@@ -52,11 +66,38 @@ define(function(require){
         },
         
         
+        /**
+         * 
+         */
+        validateFormInput: function(event)
+        {
+            event.preventDefault();
+            
+            var countEmptyFields = 0;
+            $.each($(this.ui.textInput), function(){
+                if($(this).val() == "")
+                {
+                    $(this).css("border", "1px solid red");
+                    countEmptyFields++;
+                }
+            });
+            if(countEmptyFields == 0)
+            {
+                app.global.showLoader();
+                this.handleRegisterSubmit();
+            }
+            else
+            {
+                $(this.ui.error).html(this.model.get("errorMessage"));
+            }
+        },
+        
+        
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
         {
-            console.log("register fin");
+            
         },
         
         
@@ -78,7 +119,7 @@ define(function(require){
         
         
         events: {
-            "submit .register_form": "handleRegisterSubmit"
+            "submit .register_form": "validateFormInput"
         }
     });
     

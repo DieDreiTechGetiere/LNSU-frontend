@@ -52,6 +52,7 @@ define(function(require){
         initViewListeners: function()
         {
             this.listenTo(this.model, "change:currentView", this.showRegionView, this);
+            this.listenTo(this.model, "change:switchLink", this.render, this);
         },
 
 
@@ -72,6 +73,7 @@ define(function(require){
             var LoginView = app.mapper.getViewFor(this.views.LOGIN);
             this.viewInstances["loginView"] = this.loginView = new LoginView({
                 id: "loginView",
+                className: "login_view",
                 model: this.model.get("login")
             });
         },
@@ -85,6 +87,7 @@ define(function(require){
             var RegisterView = app.mapper.getViewFor(this.views.REGISTER);
             this.viewInstances["registerView"] = this.registerView = new RegisterView({
                 id: "registerView",
+                className: "register_view",
                 model: this.model.get("register")
             });
         },
@@ -99,12 +102,15 @@ define(function(require){
             {
                 this.viewInstances["loginView"].remove();
                 this.initRegisterView();
+                this.model.set("switchLink", "...back to login");
             }
             else
             {
                 this.viewInstances["registerView"].remove();
                 this.initLoginView();
+                this.model.set("switchLink", "register here...");
             }
+            
             
             $(this.ui.signIn).html(this.viewInstances[this.model.get("currentView")].el);
             this.viewInstances[this.model.get("currentView")].finalize();
@@ -116,19 +122,18 @@ define(function(require){
          */
         switchViews: function()
         {
-            var viewToShow = this.model.get("currentView") === "loginView" ? "registerView" : "loginView";
-            console.log("viewToShow: ", viewToShow);
-            this.model.set("currentView", viewToShow);  
+            var self = this;
+            this.viewInstances[this.model.get("currentView")].$el.fadeOut(170, function(){
+                var viewToShow = self.model.get("currentView") === "loginView" ? "registerView" : "loginView";
+                self.model.set("currentView", viewToShow);
+            });
         },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
 
         finalize: function ()
-        {
-            // later set currentView somewhere else
-            //this.model.set("currentView", "loginView");
-            
+        {   
             $(this.ui.signIn).html(this.viewInstances["loginView"].el);
             this.viewInstances["loginView"].finalize();
         },
@@ -139,15 +144,10 @@ define(function(require){
          */
         render: function()
         {
-            if(!this.rendered)
-            {
-                var renderedTemplate = _.template(this.template)(this.model.toJSON());
+            var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
-                this.$el.html(renderedTemplate);
-                this.rendered = true;
-            }
-            else
-            {}
+            this.$el.html(renderedTemplate);
+            this.rendered = true;
         },
         
         

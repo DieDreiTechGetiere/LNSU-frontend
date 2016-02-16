@@ -44,6 +44,8 @@ define(function(require)
         initEventListener: function ()
         {
             app.commands.setHandler(notification.command.application.START_ROUTER, this.initApplicationRouter, this);
+            app.commands.setHandler(notification.command.application.LOGIN_SUCCESS, ApplicationCommand.handleLoginSuccess);
+            app.commands.setHandler(notification.command.application.INIT_DASHBOARD, ApplicationCommand.initDashboardView);
 
             app.commands.setHandler(notification.command.application.SIGN_IN, ApplicationCommand.renderToDo);
         },

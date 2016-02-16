@@ -22,7 +22,8 @@ define(function(require){
             mainRegion: "#main_region"
         },
         views: {
-            SIGNIN: "signinView"
+            SIGNIN: "signinView",
+            DASHBOARD: "dashboardView"
         },
         /**
          * 
@@ -70,11 +71,27 @@ define(function(require){
 
         /* @Methods -------------------------------------------------------------------------- */
 
+        initDashboardView: function()
+        {
+            var DashboardView = app.mapper.getViewFor(this.views.DASHBOARD);
+            this.viewInstances["dashboardView"] = this.dashboardView = new DashboardView({
+                id: "dashboardView",
+                className: "dashboard_view",
+                model: this.model.get("dashboard")
+            });
+            this.model.set("currentView", "dashboardView");
+        },
+        
+        
+        /**
+         * 
+         */
         initSigninView: function()
         {
             var SigninView = app.mapper.getViewFor(this.views.SIGNIN);
             this.viewInstances["signinView"] = this.signinView = new SigninView({
                 id: "signinView",
+                className: "signin_view",
                 model: this.model.get("signin")
             });
             

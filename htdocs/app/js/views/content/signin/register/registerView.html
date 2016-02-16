@@ -1,12 +1,14 @@
 <div class="register_view">
+    <h1><%=headline%></h1>
 	<form class="register_form">
 	    <div class="register_form_wrapper">
 	    	<div class="textfield_container">                
-                <input type="text" id="login_name" class="textfield form_element" placeholder="<%=textInputs.username.placeholder%>">
-	    		<input type="text" id="ingame_name" class="textfield form_element" placeholder="<%=textInputs.ingameName.placeholder%>">
-	    		<input type="text" id="password" class="textfield form_element" placeholder="<%=textInputs.password.placeholder%>">
-	    		<input type="text" id="password_repeat" class="textfield form_element" placeholder="<%=textInputs.passwordRepeat.placeholder%>">
+                <input type="text" id="login_name" class="textfield form_element text_input" placeholder="<%=textInputs.username.placeholder%>">
+	    		<input type="text" id="ingame_name" class="textfield form_element text_input" placeholder="<%=textInputs.ingameName.placeholder%>">
+	    		<input type="password" id="password" class="textfield form_element text_input" placeholder="<%=textInputs.password.placeholder%>">
+	    		<input type="password" id="password_repeat" class="textfield form_element text_input" placeholder="<%=textInputs.passwordRepeat.placeholder%>">
     		</div>
+            <p class="error"></p>
     		<input type="submit" name="submit" class="button form_element" value="<%=submitBtn.label%>">
 	    </div>
     </form>
