@@ -12,7 +12,7 @@ define(function(require){
         
         defaults: {
             id: undefined,
-            username: "",
+            loginName: "",
             password: "",
         },
         
@@ -20,12 +20,13 @@ define(function(require){
         initialize: function()
         {
             
-        },
+        }, 
         
         
         userSignin: function()
         {
-            this.save(null, {
+            this.save(null, 
+            {
                 success: function(data)
                 {
                     app.global.hideLoader();
