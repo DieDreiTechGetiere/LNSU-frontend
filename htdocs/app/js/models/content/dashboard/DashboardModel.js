@@ -22,7 +22,7 @@ define(function(require){
         /**
          * which will be filled up with passed data later..
          */
-        initItemModels: function(data)
+        initItemModels: function()
         {
             this.set("playerSearch", new PlayerSearchModel());
         },
@@ -40,7 +40,7 @@ define(function(require){
             //onComplete, 
             // pass data.toJSON()
             // and hideLoader at some point...  ->
-            // this.initItemModels(data);
+             this.initItemModels();
             
             app.execute(notification.command.application.INIT_DASHBOARD);
         }

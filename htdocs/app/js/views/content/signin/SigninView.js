@@ -132,7 +132,7 @@ define(function(require){
         
         /* @Finalize ------------------------------------------------------------------------- */
 
-        finalize: function ()
+        onShow: function ()
         {   
             $(this.ui.signIn).html(this.viewInstances["loginView"].el);
             this.viewInstances["loginView"].finalize();

@@ -8,12 +8,12 @@ define(function(require){
     var PlayerSearchView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
 
-        template: require("text!views/content/dashboard/playersearch/playersearchView.html"),
+        template: require("text!views/content/dashboard/playersearch/playerSearchView.html"),
         /**
          * 
          */
         views: {
-            PLAYER_SEARCH: "playerSearchView",
+            
         },
         /**
          * 
@@ -32,8 +32,6 @@ define(function(require){
         initialize: function()
         {
             this.initViewListeners();
-            
-       //     this.initItemViews();
             this.render();
         },
         
@@ -65,6 +63,7 @@ define(function(require){
         {
             if(!this.rendered)
             {
+                console.log("player render");
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
                 this.$el.html(renderedTemplate);
@@ -79,5 +78,5 @@ define(function(require){
             
         }
     });
-    return DashboardModel;
+    return PlayerSearchView;
 });

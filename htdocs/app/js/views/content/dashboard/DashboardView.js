@@ -11,7 +11,9 @@ define(function(require){
         /**
          * 
          */
-        itemViews: ["searchPlayer"],
+        views: {
+            PLAYERSEARCH: "playerSearchView"
+        },
         viewInstances: new Array(),
         /**
          * 
@@ -21,7 +23,7 @@ define(function(require){
          * 
          */
         ui: {
-            playersearchRegion: ".playersearch_region"
+            playerSearch: ".playersearch_region"
         },
 
 
@@ -29,26 +31,33 @@ define(function(require){
 
         initialize: function()
         {
-            this.initViewListeners();     
-            this.initItemViews();
+            this.initViewListeners();
             this.render();
+        },
+        
+        
+        /**
+         * called by finalize
+         */
+        initItemViews: function()
+        {
+            this.initPlayerSearchView();
         },
         
         
         /**
          * 
          */
-        initItemViews: function()
+        initPlayerSearchView: function()
         {
-            for(e in this.itemViews)
-            {
-                var ItemView = app.mapper.getViewFor(this.itemViews[e] + "View");
-                this.viewInstances[this.itemViews[e]] = new ItemView({
-                    id: this.itemViews[e],
-                    model: this.model.get(this.itemViews[e])
-                });
-                this.model.set("currentView", "dashboardView");
-            }
+            var PlayerSearchView = app.mapper.getViewFor(this.views.PLAYERSEARCH);
+            this.viewInstances[this.views.PLAYERSEARCH] = new PlayerSearchView({
+                id: this.views.PLAYERSEARCH,
+                className: "player_search",
+                model: this.model.get("playerSearch")
+            });
+            $(this.ui.playerSearch).append(this.viewInstances[this.views.PLAYERSEARCH].el);
+            this.viewInstances[this.views.PLAYERSEARCH].finalize();
         },
         
         
@@ -66,9 +75,9 @@ define(function(require){
         
         /* @Finalize ------------------------------------------------------------------------- */
         
-        finalize: function()
+        onShow: function()
         {
-            
+            this.initItemViews();
         },
         
         

@@ -14,6 +14,7 @@ define(function(require)
     var SigninView = require("views/content/signin/SigninView");
     
     var DashboardView = require("views/content/dashboard/DashboardView");
+    var PlayerSearchView = require("views/content/dashboard/playersearch/PlayerSearchView");
     // MODELS
 
 
@@ -32,6 +33,9 @@ define(function(require)
         },
         dashboardView: {
             defaultView: DashboardView
+        },
+        playerSearchView: {
+            defaultView: PlayerSearchView
         },
     };
 
