@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-	
+	<link rel="icon" href="media/image/favicon.png" type="image/png">
+    
 	<title>LNSU - Frontend</title>
 
 	<!-- stylesheet resources -->
@@ -15,7 +16,7 @@
 
 </head>
 <body>
-    <div id="mocha"></div>
+    <!--div id="mocha"></div-->
     
 	<div class="loader-pos">
 		<div class="loader">

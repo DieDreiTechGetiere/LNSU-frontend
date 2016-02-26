@@ -16,9 +16,10 @@ define({
         }
     },
     
-    router: 
+    router:
     {
-        HOME: "home"
+        DASHBOARD: "dashboard",
+        LOGIN: "",
     },
         
     event: 

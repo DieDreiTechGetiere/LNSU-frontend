@@ -27,17 +27,17 @@ define(function(require){
         {
             this.save(null, 
             {
-                success: function(data)
+                success: function(data, response)
                 {
                     app.global.hideLoader();
-                    var jsonData = data.toJSON();
-                    if(jsonData.loginSuccess == false)
+                    
+                    if(response.loginSuccess == false)
                     {
-                        alert(jsonData.errors.errorMessage);
+                        alert(response.errors.errorMessage);
                     }
-                    else if(jsonData.loginSuccess == true)
+                    else if(response.loginSuccess == true)
                     {
-                        app.execute(notification.command.application.LOGIN_SUCCESS, jsonData);
+                        app.execute(notification.command.application.LOGIN_SUCCESS, response.user);
                     }
                 },
                 error: function(data, error)

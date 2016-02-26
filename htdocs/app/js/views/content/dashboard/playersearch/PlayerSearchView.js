@@ -63,7 +63,6 @@ define(function(require){
         {
             if(!this.rendered)
             {
-                console.log("player render");
                 var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
                 this.$el.html(renderedTemplate);

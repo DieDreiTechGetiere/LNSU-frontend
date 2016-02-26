@@ -15,7 +15,7 @@ define(function(require){
     ({
         defaults: {
             appReady: false,
-            currentView: undefined
+            contentRegion: undefined
         },
         
         

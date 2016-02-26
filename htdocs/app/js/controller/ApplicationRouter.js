@@ -11,9 +11,9 @@ define(function(require){
         
         routes: {
 
-            "login": "routeLogin",
+            "": "routeSignin",
             
-            "home": "routeHome",
+            "dashboard": "routeDashboard",
 
             "home/list/:id": "routeListContent",
         },
@@ -37,25 +37,22 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
-        routeLogin: function()
+        routeSignin: function()
         {
-            console.log("route /login");
-            app.global.deleteUserCookie();
-            app.view.showLoginView();
+            console.log("route /");
+        //    app.global.deleteUserCookie();
+            app.model.set("contentRegion", "signinView");
         },
         
         
         /**
          * 
          */
-        routeHome: function()
+        routeDashboard: function()
         {
-            console.log("route /home");
+            console.log("route /dashboard");
             
-            _.defer(function(){
-                app.global.checkIfUserIsValid() ? app.view.showHomeView() : app.router.navigate(notification.router.LOGIN);
-            });
-            
+            app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "dashboardView") : app.router.navigate(notification.router.LOGIN);
         },
         
         

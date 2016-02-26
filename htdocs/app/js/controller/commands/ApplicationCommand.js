@@ -18,8 +18,17 @@ define(function(require)
         {
             app.userModel = new UserModel({
                 id: userData.id,
-                accountName: userData.accountName
+                ingameName: userData.ingameName,
+                loginName: userData.loginName
             });
+            var now = new Date();
+            var time = now.getTime();
+            now.setTime(time += 3600 * 1000);
+            
+            document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
+            document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
+            document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
+            
             app.model.get("dashboard").fetchDashboardData();
         },
 

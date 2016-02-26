@@ -15,6 +15,9 @@ define(function(require)
     var GlobalModel = require("global");
     var ApplicationCommand = require("appCommand");
     var ApplicationRouter = require("ApplicationRouter");
+    
+    var UserModel = require("models/UserModel");
+    
 
     var ApplicationController = Marionette.Controller.extend(
     {
@@ -81,8 +84,6 @@ define(function(require)
         start: function()
         {
             this.fetchJsonData();
-
-        //    this.initApplicationRouter();
         },
 
 
@@ -136,7 +137,7 @@ define(function(require)
         {
             app.router = new ApplicationRouter();
             Backbone.history.start();
-         //   this.startRouting();
+            this.startRouting();
         },
 
 
@@ -146,17 +147,18 @@ define(function(require)
          */
         startRouting: function()
         {
-            var startHash = window.location.hash;
-            var userValid = app.global.checkIfUserIsValid();
-
-            if (app.global.checkIfUserIsValid())
+            if (app.global.checkIfUserIsLoggedIn() == true)
             {
-                console.log("user is valid");
-                app.model.fetchUserDataForHome();
+                app.userModel = new UserModel({
+                    id: app.global.getUserCookie("userId"),
+                    ingameName: app.global.getUserCookie("ingameName"),
+                    loginName: app.global.getUserCookie("loginName")
+                });
+                app.model.get("dashboard").fetchDashboardData();
             }
             else
             {
-                app.router.navigate(notification.router.LOGIN, {trigger: true});
+                app.router.navigate(notification.router.SIGNIN, {trigger: true});
             }
         },
 

@@ -5,13 +5,12 @@ define(function(require){
     var Backbone = require("backbone");
     var notification = require("notification");
     
-    
-    var PlayerSearchModel = Backbone.Model.extend({
+    var ProfileModel = Backbone.Model.extend({
         
         initialize: function()
         {
             
         },
     });
-    return PlayerSearchModel;
+    return ProfileModel;
 });

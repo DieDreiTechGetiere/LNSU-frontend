@@ -1,3 +1,4 @@
+
 define(function(require){
     
     var app = require("app");
@@ -5,17 +6,16 @@ define(function(require){
     var Marionette = require("marionette");
     var notification = require("notification");
     
-    var DashboardModel = Backbone.Marionette.ItemView.extend({
+    var HighscoreView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
 
-        template: require("text!views/content/dashboard/dashboardView.html"),
+        template: require("text!views/content/dashboard/highscore/highscoreView.html"),
         /**
          * 
          */
         views: {
-            PLAYERSEARCH: "playerSearchView"
+            
         },
-        viewInstances: new Array(),
         /**
          * 
          */
@@ -24,7 +24,7 @@ define(function(require){
          * 
          */
         ui: {
-            playerSearch: ".playersearch_region"
+            
         },
 
 
@@ -34,31 +34,6 @@ define(function(require){
         {
             this.initViewListeners();
             this.render();
-        },
-        
-        
-        /**
-         * called by finalize
-         */
-        initItemViews: function()
-        {
-            this.initPlayerSearchView();
-        },
-        
-        
-        /**
-         * 
-         */
-        initPlayerSearchView: function()
-        {
-            var PlayerSearchView = app.mapper.getViewFor(this.views.PLAYERSEARCH);
-            this.viewInstances[this.views.PLAYERSEARCH] = new PlayerSearchView({
-                id: this.views.PLAYERSEARCH,
-                className: "player_search",
-                model: this.model.get("playerSearch")
-            });
-            $(this.ui.playerSearch).html(this.viewInstances[this.views.PLAYERSEARCH].el);
-            this.viewInstances[this.views.PLAYERSEARCH].finalize();
         },
         
         
@@ -76,9 +51,9 @@ define(function(require){
         
         /* @Finalize ------------------------------------------------------------------------- */
         
-        onShow: function()
+        finalize: function()
         {
-            this.initItemViews();
+            
         },
         
         
@@ -103,5 +78,5 @@ define(function(require){
             
         }
     });
-    return DashboardModel;
+    return HighscoreView;
 });

@@ -55,7 +55,7 @@ define(function(require){
          */
         initViewListeners: function()
         {
-            this.listenTo(this.model, "change:currentView", this.showRegionView, this);
+            this.listenTo(this.model, "change:contentRegion", this.showRegionView, this);
             this.listenTo(app.vent, notification.event.SECTION_READY, this.countSectionsReady);
         },
 
@@ -66,6 +66,7 @@ define(function(require){
         initViews: function()
         {
             this.initSigninView();
+            this.initDashboardView();
         },
         
 
@@ -79,7 +80,6 @@ define(function(require){
                 className: "dashboard_view",
                 model: this.model.get("dashboard")
             });
-            this.model.set("currentView", "dashboardView");
         },
         
         
@@ -94,9 +94,6 @@ define(function(require){
                 className: "signin_view",
                 model: this.model.get("signin")
             });
-            
-            // later set currentView somewhere else
-            this.model.set("currentView", "signinView");
         },
 
         
@@ -106,7 +103,7 @@ define(function(require){
          */
         showRegionView: function()
         {
-            this.mainRegion.show(this.viewInstances[this.model.get("currentView")]);
+            this.mainRegion.show(this.viewInstances[this.model.get("contentRegion")], { preventDestroy: true });
         },
 
 
@@ -114,9 +111,9 @@ define(function(require){
 
         finalize: function ()
         {
-            app.model.set("appReady", true);
             app.global.hideLoader();
             app.log.info("application ready");
+            app.model.set("appReady", true);
         },
 
 
