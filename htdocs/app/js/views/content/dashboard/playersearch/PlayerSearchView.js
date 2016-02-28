@@ -23,7 +23,8 @@ define(function(require){
          * 
          */
         ui: {
-            
+            playBtn: ".play_btn",
+            playBg: ".play_bg"
         },
 
 
@@ -31,6 +32,7 @@ define(function(require){
 
         initialize: function()
         {
+            console.log("playersearchmodel: ", this.model);
             this.initViewListeners();
             this.render();
         },
@@ -46,6 +48,17 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        searchGame: function()
+        {
+            if($(this.ui.playBg).hasClass("rotate"))
+            {
+                $(this.ui.playBg).removeClass("rotate");
+            }
+            else
+            {
+                $(this.ui.playBg).addClass("rotate");
+            }
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -74,7 +87,7 @@ define(function(require){
         
         
         events: {
-            
+            "click @ui.playBtn": "searchGame"
         }
     });
     return PlayerSearchView;

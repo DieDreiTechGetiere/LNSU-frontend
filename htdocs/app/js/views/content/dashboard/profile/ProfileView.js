@@ -32,6 +32,7 @@ define(function(require){
 
         initialize: function()
         {
+            console.log("profilemodel: ", this.model);
             this.initViewListeners();
             this.render();
         },

@@ -14,7 +14,10 @@ define(function(require)
     var SigninView = require("views/content/signin/SigninView");
     
     var DashboardView = require("views/content/dashboard/DashboardView");
+    var HighscoreView = require("views/content/dashboard/highscore/HighscoreView");
     var PlayerSearchView = require("views/content/dashboard/playersearch/PlayerSearchView");
+    var ProfileView = require("views/content/dashboard/profile/ProfileView");
+    
     // MODELS
 
 
@@ -34,9 +37,15 @@ define(function(require)
         dashboardView: {
             defaultView: DashboardView
         },
+        highscoreView: {
+            defaultView: HighscoreView
+        },
         playerSearchView: {
             defaultView: PlayerSearchView
         },
+        profileView: {
+            defaultView: ProfileView
+        }
     };
 
     return {

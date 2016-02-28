@@ -1,0 +1,49 @@
+
+.playersearch_view {
+    width: 100%;
+    height:100%;
+    
+    
+    .playersearch_container {
+        width: 100%;
+        height: 100%;;
+        position:relative;
+        
+        .play_bg {
+            width: 310px;
+            height: 295px;
+            position: absolute;
+            z-index:1;
+            background-image: url("../media/image/steuerrad.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            
+            @-webkit-keyframes rotating {
+                from{
+                    -webkit-transform: rotate(0deg);
+                }
+                to{
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+            
+            &.rotate {
+                -webkit-animation: rotating 12s linear infinite;
+            }
+        }
+        
+        p { 
+            display: inline-block;
+            color: #c34f7d;
+            font-size: 110px;
+            cursor: pointer;
+            position: absolute;
+            margin-top:80px;
+            z-index:2;
+            
+            &:active {
+                color:#972c67;
+            }
+        }
+    }
+}

@@ -32,6 +32,7 @@ define(function(require){
 
         initialize: function()
         {
+            console.log("highscoremodel: ", this.model);
             this.initViewListeners();
             this.render();
         },

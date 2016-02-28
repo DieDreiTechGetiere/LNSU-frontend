@@ -62,7 +62,7 @@ body {
   padding-top: 50px;
   margin: auto;
   z-index: 5;
-  max-width: 980px;
+  max-width: 1366px;
   width: 100%;
   margin: auto;
 }
@@ -151,34 +151,74 @@ h1 {
   color: #f1705d;
 }
 
-.player_search {
+.playersearch_view {
   width: 100%;
-  outline: 1px solid grey;
+  height: 100%;
 }
-.player_search .playersearch_container {
+.playersearch_view .playersearch_container {
   width: 100%;
-  height: 80px;
+  height: 100%;
   position: relative;
 }
-.player_search .playersearch_container .play_button {
-  font-weight: bold;
+.playersearch_view .playersearch_container .play_bg {
+  width: 310px;
+  height: 295px;
+  position: absolute;
+  z-index: 1;
+  background-image: url("../media/image/steuerrad.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.playersearch_view .playersearch_container .play_bg.rotate {
+  -webkit-animation: rotating 12s linear infinite;
+}
+.playersearch_view .playersearch_container p {
+  display: inline-block;
+  color: #c34f7d;
+  font-size: 110px;
   cursor: pointer;
   position: absolute;
-  left: 50%;
-  margin-left: -52px;
+  margin-top: 80px;
+  z-index: 2;
 }
-.player_search .playersearch_container .play_button p {
-  color: white;
-  padding: 20px 32px;
-  background-color: #f1705d;
-}
-.player_search .playersearch_container .play_button p:active {
-  background-color: #ED6044;
+.playersearch_view .playersearch_container p:active {
+  color: #972c67;
 }
 
 .dashboard_view {
-  outline: 3px solid lightgray;
+  background-image: url("../media/image/lnsu_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 798px;
 }
-.dashboard_view p {
-  padding: 15px;
+.dashboard_view .dashboard_container {
+  padding: 25px;
+  height: calc(100% - 50px);
+  display: flex;
+}
+.dashboard_view .dashboard_container .highscore_region {
+  width: 320px;
+  height: 290px;
+  margin: 423px 0 0 147px;
+  position: relative;
+}
+.dashboard_view .dashboard_container .playersearch_region {
+  width: 310px;
+  height: 295px;
+  margin: 250px 55px 0 65px;
+  position: relative;
+}
+.dashboard_view .dashboard_container .profile_region {
+  width: 320px;
+  height: 627px;
+  margin: 88px 159px 0 0;
+  position: relative;
 }

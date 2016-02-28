@@ -1,0 +1,39 @@
+
+.dashboard_view {
+    background-image: url("../media/image/lnsu_background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height:798px;
+    
+    
+    .dashboard_container
+    {
+        padding:25px;
+        height:calc(100% - 50px);
+        display:flex;
+        
+        .highscore_region
+        {
+            width: 320px;
+            height: 290px;
+            margin: 423px 0 0 147px;
+            position:relative;
+        }
+        
+        .playersearch_region
+        {
+            width: 310px;
+            height: 295px;
+            margin:250px 55px 0 65px;
+            position:relative;
+        }
+        
+        .profile_region
+        {
+            width: 320px;
+            height: 627px;
+            margin: 88px 159px 0 0;
+            position:relative;
+        }
+    }
+}

@@ -13,7 +13,9 @@ define(function(require){
          * 
          */
         views: {
-            PLAYERSEARCH: "playerSearchView"
+            PLAYERSEARCH: "playerSearchView",
+            PROFILE: "profileView",
+            HIGHSCORE: "highscoreView"
         },
         viewInstances: new Array(),
         /**
@@ -24,7 +26,9 @@ define(function(require){
          * 
          */
         ui: {
-            playerSearch: ".playersearch_region"
+            highscore: ".highscore_region",
+            playerSearch: ".playersearch_region",
+            profile: ".profile_region"
         },
 
 
@@ -42,7 +46,25 @@ define(function(require){
          */
         initItemViews: function()
         {
+            this.initHighscoreView();
             this.initPlayerSearchView();
+            this.initProfileRegion();
+        },
+        
+        
+        /**
+         * 
+         */
+        initHighscoreView: function()
+        {
+            var HighscoreView = app.mapper.getViewFor(this.views.HIGHSCORE);
+            this.viewInstances[this.views.HIGHSCORE] = new HighscoreView({
+                id: this.views.HIGHSCORE,
+                className: "highscore_view",
+                model: this.model.get("highscores")
+            });
+            $(this.ui.highscore).html(this.viewInstances[this.views.HIGHSCORE].el);
+            this.viewInstances[this.views.HIGHSCORE].finalize();
         },
         
         
@@ -54,11 +76,27 @@ define(function(require){
             var PlayerSearchView = app.mapper.getViewFor(this.views.PLAYERSEARCH);
             this.viewInstances[this.views.PLAYERSEARCH] = new PlayerSearchView({
                 id: this.views.PLAYERSEARCH,
-                className: "player_search",
+                className: "playersearch_view",
                 model: this.model.get("playerSearch")
             });
             $(this.ui.playerSearch).html(this.viewInstances[this.views.PLAYERSEARCH].el);
             this.viewInstances[this.views.PLAYERSEARCH].finalize();
+        },
+        
+        
+        /**
+         * 
+         */
+        initProfileRegion: function()
+        {
+            var ProfileView = app.mapper.getViewFor(this.views.PROFILE);
+            this.viewInstances[this.views.PROFILE] = new ProfileView({
+                id: this.views.PROFILE,
+                className: "profile_view",
+                model: this.model.get("profile")
+            });
+            $(this.ui.profile).html(this.viewInstances[this.views.PROFILE].el);
+            this.viewInstances[this.views.PROFILE].finalize();
         },
         
         
