@@ -32,7 +32,6 @@ define(function(require){
 
         initialize: function()
         {
-            console.log("playersearchmodel: ", this.model);
             this.initViewListeners();
             this.render();
         },
@@ -50,6 +49,19 @@ define(function(require){
         
         searchGame: function()
         {
+            if(this.model.get("sending") == false)
+            {
+                this.animateLoader();
+                this.model.initSearchGame();
+            }
+        },
+        
+        
+        /**
+         * 
+         */
+        animateLoader: function()
+        {
             if($(this.ui.playBg).hasClass("rotate"))
             {
                 $(this.ui.playBg).removeClass("rotate");
@@ -59,7 +71,6 @@ define(function(require){
                 $(this.ui.playBg).addClass("rotate");
             }
         },
-        
         
         /* @Finalize ------------------------------------------------------------------------- */
         

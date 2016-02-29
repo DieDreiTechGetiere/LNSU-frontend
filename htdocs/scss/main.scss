@@ -2,5 +2,9 @@
 @import "partials/basic";
 @import "partials/content";
 @import "partials/signin";
-@import "partials/dashboard/playersearch";
+
+//dashboard:
 @import "partials/dashboard/dashboard";
+@import "partials/dashboard/highscore";
+@import "partials/dashboard/playersearch";
+@import "partials/dashboard/profile";

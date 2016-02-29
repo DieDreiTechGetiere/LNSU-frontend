@@ -4,45 +4,23 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var Marionette = require("marionette");
-    var notification = require("notification");
     
-    var ProfileView = Backbone.Marionette.ItemView.extend({
+    var HighscoreItemView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
-
-        template: require("text!views/content/dashboard/profile/profileView.html"),
-        /**
-         * 
-         */
-        views: {
-            
-        },
+        className: "highscore_item",
+        
+        template: require("text!views/content/dashboard/highscore/highscoreItemView.html"),
         /**
          * 
          */
         rendered: false,
-        /**
-         * 
-         */
-        ui: {
-            
-        },
 
 
         /* @Initialize ----------------------------------------------------------------------- */
 
         initialize: function()
         {
-            this.initViewListeners();
             this.render();
-        },
-        
-        
-        /**
-         * 
-         */
-        initViewListeners: function()
-        {
-            this.listenTo(this.model, "change", this.render, this);
         },
         
         /* @Methods -------------------------------------------------------------------------- */
@@ -78,5 +56,5 @@ define(function(require){
             
         }
     });
-    return ProfileView;
+    return HighscoreItemView;
 });

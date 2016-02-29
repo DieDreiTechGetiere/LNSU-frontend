@@ -5,7 +5,7 @@ define(function(require){
     var Backbone = require("backbone");
     var HighscoreItemModel = require("models/content/dashboard/highscore/HighscoreItemModel");
     
-    var HighscoreCollection = Backbone.Model.extend({
+    var HighscoreCollection = Backbone.Collection.extend({
         model: HighscoreItemModel,
         
         initialize: function()

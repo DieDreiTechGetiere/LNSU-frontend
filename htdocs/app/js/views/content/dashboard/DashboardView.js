@@ -61,7 +61,7 @@ define(function(require){
             this.viewInstances[this.views.HIGHSCORE] = new HighscoreView({
                 id: this.views.HIGHSCORE,
                 className: "highscore_view",
-                model: this.model.get("highscores")
+                model: this.model.get("highscore")
             });
             $(this.ui.highscore).html(this.viewInstances[this.views.HIGHSCORE].el);
             this.viewInstances[this.views.HIGHSCORE].finalize();

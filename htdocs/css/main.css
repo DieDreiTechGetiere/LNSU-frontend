@@ -151,6 +151,80 @@ h1 {
   color: #f1705d;
 }
 
+.dashboard_view {
+  background-image: url("../media/image/lnsu_background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 798px;
+}
+.dashboard_view .dashboard_container {
+  padding: 25px;
+  height: calc(100% - 50px);
+  display: flex;
+}
+.dashboard_view .dashboard_container .highscore_region {
+  width: 320px;
+  height: 314px;
+  margin: 405px 0 0 120px;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  box-shadow: 0px 0px 42px -12px #0e0d2a;
+}
+.dashboard_view .dashboard_container .playersearch_region {
+  width: 320px;
+  height: 295px;
+  margin: 250px 80px 0 80px;
+  position: relative;
+}
+.dashboard_view .dashboard_container .profile_region {
+  width: 320px;
+  height: 627px;
+  margin-top: 88px;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  box-shadow: 0px 0px 42px -12px #0e0d2a;
+}
+
+.highscore_view {
+  width: 100%;
+  height: 100%;
+}
+.highscore_view .highscore_content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.highscore_view .highscore_content .highscore_header {
+  padding: 25px 25px 23px 25px;
+  background-color: #fbfbfb;
+}
+.highscore_view .highscore_content .highscore_header .headline {
+  font-size: 18px;
+  line-height: 26px;
+  color: #40547e;
+}
+.highscore_view .highscore_content .highscore_header .subline {
+  font-size: 12px;
+  color: #bcbcbc;
+}
+.highscore_view .highscore_content .highscores {
+  background-color: #fbfaf8;
+}
+.highscore_view .highscore_content .highscores .highscore_collection .highscore_item {
+  border-top: 1px solid #bababa;
+  line-height: 14px;
+  font-size: 14px;
+  padding: 15px 25px;
+}
+.highscore_view .highscore_content .highscores .highscore_collection .highscore_item .username {
+  color: #495c84;
+}
+.highscore_view .highscore_content .highscores .highscore_collection .highscore_item .elo {
+  color: #bababa;
+}
+
 .playersearch_view {
   width: 100%;
   height: 100%;
@@ -184,6 +258,8 @@ h1 {
   display: inline-block;
   color: #c34f7d;
   font-size: 110px;
+  width: 100%;
+  text-align: center;
   cursor: pointer;
   position: absolute;
   margin-top: 80px;
@@ -191,34 +267,4 @@ h1 {
 }
 .playersearch_view .playersearch_container p:active {
   color: #972c67;
-}
-
-.dashboard_view {
-  background-image: url("../media/image/lnsu_background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 798px;
-}
-.dashboard_view .dashboard_container {
-  padding: 25px;
-  height: calc(100% - 50px);
-  display: flex;
-}
-.dashboard_view .dashboard_container .highscore_region {
-  width: 320px;
-  height: 290px;
-  margin: 423px 0 0 147px;
-  position: relative;
-}
-.dashboard_view .dashboard_container .playersearch_region {
-  width: 310px;
-  height: 295px;
-  margin: 250px 55px 0 65px;
-  position: relative;
-}
-.dashboard_view .dashboard_container .profile_region {
-  width: 320px;
-  height: 627px;
-  margin: 88px 159px 0 0;
-  position: relative;
 }

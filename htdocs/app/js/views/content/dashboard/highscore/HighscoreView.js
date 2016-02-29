@@ -14,7 +14,7 @@ define(function(require){
          * 
          */
         views: {
-            
+            ITEM: "highscoreItemView"
         },
         /**
          * 
@@ -24,7 +24,7 @@ define(function(require){
          * 
          */
         ui: {
-            
+            highscores: ".highscores"
         },
 
 
@@ -32,7 +32,7 @@ define(function(require){
 
         initialize: function()
         {
-            console.log("highscoremodel: ", this.model);
+            console.log("highscoreModel: ", this.model);
             this.initViewListeners();
             this.render();
         },
@@ -48,13 +48,28 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        /**
+         * 
+         */
+        initHighscoreCollectionView: function () 
+        {
+            var self = this;
+            console.log("highscore coll: ", self.model.get("highscores"));
+            this.highscoreColl = new Backbone.Marionette.CollectionView({
+                id: "highscoreCollection",
+                className: "highscore_collection",
+                collection: self.model.get("highscores"),
+                childView: app.mapper.getViewFor(self.views.ITEM)
+            });
+            $(this.ui.highscores).html(self.highscoreColl.render().el);
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
         {
-            
+            this.initHighscoreCollectionView();
         },
         
         
