@@ -13,6 +13,11 @@ define({
         navigation:
         {
             NAVI_CLICK: "naviClick:navigation"
+        },
+        
+        match:
+        {
+            DELETE: "deleteMatch:match"
         }
     },
     

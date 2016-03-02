@@ -268,3 +268,79 @@ h1 {
 .playersearch_view .playersearch_container p:active {
   color: #972c67;
 }
+
+.profile_view {
+  width: 100%;
+}
+.profile_view .profile_view_container {
+  width: 100%;
+  background-color: #fbfaf8;
+}
+.profile_view .profile_view_container .profile_head {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #eae9e8;
+}
+.profile_view .profile_view_container .profile_head img {
+  padding-top: 55px;
+  margin: auto;
+  display: block;
+}
+.profile_view .profile_view_container .profile_head .ingame_name {
+  font-size: 21px;
+  color: #495c84;
+  text-align: center;
+  padding-top: 20px;
+}
+.profile_view .profile_view_container .profile_head .ingame_name:before {
+  content: "";
+  background-image: url("../media/image/ranks/default_rank.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 20px;
+}
+.profile_view .profile_view_container .profile_head .ranking_name {
+  font-size: 13px;
+  color: #bc4a77;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 25px;
+}
+.profile_view .profile_view_container .profile_stats {
+  color: #495c84;
+  font-size: 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #eae9e8;
+  display: flex;
+}
+.profile_view .profile_view_container .profile_stats .stat {
+  width: 33%;
+  text-align: right;
+  background-repeat: no-repeat;
+  background-position: 20px center;
+}
+.profile_view .profile_view_container .profile_stats .stat p {
+  padding: 23px 20px;
+}
+.profile_view .profile_view_container .profile_stats .wins {
+  background-image: url("../media/image/wins_icon.png");
+}
+.profile_view .profile_view_container .profile_stats .loses {
+  background-image: url("../media/image/loses_icon.png");
+  border-left: 1px solid #eae9e8;
+  border-right: 1px solid #eae9e8;
+}
+.profile_view .profile_view_container .profile_stats .elo {
+  color: #fbfaf8;
+  position: relative;
+}
+.profile_view .profile_view_container .profile_stats .elo p {
+  padding: 0;
+  position: absolute;
+  letter-spacing: 2px;
+  top: 20px;
+  right: 20px;
+  font-size: 21px;
+  text-shadow: 3px 0 0 #495c84, -3px 0 0 #495c84, 0 3px 0 #495c84, 0 -3px 0 #495c84, 2px 2px #495c84, -2px -2px 0 #495c84, 2px -2px 0 #495c84, -2px 2px 0 #495c84;
+}

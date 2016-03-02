@@ -14,6 +14,7 @@ define(function(require)
     var ApplicationModel = require("appModel");
     var GlobalModel = require("global");
     var ApplicationCommand = require("appCommand");
+    var MatchCommand = require("MatchCommand");
     var ApplicationRouter = require("ApplicationRouter");
     
     var UserModel = require("models/UserModel");
@@ -46,10 +47,14 @@ define(function(require)
          */
         initEventListener: function ()
         {
+            //ApplicationCommand
             app.commands.setHandler(notification.command.application.START_ROUTER, this.initApplicationRouter, this);
             app.commands.setHandler(notification.command.application.LOGIN_SUCCESS, ApplicationCommand.handleLoginSuccess);
             app.commands.setHandler(notification.command.application.INIT_DASHBOARD, ApplicationCommand.initDashboardView);
-
+            
+            //Match Command
+            app.commands.setHandler(notification.command.match.DELETE, MatchCommand.deleteMatch);
+            
             app.commands.setHandler(notification.command.application.SIGN_IN, ApplicationCommand.renderToDo);
         },
 

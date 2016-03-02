@@ -38,7 +38,7 @@ define(function(require){
             this.set("highscore", new HighscoreModel(backboneJsonObjHighscores));
             
             this.set("profile", new ProfileModel(modelData.stats));
-            
+            console.log("dashboard model: ", this);
             app.router.navigate(notification.router.DASHBOARD, {trigger: true});
         },
         

@@ -11,8 +11,8 @@ define(function(require)
     };
 
     var defaultConfig = {
-      //  backendBaseUrl: "http://lnsu-backend.local/",
-        backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
+        backendBaseUrl: "http://lnsu-backend.local/",
+      //  backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
         release: false,
         pushState: false, //history.pushState
         runTests: false,

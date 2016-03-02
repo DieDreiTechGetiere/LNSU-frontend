@@ -32,7 +32,6 @@ define(function(require){
 
         initialize: function()
         {
-            console.log("highscoreModel: ", this.model);
             this.initViewListeners();
             this.render();
         },
@@ -54,7 +53,6 @@ define(function(require){
         initHighscoreCollectionView: function () 
         {
             var self = this;
-            console.log("highscore coll: ", self.model.get("highscores"));
             this.highscoreColl = new Backbone.Marionette.CollectionView({
                 id: "highscoreCollection",
                 className: "highscore_collection",

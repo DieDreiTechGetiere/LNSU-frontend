@@ -31,6 +31,7 @@ require.config({
         'controller':       '../js/controller/ApplicationController',
         'ApplicationRouter': '../js/controller/ApplicationRouter',
         'appCommand':       '../js/controller/commands/ApplicationCommand',
+        'MatchCommand':     '../js/controller/commands/MatchCommand',
         'settings':         'settings',
         'notification':     'notification',
         

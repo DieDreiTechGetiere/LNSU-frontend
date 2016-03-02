@@ -54,6 +54,11 @@ define(function(require){
                 this.animateLoader();
                 this.model.initSearchGame();
             }
+            else
+            {
+                this.animateLoader();
+                app.execute(notification.command.match.DELETE);
+            }
         },
         
         

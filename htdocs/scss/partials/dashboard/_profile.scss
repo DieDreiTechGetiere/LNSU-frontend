@@ -1,0 +1,111 @@
+
+.profile_view
+{
+    width: 100%;
+    
+    .profile_view_container
+    {
+        width:100%;
+        background-color:#fbfaf8;
+        
+        .profile_head
+        {
+            width:100%;
+            position: relative;
+            border-bottom:1px solid $dashboard_border;
+            
+            img
+            {
+                padding-top: 55px;
+                margin:auto;
+                display:block;
+            }
+            
+            .ingame_name
+            {
+                font-size: 21px;
+                color: $font_blue;
+                text-align:center;
+                padding-top:20px;
+                
+                &:before
+                {
+                    content: "";
+                    background-image: url("../media/image/ranks/default_rank.png");
+                    background-repeat: no-repeat;
+                    display: inline-block;
+                    width:16px;
+                    height:20px;
+                }
+            }
+            
+            .ranking_name
+            {
+                font-size:13px;
+                color: $magenta;
+                text-align:center;
+                padding-top:2px;
+                padding-bottom:25px;
+            }
+        }
+        
+        .profile_stats
+        {
+            color: $font_blue;
+            font-size:15px;
+            font-weight:bold;
+            border-bottom:1px solid $dashboard_border;
+            display:flex;
+            
+            .stat
+            {
+                width:33%;
+                text-align:right;
+                background-repeat:no-repeat;
+                background-position: 20px center;
+                
+                p
+                {
+                    padding:23px 20px;
+                }
+            }
+            
+            .wins
+            {
+                background-image: url("../media/image/wins_icon.png");
+            }
+            
+            .loses
+            {
+                background-image: url("../media/image/loses_icon.png");
+                  border-left:1px solid $dashboard_border;
+                  border-right:1px solid $dashboard_border;
+            }
+            
+            .elo
+            {
+                color:#fbfaf8;
+                position:relative;
+                
+                p
+                {
+                    padding:0;
+                    position:absolute;
+                    letter-spacing: 2px;
+                    top:20px;
+                    right:20px;
+                    font-size: 21px;
+                    text-shadow: 3px 0 0 $font_blue, 
+                                -3px 0 0 $font_blue, 
+                                0 3px 0 $font_blue, 
+                                0 -3px 0 $font_blue, 
+                                2px 2px $font_blue, 
+                                -2px -2px 0 $font_blue, 
+                                2px -2px 0 $font_blue, 
+                                -2px 2px 0 $font_blue;
+                }
+                
+            }
+        }
+    }
+}
