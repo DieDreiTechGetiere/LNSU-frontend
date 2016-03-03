@@ -15,7 +15,8 @@ define(function(require){
         views: {
             PLAYERSEARCH: "playerSearchView",
             PROFILE: "profileView",
-            HIGHSCORE: "highscoreView"
+            HIGHSCORE: "highscoreView",
+            RECENTGAMES: "recentGamesView"
         },
         viewInstances: new Array(),
         /**
@@ -28,7 +29,8 @@ define(function(require){
         ui: {
             highscore: ".highscore_region",
             playerSearch: ".playersearch_region",
-            profile: ".profile_region"
+            profile: ".profile",
+            recentgames: ".recentgames"
         },
 
 
@@ -49,6 +51,7 @@ define(function(require){
             this.initHighscoreView();
             this.initPlayerSearchView();
             this.initProfileRegion();
+            this.initRecentGamesView();
         },
         
         
@@ -95,8 +98,24 @@ define(function(require){
                 className: "profile_view",
                 model: this.model.get("profile")
             });
-            $(this.ui.profile).html(this.viewInstances[this.views.PROFILE].el);
+            $(this.ui.profile).append(this.viewInstances[this.views.PROFILE].el);
             this.viewInstances[this.views.PROFILE].finalize();
+        },
+        
+        
+        /**
+         * 
+         */
+        initRecentGamesView: function()
+        {
+            var self = this;
+            this.recentGamesView = new Backbone.Marionette.CollectionView({
+                id: "recentgamesView",
+                className: "recentgames_view",
+                collection: self.model.get("recentGames"),
+                childView: app.mapper.getViewFor(self.views.RECENTGAMES)
+            });
+            $(this.ui.recentgames).html(this.recentGamesView.render().el);
         },
         
         

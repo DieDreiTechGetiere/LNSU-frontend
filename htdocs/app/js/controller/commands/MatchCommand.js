@@ -18,7 +18,7 @@ define(function(require)
         deleteMatch: function()
         {
             app.matchModel.destroy({
-                url: settings.backendBaseUrl + "game/search/?id=" + app.matchModel.get("id"),
+                url: settings.backendBaseUrl + "game/search?id=" + app.matchModel.get("id"),
                 
                 success: function(data)
                 {

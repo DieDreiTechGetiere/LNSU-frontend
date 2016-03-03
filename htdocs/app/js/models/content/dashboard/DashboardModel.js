@@ -32,10 +32,13 @@ define(function(require){
         {
             var backboneJsonObjMatchList = JSON.parse(JSON.stringify($.map(modelData.matchList, function(el) { return el })));
             this.set("recentGames", new RecentGamesCollection(backboneJsonObjMatchList));
+            this.unset("matchList");
+            
             this.set("playerSearch", new PlayerSearchModel());
             
             var backboneJsonObjHighscores = JSON.parse(JSON.stringify($.map(modelData.highscoreList, function(el) { return el })));
             this.set("highscore", new HighscoreModel(backboneJsonObjHighscores));
+            this.unset("highscoreList");
             
             this.set("profile", new ProfileModel(modelData.stats));
             console.log("dashboard model: ", this);

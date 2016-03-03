@@ -18,6 +18,7 @@ define(function(require)
     var HighscoreItemView = require("views/content/dashboard/highscore/HighscoreItemView");
     var PlayerSearchView = require("views/content/dashboard/playersearch/PlayerSearchView");
     var ProfileView = require("views/content/dashboard/profile/ProfileView");
+    var RecentGamesView = require("views/content/dashboard/recentgames/RecentGamesItemView");
     
     // MODELS
 
@@ -49,6 +50,9 @@ define(function(require)
         },
         profileView: {
             defaultView: ProfileView
+        },
+        recentGamesView: {
+            defaultView: RecentGamesView
         }
     };
 

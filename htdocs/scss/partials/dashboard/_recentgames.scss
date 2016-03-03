@@ -1,0 +1,58 @@
+
+.recentgames_view
+{
+    width:100%;
+    
+    .recent_game_item
+    {
+        cursor: pointer;
+        padding-top:15px;
+        padding-bottom:15px;
+        padding:20px 0 20px 75px;
+        border-top:1px solid $dashboard_border;
+        position:relative;
+        
+        &:first-child
+        {
+            border-top:0px;
+        }
+        &:hover
+        {
+            .opponent
+            {
+                color:$magenta !important;
+            }
+        }
+        
+        .game_stats
+        {
+            
+            .opponent
+            {
+                color: $font_blue;
+                font-weight:bold;
+                font-size:16px;
+            }
+            
+            .opponent_rank
+            {
+                font-size:13px;
+                color:#bcbcbc;
+            }
+        }
+        
+        .arrow_container
+        {
+            position:absolute;
+            top:0;
+            right:0;
+            background-image: url("../media/image/right_arrow.png");
+            background-repeat: no-repeat;
+            background-position:20px center;
+            background-color:#f1f2f3;
+            width:50px;
+            height:100%;
+            border-bottom:1px solid $dashboard_border;
+        }
+    }
+}

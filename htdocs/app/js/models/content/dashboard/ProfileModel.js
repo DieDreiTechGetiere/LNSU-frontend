@@ -9,8 +9,28 @@ define(function(require){
         
         initialize: function()
         {
-            
+            this.checkForNull();
         },
+        
+        
+        /**
+         * 
+         */
+        checkForNull: function()
+        {
+            if(this.get("loses") == null)
+            {
+                this.set("loses", 0);
+            }
+            if(this.get("totalMatches") == null)
+            {
+                this.set("totalMatches", 0);
+            }
+            if(this.get("wins") == null)
+            {
+                this.set("wins", 0);
+            }
+        }
     });
     return ProfileModel;
 });
