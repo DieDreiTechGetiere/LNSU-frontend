@@ -55,7 +55,7 @@ define(function(require){
             this.fetch(
                 {
                     data:{
-                            id: app.userModel.get("id")
+                        id: app.userModel.get("id")
                     },
                     success: function(data, response)
                     {

@@ -23,7 +23,8 @@ define(function(require){
         },
         views: {
             SIGNIN: "signinView",
-            DASHBOARD: "dashboardView"
+            DASHBOARD: "dashboardView",
+            MATCH: "matchView"
         },
         /**
          * 
@@ -72,6 +73,22 @@ define(function(require){
 
         /* @Methods -------------------------------------------------------------------------- */
 
+        initMatchView: function()
+        {
+            var MatchView = app.mapper.getViewFor(this.views.MATCH);
+            this.viewInstances["matchView"] = this.matchView = new MatchView({
+                id: "matchView",
+                className: "match_view",
+                model: app.matchModel
+            });
+            
+            app.router.navigate(notification.router.MATCH);
+        },
+        
+        
+        /**
+         * 
+         */
         initDashboardView: function()
         {
             var DashboardView = app.mapper.getViewFor(this.views.DASHBOARD);

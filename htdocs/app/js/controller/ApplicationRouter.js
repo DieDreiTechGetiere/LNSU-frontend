@@ -15,7 +15,9 @@ define(function(require){
             
             "dashboard": "routeDashboard",
 
-            "home/list/:id": "routeListContent",
+        //    "home/list/:id": "routeListContent",
+            
+            "match": "routeMatch"
         },
         
         /* @Initialize ----------------------------------------------------------------------- */
@@ -59,16 +61,9 @@ define(function(require){
         /**
          * 
          */
-        routeListContent: function()
+        routeMatch: function()
         {
-            if(app.global.checkIfUserIsValid)
-            {
-                console.log("route /home/list/:id");
-            }
-            else
-            {
-                app.router.navigate(notification.router.LOGIN);
-            }
+            app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "matchView") : app.router.navigate(notification.router.LOGIN);
         }
     });
     

@@ -1,64 +1,24 @@
 {
-    "highScoreList":
+    "userId": 92,
+    "matchId": 3,
+    "placementPhase": true,
+    
+    "ships": 
     [
         {
-            "rank": 1,
-            "ingameName": "Hans"
+            "xPositions": [1, 2, 3, 4],
+            "yPositions": [1, 2, 3, 4],
+            "length": 4
         },
         {
-            "rank": 2,
-            "ingameName": "Peter"
+            "xPositions": [1, 2, 3, 4],
+            "yPositions": [1, 2, 3, 4],
+            "length": 4
         },
         {
-            "rank": 3,
-            "ingameName": "Paul"
+            "xPositions": [1, 2, 3, 4],
+            "yPositions": [1, 2, 3, 4],
+            "length": 4
         }
-    ],
-    "playerStats": {
-        "rankingAll": 103,
-        "k/d": "65%",
-        "ingameName": "Schokolade" 
-    },
-    "dashboard": {
-        
-        "recentGames": 
-        [
-            {
-                "gameId": "1234",
-                "opponent": "opponentName",
-                "playedAt": "dateTime",
-                "matchSteps":
-                [
-                    {
-                        "step": 1,
-                        "setX": "x-koordinate",
-                        "setY": "y-koordinate"
-                    },
-                    {
-                        "step": 2,
-                        "setX": "x-koordinate",
-                        "setY": "y-koordinate"
-                    }
-                ]
-            },
-            {
-                "gameId": "12345678",
-                "opponent": "opponentName",
-                "playedAt": "dateTime",
-                "matchSteps":
-                [
-                    {
-                        "step": 1,
-                        "setX": "x-koordinate",
-                        "setY": "y-koordinate"
-                    },
-                    {
-                        "step": 2,
-                        "setX": "x-koordinate",
-                        "setY": "y-koordinate"
-                    }
-                ]
-            }
-        ]
-    }
+    ]
 }

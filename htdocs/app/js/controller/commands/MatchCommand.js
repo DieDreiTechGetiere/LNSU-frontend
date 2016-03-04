@@ -31,6 +31,15 @@ define(function(require)
             });
         },
         
+        
+        /**
+         * 
+         */
+        startMatch: function()
+        {
+            app.view.initMatchView();
+        }
+        
     };
     return MatchCommand;
 });

@@ -17,7 +17,8 @@ define({
         
         match:
         {
-            DELETE: "deleteMatch:match"
+            DELETE: "deleteMatch:match",
+            START: "start:match",
         }
     },
     
@@ -25,6 +26,7 @@ define({
     {
         DASHBOARD: "dashboard",
         LOGIN: "",
+        MATCH: "match"
     },
         
     event: 
