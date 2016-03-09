@@ -1,0 +1,105 @@
+
+.admin_view
+{
+    width:100%;
+    height:100%;
+    background-color: $dashboardBG;
+    
+    -webkit-box-shadow: $boxShadow;
+    -moz-box-shadow: $boxShadow;
+    box-shadow: $boxShadow;
+    
+    .admin_container
+    {
+        
+        .close
+        {
+            background-image: url("../media/image/close-btn.png");
+            background-repeat: no-repeat;
+            position:absolute;
+            cursor:pointer;
+            top:25px;
+            right:25px;
+            padding: 5px;
+            width:18px;
+            height:18px;
+        }
+        
+        .buttons
+        {
+            position: absolute;
+            top: 70px;
+            left: 740px;
+            
+            .button 
+            {
+                background-color: $magenta;
+            }
+        }
+        
+        .inactives
+        {
+            margin-left: 220px;
+            width: 400px;
+            padding-top:40px;
+            
+            .inactive_user
+            {
+                width: 400px;
+                border-top:1px solid $dashboard_border;
+                border-left:1px solid $dashboard_border;
+                position:relative;
+                line-height:22px;
+                padding: 10px 15px;
+                margin-top:2px;
+                
+                &:last-child
+                {
+                    border-bottom:1px solid $dashboard_border;
+                }
+                
+                &.activate
+                {
+                    outline: 2px solid $magenta;
+                    
+                    .add
+                    {
+                        background-image: url("../media/image/minus_icon.png");
+                    }
+                }
+                
+                .login_name
+                {
+                    color: $font_blue;
+                    font-weight:bold;
+                    font-size:16px;
+                }
+                
+                .ingame_name
+                {
+                    color: $font_blue;
+                    font-size:16px;
+                }
+                
+                .elo, .role
+                {
+                    font-size:13px;
+                    color:#bcbcbc;
+                }
+                
+                .add
+                {
+                    position:absolute;
+                    top:0;
+                    right:0;
+                    background-image: url("../media/image/plus_icon.png");
+                    background-repeat: no-repeat;
+                    background-position:16px center;
+                    background-color:#f1f2f3;
+                    width:50px;
+                    height:100%;
+                }
+            }
+        }
+    }
+}

@@ -81,8 +81,6 @@ define(function(require){
                 className: "match_view",
                 model: app.matchModel
             });
-            
-            app.router.navigate(notification.router.MATCH);
         },
         
         

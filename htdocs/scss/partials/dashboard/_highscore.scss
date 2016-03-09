@@ -10,7 +10,7 @@
         
         .highscore_header {
             padding: 25px 25px 23px 25px;
-            background-color:#fbfbfb;
+            background-color: $dashboardBG;
             
             .headline {
                 font-size: 18px;
@@ -25,7 +25,7 @@
         }
         
         .highscores {
-            background-color: #fbfaf8;
+            background-color: $dashboardBG;
             
             .highscore_collection {
                 

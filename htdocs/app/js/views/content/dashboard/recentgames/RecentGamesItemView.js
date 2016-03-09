@@ -34,7 +34,6 @@ define(function(require){
 
         initialize: function()
         {
-            console.log("recentGamesItemView: ", this);
             this.initViewListeners();
             this.render();
         },

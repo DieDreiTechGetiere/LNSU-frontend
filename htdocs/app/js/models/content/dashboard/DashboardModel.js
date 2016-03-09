@@ -10,6 +10,7 @@ define(function(require){
     var PlayerSearchModel = require("models/content/dashboard/PlayerSearchModel");
     var HighscoreModel = require("models/content/dashboard/highscore/HighscoreModel");
     var ProfileModel = require("models/content/dashboard/ProfileModel");
+    var AdminModel = require("models/content/dashboard/AdminModel");
     
     var DashboardModel = Backbone.Model.extend({
         url: settings.backendBaseUrl + "dashboard",
@@ -41,7 +42,7 @@ define(function(require){
             this.unset("highscoreList");
             
             this.set("profile", new ProfileModel(modelData.stats));
-            console.log("dashboard model: ", this);
+            
             app.router.navigate(notification.router.DASHBOARD, {trigger: true});
         },
         
@@ -67,7 +68,31 @@ define(function(require){
                     }
                 }
             );
+        },
+        
+        
+        /**
+         * 
+         */
+        fetchAdminData: function()
+        {
+            var self = this;
+            this.fetch(
+                {
+                    url: self.url + "/inactive",
+                    success: function(data, response)
+                    {
+                        self.set("admin", new AdminModel(response));
+                    },
+                    error: function(error)
+                    {
+                        console.log("fetchAdmin error: ", error);
+                    }
+                }
+            );
         }
+        
+        
     });
     return DashboardModel;
 });

@@ -19,8 +19,10 @@ define(function(require)
             app.userModel = new UserModel({
                 id: userData.id,
                 ingameName: userData.ingameName,
-                loginName: userData.loginName
+                loginName: userData.loginName,
+                role: userData.role
             });
+            
             var now = new Date();
             var time = now.getTime();
             now.setTime(time += 3600 * 1000);
@@ -28,6 +30,7 @@ define(function(require)
             document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
             document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
             document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
+            document.cookie = "role=" + userData.role + '; expires=' + now.toUTCString() + "; path=/";
             
             app.model.get("dashboard").fetchDashboardData();
         },

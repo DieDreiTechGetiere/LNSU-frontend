@@ -10,11 +10,6 @@ define({
             INIT_DASHBOARD: "initDashboardView:application"
         },
         
-        navigation:
-        {
-            NAVI_CLICK: "naviClick:navigation"
-        },
-        
         match:
         {
             DELETE: "deleteMatch:match",
@@ -31,6 +26,8 @@ define({
         
     event: 
     {
-        SECTION_READY: "sectionReady:event"
+        SECTION_READY: "sectionReady:event",
+        SHOW_ADMIN: "showAdminView:event",
+        CLOSE_ADMIN: "closeAdminView:event"
     }
 });

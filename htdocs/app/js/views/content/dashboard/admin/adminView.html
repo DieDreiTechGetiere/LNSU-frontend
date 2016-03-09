@@ -1,0 +1,18 @@
+<div class="admin_container">
+    <div class="close"></div>
+    <div class="inactives">
+        <% _.each(inactives, function(inactive) { %>
+            <div class="inactive_user" data-userid="<%=inactive.id%>">
+                <p class="login_name"><%=inactive.loginName%></p>
+                <p class="ingame_name"><%=inactive.ingameName%></p>
+                <p class="elo"><%=inactive.elo%></p>
+                <p class="role"><%=inactive.role%></p>
+                <div class="add"></div>
+            </div>
+        <% }); %>
+    </div>
+    <div class="buttons">
+        <p class="button selected">activate selected users</p>
+        <p class="button all">activate all users</p>
+    </div>
+</div>

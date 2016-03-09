@@ -17,11 +17,11 @@ define(function(require) {
         /**
          *
          */
-        hideLoader: function () 
+        hideLoader: function ()
         {
             setTimeout(function () {
                 $(".loader-pos").css("display", "none");
-            }, 600);
+            }, 100);
         },
 
 

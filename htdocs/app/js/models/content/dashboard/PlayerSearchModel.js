@@ -67,7 +67,6 @@ define(function(require){
                     },
                     success: function(data, response)
                     {
-                        console.log("poll success: ", response);
                         if(response.foundOpponent == true)
                         {
                             clearInterval(self.get("pollInterval"));

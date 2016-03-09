@@ -16,7 +16,8 @@ define(function(require){
             PLAYERSEARCH: "playerSearchView",
             PROFILE: "profileView",
             HIGHSCORE: "highscoreView",
-            RECENTGAMES: "recentGamesView"
+            RECENTGAMES: "recentGamesView",
+            ADMIN: "adminView"
         },
         viewInstances: new Array(),
         /**
@@ -26,11 +27,17 @@ define(function(require){
         /**
          * 
          */
+        adminViewState: "closed",
+        /**
+         * 
+         */
         ui: {
             highscore: ".highscore_region",
             playerSearch: ".playersearch_region",
             profile: ".profile",
-            recentgames: ".recentgames"
+            recentgames: ".recentgames",
+            logo: ".logo",
+            admin: ".admin_region"
         },
 
 
@@ -122,13 +129,72 @@ define(function(require){
         /**
          * 
          */
+        initAdminView: function()
+        {
+            app.global.hideLoader();
+            
+            var AdminView = app.mapper.getViewFor(this.views.ADMIN);
+            this.viewInstances[this.views.ADMIN] = new AdminView({
+                id: this.views.ADMIN,
+                className: "admin_view",
+                model: this.model.get("admin")
+            });
+            $(this.ui.admin).append(this.viewInstances[this.views.ADMIN].el);
+            this.viewInstances[this.views.ADMIN].finalize();
+            
+            this.animateAdminView();
+        },
+        
+        
+        /**
+         * 
+         */
         initViewListeners: function()
         {
             this.listenTo(this.model, "change", this.render, this);
+            this.listenTo(this.model, "change:admin", this.initAdminView, this);
+            this.listenTo(app.vent, notification.event.CLOSE_ADMIN, this.animateAdminView);
         },
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        /**
+         * shows adminView (if user is admin) to unlock users
+         */
+        logoClick: function()
+        {
+            //statement has to be changed here to real value!!   -   app.userModel.get("role") != 0
+            if(true)
+            {
+                app.global.showLoader();
+                this.model.fetchAdminData();
+            }
+        },
+        
+        
+        /**
+         * 
+         */
+        animateAdminView: function()
+        {
+            var self = this;
+            if(this.adminViewState === "closed")
+            {
+                this.adminViewState = "animating";
+                TweenMax.to(this.ui.admin, 1, {top: 50, onComplete: function(){
+                    self.adminViewState = "opened";
+                }});
+            }
+            else if(this.adminViewState === "opened")
+            {
+                this.adminViewState = "animating";
+                TweenMax.to(this.ui.admin, 1, {top: -748, onComplete: function(){
+                    self.adminViewState = "closed";
+                    self.viewInstances[self.views.ADMIN].destroy();
+                    self.model.get("admin").destroy();
+                }});
+            }
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -136,6 +202,12 @@ define(function(require){
         onShow: function()
         {
             this.initItemViews();
+            
+            console.log("userModel. ", app.userModel);
+            if(app.userModel.get("role") == 1)
+            {
+                $(".logo").addClass("pointer");
+            }
         },
         
         
@@ -157,7 +229,7 @@ define(function(require){
         
         
         events: {
-            
+            "click @ui.logo": "logoClick"
         }
     });
     return DashboardModel;

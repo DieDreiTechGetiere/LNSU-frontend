@@ -7,7 +7,7 @@ define(function(require)
 {
     var app = require("app");
     var settings = require("settings");
-    
+    var notification = require("notification");
 
     var MatchCommand = {
         //@methods----------------------------------------------------------------------
@@ -38,7 +38,11 @@ define(function(require)
         startMatch: function()
         {
             app.view.initMatchView();
-        }
+            
+            _.defer(function(){
+                app.router.navigate(notification.router.MATCH, {trigger: true});
+            });
+        },
         
     };
     return MatchCommand;

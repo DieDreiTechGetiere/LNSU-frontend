@@ -9,8 +9,34 @@
     .dashboard_container
     {
         padding:25px;
+        position: relative;
         height:calc(100% - 50px);
         display:flex;
+        overflow:hidden;
+        
+        .logo
+        {
+            width: 245px;
+            height: 260px;
+            position:absolute;
+            top: 75px;
+            left: 183px;
+            
+            &.pointer
+            {
+                cursor: pointer;
+            }
+        }
+        
+        .admin_region
+        {
+            position: absolute;
+            top: -748px;
+            left: 50px;
+            height: 698px;
+            width: 1266px;
+            z-index: 3;
+        }
         
         .highscore_region
         {

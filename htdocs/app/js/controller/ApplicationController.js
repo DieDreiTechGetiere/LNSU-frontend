@@ -158,7 +158,8 @@ define(function(require)
                 app.userModel = new UserModel({
                     id: app.global.getUserCookie("userId"),
                     ingameName: app.global.getUserCookie("ingameName"),
-                    loginName: app.global.getUserCookie("loginName")
+                    loginName: app.global.getUserCookie("loginName"),
+                    role: app.global.getUserCookie("role")
                 });
                 app.model.get("dashboard").fetchDashboardData();
             }

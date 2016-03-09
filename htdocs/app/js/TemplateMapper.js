@@ -20,6 +20,7 @@ define(function(require)
     var ProfileView = require("views/content/dashboard/profile/ProfileView");
     var RecentGamesView = require("views/content/dashboard/recentgames/RecentGamesItemView");
     var MatchView = require("views/content/match/MatchView");
+    var AdminView = require("views/content/dashboard/admin/AdminView");
     
     // MODELS
 
@@ -57,6 +58,9 @@ define(function(require)
         },
         matchView: {
             defaultView: MatchView
+        },
+        adminView: {
+            defaultView: AdminView
         }
     };
 

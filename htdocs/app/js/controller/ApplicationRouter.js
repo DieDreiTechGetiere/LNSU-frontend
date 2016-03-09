@@ -15,9 +15,10 @@ define(function(require){
             
             "dashboard": "routeDashboard",
 
+            "match": "routeToMatch"
         //    "home/list/:id": "routeListContent",
             
-            "match": "routeMatch"
+            
         },
         
         /* @Initialize ----------------------------------------------------------------------- */
@@ -61,8 +62,9 @@ define(function(require){
         /**
          * 
          */
-        routeMatch: function()
+        routeToMatch: function()
         {
+            console.log("route /match");
             app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "matchView") : app.router.navigate(notification.router.LOGIN);
         }
     });
