@@ -40,7 +40,9 @@
         .inactives
         {
             margin-left: 220px;
-            width: 400px;
+            width: 431px;
+            height: 573px;
+            overflow:auto;
             padding-top:40px;
             
             .inactive_user
@@ -52,6 +54,7 @@
                 line-height:22px;
                 padding: 10px 15px;
                 margin-top:2px;
+                cursor:pointer;
                 
                 &:last-child
                 {

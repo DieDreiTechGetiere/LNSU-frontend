@@ -64,6 +64,7 @@ define(function(require){
          */
         activateSelectedUsers: function()
         {
+            app.global.showLoader();
             this.model.activateSelectedUsers();
         },
         
@@ -73,6 +74,7 @@ define(function(require){
          */
         activateAllUsers: function()
         {
+            app.global.showLoader();
             this.model.activateAllUsers();
         },
         

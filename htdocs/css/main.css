@@ -449,7 +449,9 @@ h1 {
 }
 .admin_view .admin_container .inactives {
   margin-left: 220px;
-  width: 400px;
+  width: 431px;
+  height: 573px;
+  overflow: auto;
   padding-top: 40px;
 }
 .admin_view .admin_container .inactives .inactive_user {
@@ -460,6 +462,7 @@ h1 {
   line-height: 22px;
   padding: 10px 15px;
   margin-top: 2px;
+  cursor: pointer;
 }
 .admin_view .admin_container .inactives .inactive_user:last-child {
   border-bottom: 1px solid #eae9e8;

@@ -1,6 +1,7 @@
 
 define(function(require){
     
+    var app = require("app");
     var Backbone = require("backbone");
     var notification = require("notification");
     var settings = require("settings");
@@ -54,18 +55,24 @@ define(function(require){
          */
         activateSelectedUsers: function()
         {
-            this.save(null, 
+            this.unset("inactives");
+            if(this.get("activate").length > 0)
             {
-                success: function(data, response)
+                this.save(null, 
                 {
-                    app.global.hideLoader();
-                },
-                error: function(data, error)
-                {
-                    app.global.hideLoader();
-                    console.log("error: ", error);
-                }
-            });
+                    success: function(data, response)
+                    {
+                        app.global.hideLoader();
+                        app.vent.trigger(notification.event.CLOSE_ADMIN);
+                    },
+                    error: function(data, error)
+                    {
+                        app.global.hideLoader();
+                        app.vent.trigger(notification.event.CLOSE_ADMIN);
+                        console.log("error: ", error);
+                    }
+                });
+            }
         },
         
         
