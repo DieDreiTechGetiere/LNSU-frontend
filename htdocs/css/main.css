@@ -164,15 +164,66 @@ h1 {
   display: flex;
   overflow: hidden;
 }
-.dashboard_view .dashboard_container .logo {
-  width: 245px;
-  height: 260px;
+.dashboard_view .dashboard_container .logo_container {
+  width: 256px;
+  height: 264px;
   position: absolute;
-  top: 75px;
-  left: 183px;
+  top: 74px;
+  left: 177px;
+  -perspective: 1000;
+  -webkit-perspective: 1000;
 }
-.dashboard_view .dashboard_container .logo.pointer {
+.dashboard_view .dashboard_container .logo_container .logo_flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.6s;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper.admin.hoverLogo {
+  transform: rotateY(180deg);
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .logo, .dashboard_view .dashboard_container .logo_container .logo_flipper .admin_btn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  backface-visibility: hidden;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .logo {
+  background-image: url("../media/image/logo.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .logo.pointer {
   cursor: pointer;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .admin_btn {
+  transform: rotateY(180deg);
+  background-color: #faf9f7;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  z-index: 2;
+  padding: 25px;
+  -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
+  box-shadow: 0px 0px 42px -12px #0e0d2a;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .admin_btn .admin_headline {
+  font-size: 18px;
+  line-height: 30px;
+  color: #40547e;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .admin_btn .admin_subline {
+  font-size: 12px;
+  line-height: 16px;
+  color: #bcbcbc;
+}
+.dashboard_view .dashboard_container .logo_container .logo_flipper .admin_btn .button {
+  background-color: #bc4a77;
 }
 .dashboard_view .dashboard_container .admin_region {
   position: absolute;
@@ -395,6 +446,9 @@ h1 {
 .recentgames_view .recent_game_item:first-child {
   border-top: 0px;
 }
+.recentgames_view .recent_game_item:last-child {
+  border-bottom: 1px solid #eae9e8;
+}
 .recentgames_view .recent_game_item:hover .opponent {
   color: #bc4a77 !important;
 }
@@ -449,13 +503,14 @@ h1 {
 }
 .admin_view .admin_container .inactives {
   margin-left: 220px;
-  width: 431px;
+  width: 435px;
   height: 573px;
-  overflow: auto;
   padding-top: 40px;
+  overflow: hidden;
 }
 .admin_view .admin_container .inactives .inactive_user {
   width: 400px;
+  margin-left: 2px;
   border-top: 1px solid #eae9e8;
   border-left: 1px solid #eae9e8;
   position: relative;

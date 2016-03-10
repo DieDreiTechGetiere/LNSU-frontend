@@ -13,10 +13,13 @@
         position:relative;
         background-color: #fbfaf8;
         
-        
         &:first-child
         {
             border-top:0px;
+        }
+        &:last-child
+        {
+            border-bottom:1px solid $dashboard_border;
         }
         &:hover
         {

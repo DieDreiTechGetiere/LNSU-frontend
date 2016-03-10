@@ -161,13 +161,41 @@ define(function(require){
         /**
          * shows adminView (if user is admin) to unlock users
          */
-        logoClick: function()
+        showAdminView: function()
         {
-            //statement has to be changed here to real value!!   -   app.userModel.get("role") != 0
-            if(true)
+            if(app.userModel.get("role") == 1)
             {
-                app.global.showLoader();
-                this.model.fetchAdminData();
+                console.log("trigger route");
+                app.router.navigate(notification.router.ADMIN, {trigger: true});
+            }
+        },
+        
+        
+        /**
+         * @param close : boolean
+         */
+        animateAdminView: function(close)
+        {
+            var self = this;
+            if(close == true || this.adminViewState === "opened")
+            {
+                this.adminViewState = "animating";
+                app.router.navigate(notification.router.DASHBOARD, {trigger: true});
+                TweenMax.to(this.ui.admin, 1, {top: -748, onComplete: function(){
+                    self.adminViewState = "closed";
+                    if(close != true)
+                    {
+                        self.viewInstances[self.views.ADMIN].destroy();
+                        self.model.get("admin").destroy();
+                    }
+                }});
+            }
+            else if(this.adminViewState === "closed")
+            {
+                this.adminViewState = "animating";
+                TweenMax.to(this.ui.admin, 1, {top: 50, onComplete: function(){
+                    self.adminViewState = "opened";
+                }});
             }
         },
         
@@ -175,25 +203,18 @@ define(function(require){
         /**
          * 
          */
-        animateAdminView: function()
+        hoverLogo: function()
         {
-            var self = this;
-            if(this.adminViewState === "closed")
-            {
-                this.adminViewState = "animating";
-                TweenMax.to(this.ui.admin, 1, {top: 50, onComplete: function(){
-                    self.adminViewState = "opened";
-                }});
-            }
-            else if(this.adminViewState === "opened")
-            {
-                this.adminViewState = "animating";
-                TweenMax.to(this.ui.admin, 1, {top: -748, onComplete: function(){
-                    self.adminViewState = "closed";
-                    self.viewInstances[self.views.ADMIN].destroy();
-                    self.model.get("admin").destroy();
-                }});
-            }
+            $(".logo_flipper").addClass("hoverLogo");
+        },
+        
+        
+        /**
+         * 
+         */
+        mouseoutLogo: function()
+        {
+            $(".logo_flipper").removeClass("hoverLogo");
         },
         
         
@@ -201,12 +222,14 @@ define(function(require){
         
         onShow: function()
         {
+            console.log("onShow");
             this.initItemViews();
             
             console.log("userModel. ", app.userModel);
             if(app.userModel.get("role") == 1)
             {
                 $(".logo").addClass("pointer");
+                $(".logo_flipper").addClass("admin");
             }
         },
         
@@ -229,7 +252,9 @@ define(function(require){
         
         
         events: {
-            "click @ui.logo": "logoClick"
+            "click .admin_link": "showAdminView",
+            "mouseover .logo_container": "hoverLogo",
+            "mouseout .logo_container": "mouseoutLogo"
         }
     });
     return DashboardModel;

@@ -14,6 +14,8 @@ define(function(require){
             "": "routeSignin",
             
             "dashboard": "routeDashboard",
+            
+            "dashboard/admin": "routeDashboardAdmin",
 
             "match": "routeToMatch"
         //    "home/list/:id": "routeListContent",
@@ -56,6 +58,18 @@ define(function(require){
             console.log("route /dashboard");
             
             app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "dashboardView") : app.router.navigate(notification.router.LOGIN);
+            app.vent.trigger(notification.event.CLOSE_ADMIN, true);
+        },
+        
+        
+        /**
+         * 
+         */
+        routeDashboardAdmin: function()
+        {
+            console.log("route dashboard/admin");
+            app.global.showLoader();
+            app.vent.trigger(notification.event.FETCH_ADMIN);
         },
         
         

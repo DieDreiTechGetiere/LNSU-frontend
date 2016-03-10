@@ -22,7 +22,7 @@ define(function(require){
         
         initialize: function()
         {
-            
+            this.listenTo(app.vent, notification.event.FETCH_ADMIN, this.fetchAdminData, this);
         },
         
         

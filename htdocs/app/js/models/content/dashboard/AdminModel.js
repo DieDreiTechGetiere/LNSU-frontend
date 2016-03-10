@@ -58,6 +58,7 @@ define(function(require){
             this.unset("inactives");
             if(this.get("activate").length > 0)
             {
+                app.global.showLoader();
                 this.save(null, 
                 {
                     success: function(data, response)

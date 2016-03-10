@@ -64,7 +64,6 @@ define(function(require){
          */
         activateSelectedUsers: function()
         {
-            app.global.showLoader();
             this.model.activateSelectedUsers();
         },
         
@@ -83,7 +82,10 @@ define(function(require){
         
         finalize: function()
         {
-            
+            var iscroll = new IScroll(".inactives", {
+                mouseWheel: true,
+                click: true
+            });
         },
         
         

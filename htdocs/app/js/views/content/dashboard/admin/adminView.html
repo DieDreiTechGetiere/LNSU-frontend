@@ -1,6 +1,7 @@
 <div class="admin_container">
     <div class="close"></div>
     <div class="inactives">
+        <div class="inactives_pos">
         <% _.each(inactives, function(inactive) { %>
             <div class="inactive_user" data-userid="<%=inactive.id%>">
                 <p class="login_name"><%=inactive.loginName%></p>
@@ -10,6 +11,7 @@
                 <div class="add"></div>
             </div>
         <% }); %>
+        </div>
     </div>
     <div class="buttons">
         <p class="button selected">activate selected users</p>

@@ -20,7 +20,7 @@ define(function(require)
                 id: userData.id,
                 ingameName: userData.ingameName,
                 loginName: userData.loginName,
-                role: userData.role
+                role: parseInt(userData.role)
             });
             
             var now = new Date();
@@ -30,7 +30,7 @@ define(function(require)
             document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
             document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
             document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
-            document.cookie = "role=" + userData.role + '; expires=' + now.toUTCString() + "; path=/";
+            document.cookie = "role=" + parseInt(userData.role) + '; expires=' + now.toUTCString() + "; path=/";
             
             app.model.get("dashboard").fetchDashboardData();
         },

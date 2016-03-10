@@ -18,6 +18,7 @@ require.config({
         'timeline':         '../includes/libraries/greensock/TimelineMax.min',
         'marionette':       '../includes/libraries/marionette/backbone.marionette.min',
         'loglevel':         '../includes/libraries/loglevel/loglevel',
+        'iscroll':          '../includes/libraries/iscroll/iscroll5',
         
         //TESTING LIBS
         'mocha':            '../includes/libraries/testing/mocha',
@@ -78,7 +79,7 @@ require.config({
 });
 
 // the require(["app"]) --> baseUrl + app + .js  thats where app.js gets loaded and instantiated (return new app...)
-require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "localstorage"], function(app, ApplicationController) {
+require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "iscroll", "localstorage"], function(app, ApplicationController) {
     app.controller = new ApplicationController();
     app.controller.start();
 });

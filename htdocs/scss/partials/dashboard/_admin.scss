@@ -40,14 +40,15 @@
         .inactives
         {
             margin-left: 220px;
-            width: 431px;
+            width: 435px;
             height: 573px;
-            overflow:auto;
             padding-top:40px;
+            overflow:hidden;
             
             .inactive_user
             {
                 width: 400px;
+                margin-left:2px;
                 border-top:1px solid $dashboard_border;
                 border-left:1px solid $dashboard_border;
                 position:relative;
