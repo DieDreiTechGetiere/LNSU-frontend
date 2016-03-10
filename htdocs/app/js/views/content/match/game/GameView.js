@@ -6,15 +6,14 @@ define(function(require)
     var Marionette = require("marionette");
     var notification = require("notification");
     
-    var MatchView = Backbone.Marionette.ItemView.extend({
+    var GameView = Backbone.Marionette.ItemView.extend({
         
-        template: require("text!views/content/match/matchView.html"),
+        template: require("text!views/content/match/game/gameView.html"),
         /**
          * 
          */
         views: {
-            INFO: "infoView",
-            GAME: "gameView"
+            
         },
         /**
          * 
@@ -24,8 +23,7 @@ define(function(require)
          * 
          */
         ui: {
-            info: "info_region",
-            game: "game_region"
+            
         },
 
 
@@ -46,33 +44,7 @@ define(function(require)
         {
             this.listenTo(this.model, "change", this.render, this);
         },
-
-        initItemViews: function(){
-            this.initInfoView();
-            this.initGameView();
-        }
-
-        initInfoView: function(){
-            var InfoView = app.mapper.getViewFor(this.views.INFO);
-            this.viewInstances[this.views.INFO] = new InfoView({
-                id: this.views.INFO,
-                className: "info_view",
-                model: this.model.get("info")
-            });
-            $(this.ui.info).html(this.viewInstances[this.views.INFO].el);
-            this.viewInstances[this.views.INFO].finalize();
-        },
-
-        initGameView: function(){
-            var GameView = app.mapper.getViewFor(this.views.GAME);
-            this.viewInstances[this.views.GAME] = new GameView({
-                id: this.views.GAME,
-                className: "game_view",
-                model: this.model.get("info")
-            });
-            $(this.ui.game).html(this.viewInstances[this.views.GAME].el);
-            this.viewInstances[this.views.GAME].finalize();
-        }, 
+        
         /* @Methods -------------------------------------------------------------------------- */
         
         
@@ -81,7 +53,7 @@ define(function(require)
         
         finalize: function()
         {
-            this.initItemViews();
+            
         },
         
         
@@ -106,5 +78,5 @@ define(function(require)
             
         }
     });
-    return MatchView;
+    return GameView;
 })
