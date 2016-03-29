@@ -19,6 +19,9 @@ require.config({
         'marionette':       '../includes/libraries/marionette/backbone.marionette.min',
         'loglevel':         '../includes/libraries/loglevel/loglevel',
         'iscroll':          '../includes/libraries/iscroll/iscroll5',
+        'jqueryui':         '../includes/libraries/jquery/jquery-ui.min',
+        'jquerycollission': '../includes/libraries/jquery/jquery-collision.min',
+        'jquerydraggable':  '../includes/libraries/jquery/jquery-ui-draggable-collision.min',
         
         //TESTING LIBS
         'mocha':            '../includes/libraries/testing/mocha',
@@ -50,7 +53,12 @@ require.config({
     },
     shim: {
         'chai-jquery': ['jquery', 'chai'],
-        
+        jquerycollission: {
+            deps: ['jqueryui', 'jquerydraggable']
+        },
+        jquerydraggable: {
+            deps: ['jqueryui']
+        },
         underscore: {
             exports: '_'
         },
@@ -79,7 +87,7 @@ require.config({
 });
 
 // the require(["app"]) --> baseUrl + app + .js  thats where app.js gets loaded and instantiated (return new app...)
-require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "iscroll", "localstorage"], function(app, ApplicationController) {
+require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "iscroll", "localstorage", "jquerydraggable", "jquerycollission"], function(app, ApplicationController) {
     app.controller = new ApplicationController();
     app.controller.start();
 });

@@ -34,7 +34,6 @@ define(function(require){
             this.save(null, {
                 success: function(data, response)
                 {
-                    console.log("success gamesearch: ", response);
                     app.matchModel = new MatchModel(response);
                     if(response.foundOpponent == false)
                     {

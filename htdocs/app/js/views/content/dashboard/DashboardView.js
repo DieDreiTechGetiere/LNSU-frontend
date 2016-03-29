@@ -4,6 +4,7 @@ define(function(require){
     var Backbone = require("backbone");
     var Marionette = require("marionette");
     var notification = require("notification");
+    var settings = require("settings");
     
     var DashboardModel = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
@@ -222,14 +223,37 @@ define(function(require){
         
         onShow: function()
         {
-            console.log("onShow");
             this.initItemViews();
             
-            console.log("userModel. ", app.userModel);
+            this.checkDevState();
+            
             if(app.userModel.get("role") == 1)
             {
                 $(".logo").addClass("pointer");
                 $(".logo_flipper").addClass("admin");
+            }
+        },
+        
+        
+        /**
+         * 
+         */
+        checkDevState: function()
+        {
+            if(settings.appEnvironment == "dev")
+            {
+                $.ajax({
+                    method: "POST",
+                    url: settings.backendBaseUrl + "test",
+                    success: function(data)
+                    {
+                        console.log("dev success: ", data);
+                    },
+                    error: function(error)
+                    {
+                        console.log("dev error: ", error);
+                    }
+                });
             }
         },
         

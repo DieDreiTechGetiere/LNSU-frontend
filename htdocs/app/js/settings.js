@@ -2,7 +2,6 @@
 define(function(require)
 {
     var underscopre = require("underscore");
-    var appEnvironment = "local";
         
     var appEnvironments = {
         local: "local",
@@ -11,6 +10,7 @@ define(function(require)
     };
 
     var defaultConfig = {
+        appEnvironment: "dev",
         backendBaseUrl: "http://lnsu-backend.local/",
      //   backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
         release: false,
@@ -18,9 +18,10 @@ define(function(require)
         runTests: false,
         imagesPath: 'media/images/',
         jsonPath: 'app/data/data.json',
+        shipconfig: 'app/data/shipconfig.json',
         loglevel: 'trace', //trace, debug, info, warn, error
         startContentAt: 'chapter01'
     };
 
-    return _.extend(defaultConfig, appEnvironments[appEnvironment]);
+    return _.extend(defaultConfig);
 });

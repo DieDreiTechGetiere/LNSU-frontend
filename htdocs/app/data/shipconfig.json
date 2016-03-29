@@ -1,0 +1,53 @@
+{
+    "shipconf": "asdf",
+    
+    "ships":
+    [
+        {
+            "shipLength": 1,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 1,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 1,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 1,
+            "imageUrl": ""
+        },
+        
+        
+        {
+            "shipLength": 2,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 2,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 2,
+            "imageUrl": ""
+        },
+        
+        
+        {
+            "shipLength": 3,
+            "imageUrl": ""
+        },
+        {
+            "shipLength": 3,
+            "imageUrl": ""
+        },
+        
+        
+        {
+            "shipLength": 4,
+            "imageUrl": ""
+        }
+    ]
+}

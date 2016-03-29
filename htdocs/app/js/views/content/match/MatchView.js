@@ -13,8 +13,8 @@ define(function(require)
          * 
          */
         views: {
-            INFO: "infoView",
-            GAME: "gameView"
+            GAME: "gameView",
+            PLACEMENT: "placementView"
         },
         /**
          * 
@@ -23,9 +23,13 @@ define(function(require)
         /**
          * 
          */
+        viewInstances: {},
+        /**
+         * 
+         */
         ui: {
-            info: "info_region",
-            game: "game_region"
+            placement: ".placement_region",
+            game: ".game_region"
         },
 
 
@@ -33,7 +37,6 @@ define(function(require)
 
         initialize: function()
         {
-            console.log("MatchView: ", this.model);
             this.initViewListeners();
             this.render();
         },
@@ -47,40 +50,40 @@ define(function(require)
             this.listenTo(this.model, "change", this.render, this);
         },
 
-        initItemViews: function(){
-            this.initInfoView();
-            this.initGameView();
-        }
 
-        initInfoView: function(){
-            var InfoView = app.mapper.getViewFor(this.views.INFO);
-            this.viewInstances[this.views.INFO] = new InfoView({
-                id: this.views.INFO,
-                className: "info_view",
-                model: this.model.get("info")
-            });
-            $(this.ui.info).html(this.viewInstances[this.views.INFO].el);
-            this.viewInstances[this.views.INFO].finalize();
+        /**
+         * 
+         */
+        initItemViews: function()
+        {
+            this.initPlacementView();
         },
 
-        initGameView: function(){
-            var GameView = app.mapper.getViewFor(this.views.GAME);
-            this.viewInstances[this.views.GAME] = new GameView({
-                id: this.views.GAME,
-                className: "game_view",
-                model: this.model.get("info")
+
+        /**
+         * 
+         */
+        initPlacementView: function()
+        {
+            var PlacementView = app.mapper.getViewFor(this.views.PLACEMENT);
+            this.viewInstances[this.views.PLACEMENT] = new PlacementView({
+                id: this.views.PLACEMENT,
+                className: "placement_view",
+                model: this.model.get("placement")
             });
-            $(this.ui.game).html(this.viewInstances[this.views.GAME].el);
-            this.viewInstances[this.views.GAME].finalize();
-        }, 
+            $(this.ui.placement).html(this.viewInstances[this.views.PLACEMENT].el);
+            this.viewInstances[this.views.PLACEMENT].finalize();
+        },
+        
         /* @Methods -------------------------------------------------------------------------- */
         
         
         
         /* @Finalize ------------------------------------------------------------------------- */
         
-        finalize: function()
+        onShow: function()
         {
+            console.log("fin matchView");
             this.initItemViews();
         },
         

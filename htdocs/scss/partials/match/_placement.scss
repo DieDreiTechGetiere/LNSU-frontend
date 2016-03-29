@@ -1,0 +1,48 @@
+
+.placement_view
+{
+    
+    .placement_container
+    {
+        display:flex;
+        
+        .game
+        {
+            width:500px;
+            height:300px;
+            background-color:red;
+        }
+        
+        .info_region
+        {
+            width: 320px;
+            height: 627px;
+            margin-top: 88px;
+            position: relative;
+            background-color:$dashboardBG;
+            
+            .ships_region
+            {
+                position: relative;
+                
+                .shipView
+                {
+                    padding:8px;
+                    outline:1px solid black;
+                    cursor: move;
+                    
+                    background: rgba(99,99,99,0.3);
+                    position: absolute;
+                    width: 50px;
+                    float: left;
+                    margin: 5px;
+                        
+                    .ship_view
+                    {
+                        
+                    }
+                }
+            }
+        }
+    }
+}

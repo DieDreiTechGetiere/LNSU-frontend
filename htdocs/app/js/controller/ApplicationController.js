@@ -110,6 +110,19 @@ define(function(require)
                     console.log("error fetching json: ", error);
                 }
             });
+            
+            $.ajax({
+                method: "GET",
+                url: settings.shipconfig,
+
+                success: function (data) {
+                    app.shipConfig = data;
+                    console.log("shipconfig: ", app.shipConfig);
+                },
+                error: function (data, error) {
+                    console.log("error fetching shipconfigjson: ", error);
+                }
+            });
         },
 
 

@@ -15,6 +15,9 @@ define(function(require){
         views: {
             
         },
+        rotationTL: new TimelineMax({onComplete: function(){
+            this.restart();
+        }}),
         /**
          * 
          */
@@ -67,21 +70,42 @@ define(function(require){
          */
         animateLoader: function()
         {
-            if($(this.ui.playBg).hasClass("rotate"))
+            if($(this.ui.playBg).hasClass("animating"))
             {
-                $(this.ui.playBg).removeClass("rotate");
+                $(this.ui.playBg).removeClass("animating");
+                this.rotationTL.pause();
             }
             else
             {
-                $(this.ui.playBg).addClass("rotate");
+                $(this.ui.playBg).addClass("animating");
+                this.rotationTL.play();
             }
         },
         
         /* @Finalize ------------------------------------------------------------------------- */
         
+        initTimeLineForRotation: function()
+        {
+            var rotationTween = 
+                
+            this.rotationTL.add(
+            TweenMax.fromTo($(this.ui.playBg), 6, 
+                {
+                    rotation: 0,
+                },
+                {
+                    rotation: 360,
+                    ease:Linear.easeNone,
+                    delay:0,
+                    reapeat:-1
+                }
+            )).pause();
+        },
+        
+        
         finalize: function()
         {
-            
+            this.initTimeLineForRotation();
         },
         
         
