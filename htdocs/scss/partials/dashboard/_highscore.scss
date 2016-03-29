@@ -25,12 +25,12 @@
         }
         
         .highscores {
-            background-color: $dashboardBG;
+            background-color: $dashboardBG_darker;
             
             .highscore_collection {
                 
                 .highscore_item {
-                    border-top: 1px solid $font_grey;
+                    border-top: 1px solid #eae9e8;
                     line-height:14px;
                     font-size:14px;
                     padding:15px 25px;

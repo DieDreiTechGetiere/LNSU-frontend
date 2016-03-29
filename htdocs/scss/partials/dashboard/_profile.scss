@@ -14,29 +14,34 @@
             position: relative;
             border-bottom:1px solid $dashboard_border;
             
-            img
+            .profile_picture
             {
-                padding-top: 55px;
                 margin:auto;
                 display:block;
             }
             
-            .ingame_name
+            
+            
+            .ranking 
             {
-                font-size: 21px;
-                color: $font_blue;
-                text-align:center;
+                display:flex;
                 padding-top:20px;
+                margin:auto;
                 
-                &:before
+                .ranking_icon
                 {
-                    content: "";
-                    background-image: url("../media/image/ranks/default_rank.png");
-                    background-repeat: no-repeat;
-                    display: inline-block;
-                    width:16px;
-                    height:20px;
+                    width:17px;
+                    height:28px;
                 }
+                
+                .ingame_name
+                {
+                    font-size: 22px;
+                    line-height:30px;
+                    font-weight: bold;
+                    color: $font_blue;
+                    text-align:center;
+                }   
             }
             
             .ranking_name

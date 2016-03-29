@@ -1,7 +1,12 @@
 <div class="profile_view_container">
     <div class="profile_head">
-        <img class="profile_picture" src="<%=profileImage%>">
-        <p class="ingame_name">Schokolade</p>
+        <img class="profile_picture" draggable="false" src="<%=profileImage%>">
+        <div class="ranking">
+            <% if(rankImage != "undefined") { %>
+                <img class="ranking_icon" draggable="false" src="<%=rankImage%>">
+            <% } %>
+            <p class="ingame_name">&nbsp;Schokolade</p>
+        </div>
         <p class="ranking_name"><%=rankName%></p>
     </div>
     <div class="profile_stats">

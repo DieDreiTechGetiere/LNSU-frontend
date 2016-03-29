@@ -95,7 +95,16 @@ define(function(require){
         setRankInfos: function(rank)
         {
             this.set("profileImage", this.get("baseImageUrl") + rank + ".png");
-            this.set("rankImage", this.get("baseRankUrl") + rank + ".png");
+            
+            if(rank != "kartoffelschaeler" && rank != "latrinenputzer")
+            {
+                this.set("rankImage", this.get("baseRankUrl") + rank + ".png");
+            }
+            else
+            {
+                this.set("rankImage", "undefined");
+            }
+            
             this.set("rankName", rank.charAt(0).toUpperCase() + rank.slice(1));
         }
     });
