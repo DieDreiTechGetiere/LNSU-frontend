@@ -13,6 +13,7 @@ define(function(require)
 
     var ApplicationModel = require("appModel");
     var GlobalModel = require("global");
+    var StorageModel = require("models/StorageModel");
     var ApplicationCommand = require("appCommand");
     var MatchCommand = require("MatchCommand");
     var ApplicationRouter = require("ApplicationRouter");
@@ -33,6 +34,8 @@ define(function(require)
         {
             app.global = new GlobalModel();
             app.global.showLoader();
+            
+            app.storageModel = new StorageModel();
 
             app.mapper = TemplateMapper;
 
@@ -166,13 +169,13 @@ define(function(require)
          */
         startRouting: function()
         {
-            if (app.global.checkIfUserIsLoggedIn() == true)
+            if (app.storageModel.checkIfUserIsLoggedIn() == true)
             {
                 app.userModel = new UserModel({
-                    id: app.global.getUserCookie("userId"),
-                    ingameName: app.global.getUserCookie("ingameName"),
-                    loginName: app.global.getUserCookie("loginName"),
-                    role: app.global.getUserCookie("role")
+                    id: app.storageModel.get("userId"),
+                    ingameName: app.storageModel.get("ingameName"),
+                    loginName: app.storageModel.get("loginName"),
+                    role: app.storageModel.get("role")
                 });
                 app.model.get("dashboard").fetchDashboardData();
             }

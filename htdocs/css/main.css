@@ -437,12 +437,9 @@ h1 {
 }
 .recentgames_view .recent_game_item {
   cursor: pointer;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding: 20px 0 20px 75px;
+  padding: 18px 0 19px 75px;
   border-top: 1px solid #eae9e8;
   position: relative;
-  background-color: #f6f5f3;
 }
 .recentgames_view .recent_game_item:first-child {
   border-top: 0px;

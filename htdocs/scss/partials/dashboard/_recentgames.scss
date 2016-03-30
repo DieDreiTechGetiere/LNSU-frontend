@@ -6,12 +6,10 @@
     .recent_game_item
     {
         cursor: pointer;
-        padding-top:15px;
-        padding-bottom:15px;
-        padding:20px 0 20px 75px;
+        padding: 18px 0 19px 75px;
         border-top:1px solid $dashboard_border;
         position:relative;
-        background-color: $dashboardBG_darker;
+      //  background-color: $dashboardBG_darker;
         
         &:first-child
         {

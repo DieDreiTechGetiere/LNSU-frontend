@@ -47,13 +47,27 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        /**
+         * 
+         */
+        centerPlayernameAndRankIcon: function()
+        {
+            if(this.$(".ranking_icon").width() != undefined)
+            {
+                this.$(".ranking_icon").css("margin-left", ((320 - (this.$(".ingame_name").width() + this.$(".ranking_icon").width()) ) / 2));
+            }
+            else
+            {
+                this.$(".ingame_name").css("margin-left", ((310 - this.$(".ingame_name").width() ) / 2));
+            }
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
         {
-            
+            this.centerPlayernameAndRankIcon();
         },
         
         

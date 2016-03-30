@@ -16,6 +16,8 @@ define(function(require){
         {
             this.checkForNull();
             this.setRankings();
+            
+            this.set("ingameName", app.userModel.get("ingameName"));
         },
         
         

@@ -22,6 +22,6 @@ define(function(require)
         loglevel: 'trace', //trace, debug, info, warn, error
         startContentAt: 'chapter01'
     };
-
+    
     return _.extend(defaultConfig);
 });

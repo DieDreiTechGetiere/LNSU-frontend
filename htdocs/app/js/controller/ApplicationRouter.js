@@ -45,7 +45,7 @@ define(function(require){
         routeSignin: function()
         {
    //         console.log("route /");
-        //    app.global.deleteUserCookie();
+        //    app.storageModel.deleteUserCookie();
             app.model.set("contentRegion", "signinView");
         },
         
@@ -57,7 +57,7 @@ define(function(require){
         {
   //          console.log("route /dashboard");
             
-            app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "dashboardView") : app.router.navigate(notification.router.LOGIN);
+            app.storageModel.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "dashboardView") : app.router.navigate(notification.router.LOGIN);
             app.vent.trigger(notification.event.CLOSE_ADMIN, true);
         },
         
@@ -68,7 +68,7 @@ define(function(require){
         routeDashboardAdmin: function()
         {
    //         console.log("route dashboard/admin");
-            app.global.showLoader();
+            app.storageModel.showLoader();
             app.vent.trigger(notification.event.FETCH_ADMIN);
         },
         
@@ -79,7 +79,7 @@ define(function(require){
         routeToMatch: function()
         {
       //      console.log("route /match");
-            app.global.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "matchView") : app.router.navigate(notification.router.LOGIN);
+            app.storageModel.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "matchView") : app.router.navigate(notification.router.LOGIN);
         }
     });
     

@@ -27,10 +27,16 @@ define(function(require)
             var time = now.getTime();
             now.setTime(time += 3600 * 1000);
             
-            document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
-            document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
-            document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
-            document.cookie = "role=" + parseInt(userData.role) + '; expires=' + now.toUTCString() + "; path=/";
+            app.storageModel.save("userId", userData.id);
+            app.storageModel.save("ingameName", userData.ingameName);
+            app.storageModel.save("loginName", userData.loginName);
+            app.storageModel.save("role", userData.role);
+            app.storageModel.save("logginTime", now.toUTCString());
+            
+           // document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
+           // document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
+           // document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
+           // document.cookie = "role=" + parseInt(userData.role) + '; expires=' + now.toUTCString() + "; path=/";
             
             app.model.get("dashboard").fetchDashboardData();
         },
