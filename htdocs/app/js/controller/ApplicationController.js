@@ -54,6 +54,7 @@ define(function(require)
             app.commands.setHandler(notification.command.application.START_ROUTER, this.initApplicationRouter, this);
             app.commands.setHandler(notification.command.application.LOGIN_SUCCESS, ApplicationCommand.handleLoginSuccess);
             app.commands.setHandler(notification.command.application.INIT_DASHBOARD, ApplicationCommand.initDashboardView);
+            app.commands.setHandler(notification.command.application.LOGOUT, ApplicationCommand.logOut);
             
             //Match Command
             app.commands.setHandler(notification.command.match.DELETE, MatchCommand.deleteMatch);

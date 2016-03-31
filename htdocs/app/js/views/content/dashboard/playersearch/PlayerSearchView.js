@@ -61,6 +61,8 @@ define(function(require){
             {
                 this.animateLoader();
                 app.execute(notification.command.match.DELETE);
+                this.model.clearPlayersearchInterval();
+                this.model.set("sending", false);
             }
         },
         

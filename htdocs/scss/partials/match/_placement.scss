@@ -5,21 +5,35 @@
     .placement_container
     {
         display:flex;
+        width:1366px;
+        height:798px;
+        outline:1px solid yellow;
+        background-image: url("../media/image/lnsu_background.jpg");
         
         .game
         {
-            width:500px;
-            height:300px;
-            background-color:red;
+            margin: 45px;
+            height: 708px;
+            width: 708px;
+            //background-color:red;
+            background: url('../media/image/square.png') repeat;
+            
+            -webkit-box-shadow: $boxShadow;
+            -moz-box-shadow: $boxShadow;
+            box-shadow: $boxShadow;
         }
         
         .info_region
         {
-            width: 320px;
-            height: 627px;
-            margin-top: 88px;
+            width: 478px;
+            height: 708px;
+            margin-top: 45px;
             position: relative;
             background-color:$dashboardBG;
+            
+            -webkit-box-shadow: $boxShadow;
+            -moz-box-shadow: $boxShadow;
+            box-shadow: $boxShadow;
             
             .ships_region
             {

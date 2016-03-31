@@ -68,7 +68,7 @@ define(function(require){
                     {
                         if(response.foundOpponent == true)
                         {
-                            clearInterval(self.get("pollInterval"));
+                            self.clearPlayersearchInterval();
                             app.execute(notification.command.match.START);
                         }
                     },
@@ -79,6 +79,16 @@ define(function(require){
                 });
                 
             }, 1000));
+        },
+        
+        
+        /**
+         * 
+         */
+        clearPlayersearchInterval: function()
+        {
+            console.log("clear playersearch");
+            clearInterval(this.get("pollInterval"));
         }
         
     });

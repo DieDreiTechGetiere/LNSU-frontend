@@ -7,6 +7,7 @@ define({
         {
             LOGIN_SUCCESS: "loginSuccess:application",
             START_ROUTER: "startRouter:application",
+            LOGOUT: "logOut:application",
             INIT_DASHBOARD: "initDashboardView:application"
         },
         

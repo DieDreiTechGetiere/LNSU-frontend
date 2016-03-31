@@ -29,6 +29,7 @@ define(function(require){
          */
         ui: {
             info: ".info_region",
+            shipsRegion: ".ships_region"
         },
 
 
@@ -92,7 +93,7 @@ define(function(require){
                 collection: self.model.get("ships"),
                 childView: app.mapper.getViewFor(self.views.SHIPS)
             });
-            $(".ships_region").html(this.shipsView.render().el);
+            $(this.ui.shipsRegion).html(this.shipsView.render().el);
             
             this.shipsView.children.each(function(view){
                 view.finalize();
@@ -111,7 +112,6 @@ define(function(require){
 			var init = function() {
 				
 				$(".shipView:not(.dropped)").each(function(i){
-                    console.log("each ", i, "item: ", $(this));
 					$(this)
 					//	.css("top", ( ($(this).height() + 5) * i) + "px")
 						.draggable({
@@ -132,7 +132,7 @@ define(function(require){
 								// };
 							},
 							//the following are for the jquery-ui-draggable-collision plugin
-                            grid: [30, 30],
+                            grid: [59, 59],
 							refreshPositions: true,
                             preventCollision: true,
 							obstacle: '.shipView.dropped'
@@ -152,7 +152,7 @@ define(function(require){
 			};
 			
 			var reinit = function() {
-			//	$(".shipView.ui-draggable").draggable("destroy");
+				$(".shipView.ui-draggable").draggable("destroy");
 				init();
 			}
 			

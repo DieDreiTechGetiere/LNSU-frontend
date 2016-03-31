@@ -4,6 +4,7 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var notification = require("notification");
+    var LocalStorage = require("localstorage");
     
     var StorageModel = Backbone.Model.extend({
         
@@ -30,7 +31,8 @@ define(function(require){
         /**
          * 
          */
-        fetch: function() {
+        fetch: function()
+        {
             this.set(JSON.parse(localStorage.getItem("lnsu-storage-" + this.id)));
         },
         
@@ -41,19 +43,24 @@ define(function(require){
         {
             if(this.get("logginTime") != null)
             {
-                var now = new Date(this.get("logginTime"));
+                var logginTime = new Date(this.get("logginTime"));
+                
+                var now = new Date();
             //    console.log("now: ", now, " getTime: ", now.getTime(), " gettime+1: ", now.getTime() + 3600);
-                if(now.getTime() > now.getTime() + 3600)
+                if(now.getTime() > logginTime.getTime())
                 {
+                    console.log("user false");
                     return false;
                 }
                 else
                 {
+                    console.log("user true");
                     return true;
                 }
             }
             else
             {
+                console.log("user false");
                 return false;
             }
         },
@@ -64,14 +71,14 @@ define(function(require){
          */
         destroy: function(options) 
         {
-            localStorage.removeItem(this.id);
+            localStorage.removeItem("lnsu-storage-" + this.id);
         },
 
         
         /**
          * 
          */
-        isEmpty: function() 
+        isEmpty: function()
         {
             return (_.size(this.attributes) <= 1); // just 'id'
         },

@@ -68,7 +68,7 @@ define(function(require){
         routeDashboardAdmin: function()
         {
    //         console.log("route dashboard/admin");
-            app.storageModel.showLoader();
+            app.global.showLoader();
             app.vent.trigger(notification.event.FETCH_ADMIN);
         },
         

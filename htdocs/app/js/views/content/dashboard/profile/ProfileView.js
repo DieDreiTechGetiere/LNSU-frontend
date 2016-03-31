@@ -24,7 +24,7 @@ define(function(require){
          * 
          */
         ui: {
-            
+            profileImage: ".profile_picture"
         },
 
 
@@ -46,6 +46,12 @@ define(function(require){
         },
         
         /* @Methods -------------------------------------------------------------------------- */
+        
+        logOut: function()
+        {
+            app.execute(notification.command.application.LOGOUT);
+        },
+        
         
         /**
          * 
@@ -89,7 +95,7 @@ define(function(require){
         
         
         events: {
-            
+            "click @ui.profileImage": "logOut"
         }
     });
     return ProfileView;

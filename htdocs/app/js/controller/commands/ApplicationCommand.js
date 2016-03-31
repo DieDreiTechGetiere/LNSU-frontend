@@ -30,7 +30,7 @@ define(function(require)
             app.storageModel.save("userId", userData.id);
             app.storageModel.save("ingameName", userData.ingameName);
             app.storageModel.save("loginName", userData.loginName);
-            app.storageModel.save("role", userData.role);
+            app.storageModel.save("role", parseInt(userData.role));
             app.storageModel.save("logginTime", now.toUTCString());
             
            // document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
@@ -48,6 +48,16 @@ define(function(require)
         initDashboardView: function()
         {
             app.view.initDashboardView();
+        },
+        
+        
+        /**
+         * 
+         */
+        logOut: function()
+        {
+            app.storageModel.destroy();
+            location.reload();
         }
     };
     return ApplicationCommand;

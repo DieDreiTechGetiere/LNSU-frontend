@@ -37,28 +37,6 @@ define(function(require) {
         /**
          * 
          */
-        checkIfUserIsLoggedIn: function()
-        {
-            var id = this.getUserCookie("userId"),
-                ingameName = this.getUserCookie("ingameName"),
-                loginName = this.getUserCookie("loginName");
-            
-            if(id == "" || ingameName == "" || loginName == "")
-            {
-                console.log("user false");
-                return false;
-            }
-            else
-            {
-                console.log("user true");
-                return true;
-            }
-        },
-        
-        
-        /**
-         * 
-         */
         getUserCookie: function(key)
         {
             var name = key + "=";
