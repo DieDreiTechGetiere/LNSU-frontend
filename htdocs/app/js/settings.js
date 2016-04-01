@@ -10,9 +10,9 @@ define(function(require)
     };
 
     var defaultConfig = {
-        appEnvironment: "live",
-     //   backendBaseUrl: "http://lnsu-backend.local/",
-        backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
+        appEnvironment: "dev",
+        backendBaseUrl: "http://lnsu-backend.local/",
+     //   backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
         release: false,
         pushState: false, //history.pushState
         runTests: false,

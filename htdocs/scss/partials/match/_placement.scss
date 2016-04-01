@@ -28,6 +28,7 @@
             width: 478px;
             height: 708px;
             margin-top: 45px;
+            margin-left:15px;
             position: relative;
             background-color:$dashboardBG;
             
@@ -41,20 +42,12 @@
                 
                 .shipView
                 {
-                    padding:8px;
                     outline:1px solid black;
                     cursor: move;
-                    
+                    height: 59px;
                     background: rgba(99,99,99,0.3);
                     position: absolute;
-                    width: 50px;
                     float: left;
-                    margin: 5px;
-                        
-                    .ship_view
-                    {
-                        
-                    }
                 }
             }
         }

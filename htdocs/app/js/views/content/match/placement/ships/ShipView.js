@@ -54,71 +54,30 @@ define(function(require)
         
         /* @Methods -------------------------------------------------------------------------- */
         
-        initDraggable: function()
+        markupConfig: function()
         {
-            console.log("ship el: ", this.$el);
-            // this.$el.draggable({
-            //     obstacle: ".shipView",
-            //     grid: [30, 30],
-            //     preventCollision: true,
-            //     containment: ".placement_container"
-            // });
-            
-         //   var draggableSelector = ".list .item:not(.dropped)";
-            var self = this;
-			var init = function() {
-                self.$el
-                    .css("left", (self.$el.width() + 5) + "px")
-                    .draggable({
-                        //helper: 'clone',
-                        revert: 'invalid',
-                        start: function(event,ui) {
-                            var $clone = ui.helper.clone();
-                            $clone
-                                .removeClass("ui-draggable ui-draggable-dragging")
-                                //.removeAttr("id")
-                                .insertAfter(ui.helper)
-                            ;
-                            $(this).data("clone",$clone);
-                        },
-                        stop: function(event,ui) {
-                            if( $(".ui-draggable-dragging.dropped").length == 0) {
-                                $(this).data("clone").remove();
-                            };
-                        },
-                        //the following are for the jquery-ui-draggable-collision plugin
-                        refreshPositions: true,
-                        obstacle: '.shipView.dropped',
-                        preventCollision: true,
-                    })
-                ;
-				
-				$('.game').droppable({
-				    accept: '.shipView'
-				    ,drop: function(event,ui) {
-				    	ui.draggable
-				    		.addClass("dropped")
-				    	;
-				    //	setTimeout(reinit, 500);
-				    }
-				});				
-			};
-			
-			var reinit = function() {
-                console.log("reinit");
-				$(".shipView.ui-draggable").draggable("destroy");
-				init();
-			}
-			
-			init();
+            this.$el.css("top", this.model.get("top"));
+            this.$el.css("width", this.model.get("shipLength") * 59);
         },
         
+        
+        /**
+         * 
+         */
+        turnShip: function(e)
+        {
+            if(this.$el.hasClass("dropped"))
+            {
+                e.preventDefault();
+                alert("turn");
+            }
+        },
         
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
         {
-      //      this.initDraggable();
+            this.markupConfig();
         },
         
         
@@ -140,7 +99,7 @@ define(function(require)
         
         
         events: {
-            
+            "contextmenu": "turnShip"
         }
     });
     return ShipView;

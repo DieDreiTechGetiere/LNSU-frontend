@@ -575,6 +575,7 @@ h1 {
   width: 478px;
   height: 708px;
   margin-top: 45px;
+  margin-left: 15px;
   position: relative;
   background-color: #faf9f7;
   -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
@@ -585,12 +586,10 @@ h1 {
   position: relative;
 }
 .placement_view .placement_container .info_region .ships_region .shipView {
-  padding: 8px;
   outline: 1px solid black;
   cursor: move;
+  height: 59px;
   background: rgba(99, 99, 99, 0.3);
   position: absolute;
-  width: 50px;
   float: left;
-  margin: 5px;
 }
