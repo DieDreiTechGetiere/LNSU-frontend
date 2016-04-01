@@ -58,10 +58,6 @@ define(function(require){
         {
             this.initInfoView();
             this.initShips();
-            var self = this;
-            _.defer(function(){
-                self.initDraggAndDrop()
-            });
         },
         
         
@@ -101,77 +97,100 @@ define(function(require){
         },
         
         
+        
+        /* @Methods -------------------------------------------------------------------------- */
+        
+        initDragg: function()
+        {
+            //$(".shipView:not(.dropped)").each(function(i){
+              $(".shipView").each(function(i){
+                $(this)
+                    .draggable({
+                        //helper: 'clone',
+                        //revert: 'invalid',
+                        start: function(event,ui) {
+                            // var $clone = ui.helper.clone();
+                            // $clone
+                            // 	.removeClass("ui-draggable ui-draggable-dragging")
+                            // 	//.removeAttr("id")
+                            // 	.insertAfter(ui.helper)
+                            // ;
+                            // $(this).data("clone",$clone);
+                            if($(this).hasClass("dropped"))
+                            {
+                                var top = parseInt($(this).css("top").slice(0, -2)),
+                                    left = parseInt($(this).css("left").slice(0, -2));
+                                
+                                $(this)
+                                    .removeClass("dropped")
+                                    .css("top", top + 118)
+                                    .css("left", left + 118)
+                                ;
+                            }
+                        },
+                        stop: function(event,ui) {
+                            // if( $(".ui-draggable-dragging.dropped").length == 0) {
+                            // 	$(this).data("clone").remove();
+                            // };
+                        },
+                        revert : function(event, ui) {
+                            $(this).data("ui-draggable").originalPosition = {
+                                top : $(this).data("defaulttop").slice(0, -2),
+                                left : 0
+                            };
+                            return !event;
+                        },
+                        grid: [59, 59],
+                  //      refreshPositions: true,
+                        preventCollision: true,
+                        obstacle: '.shipView.dropped'
+                    })
+                ;
+            });
+        },
+        
+        
+        /**
+         * 
+         */
+        initDropp: function()
+        {
+            var self = this;
+            $('.game').droppable({
+                accept: '.shipView',
+                drop: function(event,ui) {
+                    var top = parseInt(ui.draggable.css("top").slice(0, -2)),
+                        left = parseInt(ui.draggable.css("left").slice(0, -2));
+
+                    ui.draggable
+                        .css("top", top - 59)
+                        .css("left", left - 59)
+                        .addClass("dropped")
+                    ;    
+              //      setTimeout(self.reInit, 500);
+                }
+            });
+        },
+        
+        
+        /**
+         * 
+         */
+        reInit: function()
+        {
+            //$(".shipView.ui-draggable").draggable("destroy");
+            this.initDraggAndDrop();
+        },
+        
+        
         /**
          * 
          */
         initDraggAndDrop: function()
         {
-            console.log("initDraggAndDrop");
-            var self = this,
-                draggableSelector = ".shipsView .shipView:not(.dropped)",
-                init = function() {
-				
-                    $(".shipView:not(.dropped)").each(function(i){
-                        $(this)
-                            .draggable({
-                                //helper: 'clone',
-                                //revert: 'invalid',
-                                start: function(event,ui) {
-                                    // var $clone = ui.helper.clone();
-                                    // $clone
-                                    // 	.removeClass("ui-draggable ui-draggable-dragging")
-                                    // 	//.removeAttr("id")
-                                    // 	.insertAfter(ui.helper)
-                                    // ;
-                                    // $(this).data("clone",$clone);
-                                },
-                                stop: function(event,ui) {
-                                    // if( $(".ui-draggable-dragging.dropped").length == 0) {
-                                    // 	$(this).data("clone").remove();
-                                    // };
-                                },
-                                revert : function(event, ui) {
-                                    $(this).data("ui-draggable").originalPosition = {
-                                        top : $(this).data("defaulttop").slice(0, -2),
-                                        left : 0
-                                    };
-                                    return !event;
-                                },
-                                grid: [59, 59],
-                                refreshPositions: true,
-                                preventCollision: true,
-                                obstacle: '.shipView.dropped'
-                            })
-                        ;
-                    });
-                    
-                    $('.game').droppable({
-                        accept: '.shipView',
-                        drop: function(event,ui) {
-                            var top = parseInt(ui.draggable.css("top").slice(0, -2)),
-                                left = parseInt(ui.draggable.css("left").slice(0, -2));
-
-                            ui.draggable
-                                .css("top", top - 59)
-                                .css("left", left - 59)
-                                .addClass("dropped")
-                            ;
-                            
-                            setTimeout(reinit, 500);
-                        }
-                    });
-                },
-			
-			    reinit = function() {
-                    $(".shipView.ui-draggable").draggable("destroy");
-                    init();
-                };
-			
-			init();
+			this.initDragg();
+            this.initDropp();	
         },
-        
-        /* @Methods -------------------------------------------------------------------------- */
-        
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -179,6 +198,10 @@ define(function(require){
         finalize: function()
         {
             this.initItemViews();
+            var self = this;
+            _.defer(function(){
+                self.initDraggAndDrop()
+            });
         },
         
         

@@ -49,18 +49,15 @@ define(function(require){
             //    console.log("now: ", now, " getTime: ", now.getTime(), " gettime+1: ", now.getTime() + 3600);
                 if(now.getTime() > logginTime.getTime())
                 {
-                    console.log("user false");
                     return false;
                 }
                 else
                 {
-                    console.log("user true");
                     return true;
                 }
             }
             else
             {
-                console.log("user false");
                 return false;
             }
         },

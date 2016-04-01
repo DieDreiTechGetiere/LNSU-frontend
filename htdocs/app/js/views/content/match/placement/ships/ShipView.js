@@ -68,8 +68,8 @@ define(function(require)
         {
             if(this.$el.hasClass("dropped"))
             {
-                e.preventDefault();
-                alert("turn");
+              //  e.preventDefault();
+             //   alert("turn");
             }
         },
         

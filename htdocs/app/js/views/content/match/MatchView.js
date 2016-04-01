@@ -83,7 +83,6 @@ define(function(require)
         
         onShow: function()
         {
-            console.log("fin matchView");
             this.initItemViews();
         },
         

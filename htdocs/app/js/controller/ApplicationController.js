@@ -121,7 +121,6 @@ define(function(require)
 
                 success: function (data) {
                     app.shipConfig = data;
-                    console.log("shipconfig: ", app.shipConfig);
                 },
                 error: function (data, error) {
                     console.log("error fetching shipconfigjson: ", error);

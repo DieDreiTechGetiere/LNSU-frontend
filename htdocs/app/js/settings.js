@@ -11,7 +11,6 @@ define(function(require)
 
     var defaultConfig = {
         appEnvironment: "dev",
-        backendBaseUrl: "http://lnsu-backend.local/",
      //   backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
         release: false,
         pushState: false, //history.pushState
@@ -22,6 +21,18 @@ define(function(require)
         loglevel: 'trace', //trace, debug, info, warn, error
         startContentAt: 'chapter01'
     };
+    
+    function setBackendUrl(){
+        if(window.location.href.indexOf("http://lnsu-frontend.maier-niklas.de/") >= 0)
+        {
+            defaultConfig.backendBaseUrl = "http://lnsubackend.jakobklamser.net/";
+        }
+        else
+        {
+            defaultConfig.backendBaseUrl = "http://lnsu-backend.local/";
+        }
+    }
+    setBackendUrl();
     
     return _.extend(defaultConfig);
 });

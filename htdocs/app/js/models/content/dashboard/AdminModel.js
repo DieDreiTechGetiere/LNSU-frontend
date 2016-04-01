@@ -33,7 +33,6 @@ define(function(require){
         pushUserToActivate: function(userid)
         {
             this.get("activate").push(userid);
-            console.log("user to activate: ", userid);
         },
         
         
