@@ -585,13 +585,6 @@ h1 {
 .placement_view .placement_container .info_region .ships_region {
   position: relative;
 }
-.placement_view .placement_container .info_region .ships_region .shipView {
-  cursor: move;
-  height: 59px;
-  background: rgba(99, 99, 99, 0.3);
-  position: absolute;
-  float: left;
-}
 
 .shipView {
   cursor: move;
