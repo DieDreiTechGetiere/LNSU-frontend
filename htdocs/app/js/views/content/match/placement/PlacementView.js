@@ -107,54 +107,65 @@ define(function(require){
         initDraggAndDrop: function()
         {
             console.log("initDraggAndDrop");
-            var self = this;
-			var draggableSelector = ".shipsView .shipView:not(.dropped)";
-			var init = function() {
+            var self = this,
+                draggableSelector = ".shipsView .shipView:not(.dropped)",
+                init = function() {
 				
-				$(".shipView:not(.dropped)").each(function(i){
-					$(this)
-					//	.css("top", ( ($(this).height() + 5) * i) + "px")
-						.draggable({
-							//helper: 'clone',
-							revert: 'invalid',
-							start: function(event,ui) {
-					        	// var $clone = ui.helper.clone();
-					        	// $clone
-								// 	.removeClass("ui-draggable ui-draggable-dragging")
-								// 	//.removeAttr("id")
-								// 	.insertAfter(ui.helper)
-								// ;
-					        	// $(this).data("clone",$clone);
-							},
-							stop: function(event,ui) {
-								// if( $(".ui-draggable-dragging.dropped").length == 0) {
-								// 	$(this).data("clone").remove();
-								// };
-							},
-							//the following are for the jquery-ui-draggable-collision plugin
-                            grid: [59, 59],
-							refreshPositions: true,
-                            preventCollision: true,
-							obstacle: '.shipView.dropped'
-						})
-					;
-				});
-				
-				$('.game').droppable({
-				    accept: '.shipView'
-				    ,drop: function(event,ui) {
-				    	ui.draggable
-				    		.addClass("dropped")
-				    	;
-				    	setTimeout(reinit, 500);
-				    }
-				});
-			};
+                    $(".shipView:not(.dropped)").each(function(i){
+                        $(this)
+                            .draggable({
+                                //helper: 'clone',
+                                //revert: 'invalid',
+                                start: function(event,ui) {
+                                    // var $clone = ui.helper.clone();
+                                    // $clone
+                                    // 	.removeClass("ui-draggable ui-draggable-dragging")
+                                    // 	//.removeAttr("id")
+                                    // 	.insertAfter(ui.helper)
+                                    // ;
+                                    // $(this).data("clone",$clone);
+                                },
+                                stop: function(event,ui) {
+                                    // if( $(".ui-draggable-dragging.dropped").length == 0) {
+                                    // 	$(this).data("clone").remove();
+                                    // };
+                                },
+                                revert : function(event, ui) {
+                                    $(this).data("ui-draggable").originalPosition = {
+                                        top : $(this).data("defaulttop").slice(0, -2),
+                                        left : 0
+                                    };
+                                    return !event;
+                                },
+                                grid: [59, 59],
+                                refreshPositions: true,
+                                preventCollision: true,
+                                obstacle: '.shipView.dropped'
+                            })
+                        ;
+                    });
+                    
+                    $('.game').droppable({
+                        accept: '.shipView',
+                        drop: function(event,ui) {
+                            var top = parseInt(ui.draggable.css("top").slice(0, -2)),
+                                left = parseInt(ui.draggable.css("left").slice(0, -2));
+
+                            ui.draggable
+                                .css("top", top - 59)
+                                .css("left", left - 59)
+                                .addClass("dropped")
+                            ;
+                            
+                            setTimeout(reinit, 500);
+                        }
+                    });
+                },
 			
-			var reinit = function() {
-				$(".shipView.ui-draggable").draggable("destroy");
-				init();
-			}
+			    reinit = function() {
+                    $(".shipView.ui-draggable").draggable("destroy");
+                    init();
+                };
 			
 			init();
         },

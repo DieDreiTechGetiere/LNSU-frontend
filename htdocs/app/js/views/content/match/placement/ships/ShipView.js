@@ -77,6 +77,7 @@ define(function(require)
         
         finalize: function()
         {
+            this.$el.attr("data-defaulttop", this.model.get("top"));
             this.markupConfig();
         },
         

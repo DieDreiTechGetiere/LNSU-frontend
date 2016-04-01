@@ -1,0 +1,14 @@
+
+.shipView
+{
+    cursor: move;
+    height: 59px;
+    background: rgba(99,99,99,0.3);
+    position: absolute;
+    float: left;
+    
+    &.dropped
+    {
+        margin:59px;
+    }
+}
