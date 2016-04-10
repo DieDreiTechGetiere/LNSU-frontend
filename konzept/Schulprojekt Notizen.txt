@@ -1,9 +1,9 @@
 Struktur des Arrays für Game:
 
 Array
-(
+(    Y
     [0] => Array
-        (
+        (    X
             [0] => 0
             [1] => 0
             [2] => 0

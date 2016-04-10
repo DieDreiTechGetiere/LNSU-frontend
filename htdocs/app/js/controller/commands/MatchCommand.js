@@ -44,6 +44,21 @@ define(function(require)
             });
         },
         
+        
+        /**
+         * @param container
+         */
+        initGridView: function(container)
+        {
+            var GridView = app.mapper.getViewFor("gridView");
+            var gridView = new GridView({
+                id: "gridView",
+                className: "grid_view"
+            });
+            $(container).html(gridView.el);
+            gridView.finalize();
+        },
+        
     };
     return MatchCommand;
 });

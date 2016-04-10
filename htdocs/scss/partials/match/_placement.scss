@@ -28,13 +28,19 @@
             width: 478px;
             height: 708px;
             margin-top: 45px;
-            margin-left:15px;
+            //left 14 because of the grid, saving ships after placing 
+            margin-left:14px;
             position: relative;
             background-color:$dashboardBG;
             
             -webkit-box-shadow: $boxShadow;
             -moz-box-shadow: $boxShadow;
             box-shadow: $boxShadow;
+            
+            .save_ships
+            {
+                margin:0;
+            }
             
             .ships_region
             {

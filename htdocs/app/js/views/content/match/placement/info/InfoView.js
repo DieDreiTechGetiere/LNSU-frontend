@@ -23,7 +23,7 @@ define(function(require)
          * 
          */
         ui: {
-            
+            saveBtn: ".save_ships"
         },
 
 
@@ -46,6 +46,10 @@ define(function(require)
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        initSaveShips: function()
+        {
+            app.vent.trigger(notification.command.match.SAVE_SHIPS);
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -74,7 +78,7 @@ define(function(require)
         
         
         events: {
-            
+            "click @ui.saveBtn": "initSaveShips"
         }
     });
     return InfoView;

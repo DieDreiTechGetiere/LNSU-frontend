@@ -59,6 +59,7 @@ define(function(require)
             //Match Command
             app.commands.setHandler(notification.command.match.DELETE, MatchCommand.deleteMatch);
             app.commands.setHandler(notification.command.match.START, MatchCommand.startMatch);
+            app.commands.setHandler(notification.command.match.INIT_GRID, MatchCommand.initGridView);
             
             app.commands.setHandler(notification.command.application.SIGN_IN, ApplicationCommand.renderToDo);
         },

@@ -1,0 +1,19 @@
+
+.grid_view
+{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-wrap:wrap;
+    
+    .field
+    {
+        width:59px;
+        height:59px;
+        
+        &:hover
+        {
+            background: rgba(99,99,99,0.3);
+        }
+    }
+}

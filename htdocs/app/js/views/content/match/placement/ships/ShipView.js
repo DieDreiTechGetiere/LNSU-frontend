@@ -58,6 +58,10 @@ define(function(require)
         {
             this.$el.css("top", this.model.get("top"));
             this.$el.css("width", this.model.get("shipLength") * 59);
+            
+            this.$el.attr("data-defaulttop", this.model.get("top"));
+            this.$el.attr("data-shiplength", this.model.get("shipLength"));
+            this.$el.attr("data-direction", "horizontal");
         },
         
         
@@ -68,8 +72,25 @@ define(function(require)
         {
             if(this.$el.hasClass("dropped"))
             {
-              //  e.preventDefault();
-             //   alert("turn");
+                e.preventDefault();
+                
+                var currHeight = this.$el.height(),
+                    currWidth = this.$el.width();
+                    
+                this.$el
+                    .height(currWidth)
+                    .width(currHeight)
+                ;
+                
+                if(this.$el.attr("data-direction") === "horizontal")
+                {
+                    this.$el.attr("data-direction", "vertical");
+                }
+                else
+                {
+                    this.$el.attr("data-direction", "horizontal");
+                }
+                
             }
         },
         
@@ -77,7 +98,6 @@ define(function(require)
         
         finalize: function()
         {
-            this.$el.attr("data-defaulttop", this.model.get("top"));
             this.markupConfig();
         },
         

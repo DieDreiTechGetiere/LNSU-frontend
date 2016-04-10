@@ -25,6 +25,7 @@ define(function(require)
     
     // match
     var MatchView = require("views/content/match/MatchView");
+    var GridView = require("views/content/match/grid/GridView");
     var PlacementView = require("views/content/match/placement/PlacementView");
     var InfoView = require("views/content/match/placement/info/InfoView");
     var ShipView = require("views/content/match/placement/ships/ShipView");
@@ -72,6 +73,9 @@ define(function(require)
         // match
         matchView: {
             defaultView: MatchView
+        },
+        gridView: {
+            defaultView: GridView
         },
         placementView: {
             defaultView: PlacementView

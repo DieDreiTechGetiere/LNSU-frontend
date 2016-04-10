@@ -14,7 +14,8 @@ define(function(require){
          */
         views: {
             INFO: "infoView",
-            SHIPS: "shipView"
+            SHIPS: "shipView",
+            GRID: "gridView"
         },
         /**
          * 
@@ -48,6 +49,7 @@ define(function(require){
         initViewListeners: function()
         {
             this.listenTo(this.model, "change", this.render, this);
+            this.listenTo(app.vent, notification.command.match.SAVE_SHIPS, this.initSaveShips, this);
         },
 
 
@@ -58,6 +60,7 @@ define(function(require){
         {
             this.initInfoView();
             this.initShips();
+            this.initGridView();
         },
         
         
@@ -97,41 +100,55 @@ define(function(require){
         },
         
         
+        /**
+         * 
+         */
+        initGridView: function()
+        {
+            app.execute(notification.command.match.INIT_GRID, ".game");
+        },
+        
+        
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        
+        initDraggAndDrop: function()
+        {
+			this.initDragg();
+            this.initDropp();	
+        },
+        
+        
+        /**
+         * 
+         */
+        reInit: function()
+        {
+            //$(".shipView.ui-draggable").draggable("destroy");
+            this.initDraggAndDrop();
+        },
+        
+        
+        /**
+         * 
+         */
         initDragg: function()
         {
             //$(".shipView:not(.dropped)").each(function(i){
               $(".shipView").each(function(i){
                 $(this)
                     .draggable({
-                        //helper: 'clone',
-                        //revert: 'invalid',
                         start: function(event,ui) {
-                            // var $clone = ui.helper.clone();
-                            // $clone
-                            // 	.removeClass("ui-draggable ui-draggable-dragging")
-                            // 	//.removeAttr("id")
-                            // 	.insertAfter(ui.helper)
-                            // ;
-                            // $(this).data("clone",$clone);
                             if($(this).hasClass("dropped"))
                             {
-                                var top = parseInt($(this).css("top").slice(0, -2)),
-                                    left = parseInt($(this).css("left").slice(0, -2));
-                                
                                 $(this)
                                     .removeClass("dropped")
-                                    .css("top", top + 118)
-                                    .css("left", left + 118)
                                 ;
                             }
                         },
                         stop: function(event,ui) {
-                            // if( $(".ui-draggable-dragging.dropped").length == 0) {
-                            // 	$(this).data("clone").remove();
-                            // };
+                            
                         },
                         revert : function(event, ui) {
                             $(this).data("ui-draggable").originalPosition = {
@@ -141,7 +158,6 @@ define(function(require){
                             return !event;
                         },
                         grid: [59, 59],
-                  //      refreshPositions: true,
                         preventCollision: true,
                         obstacle: '.shipView.dropped'
                     })
@@ -176,20 +192,64 @@ define(function(require){
         /**
          * 
          */
-        reInit: function()
+        initSaveShips: function()
         {
-            //$(".shipView.ui-draggable").draggable("destroy");
-            this.initDraggAndDrop();
+            var allShipsPlaced = true;
+            
+            _.each($(".shipView:not(.dropped)"), function(item)
+            {
+                allShipsPlaced = false;
+            });
+            
+            if(allShipsPlaced == true)
+            {
+                this.saveShips();
+                console.log("gridArray: ", this.model.get("gridArray"));
+            }
+            else
+            {
+                alert("Please place all ships before saving!");
+            }
         },
         
         
         /**
-         * 
+         * called after initSaveShips,
+         * when all ships are placed
          */
-        initDraggAndDrop: function()
+        saveShips: function()
         {
-			this.initDragg();
-            this.initDropp();	
+            app.global.showLoader();
+            
+            this.model.initGridArray();
+            
+            var self = this;
+             _.each($(".shipView"), function(item)
+            {
+                var sTop = $(item).offset().top,
+                    sLeft =  $(item).offset().left,
+                    shipData = 
+                    {
+                        length: $(item).data("shiplength"),
+                        direction: $(item).data("direction")
+                    };
+                
+                shipData.$matchedField = self.getMatchedFieldTooShipPos(sTop, sLeft);
+                
+                self.model.saveShipInGridArray(shipData);
+            });
+        },
+        
+        
+        /**
+         *  returns a jQuery object containing ONLY the divs that match the return
+         */
+        getMatchedFieldTooShipPos: function(sTop, sLeft)
+        {
+            return $(".field").filter(function(i)
+                    {
+                        return $(this).offset().top == sTop && $(this).offset().left == sLeft;
+                    });
         },
         
         
