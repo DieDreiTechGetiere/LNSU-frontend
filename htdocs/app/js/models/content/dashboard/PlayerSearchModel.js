@@ -87,7 +87,6 @@ define(function(require){
          */
         clearPlayersearchInterval: function()
         {
-            console.log("clear playersearch");
             clearInterval(this.get("pollInterval"));
         }
         

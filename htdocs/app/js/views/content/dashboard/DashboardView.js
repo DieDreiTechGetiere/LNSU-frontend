@@ -166,7 +166,6 @@ define(function(require){
         {
             if(app.userModel.get("role") == 1)
             {
-                console.log("trigger route");
                 app.router.navigate(notification.router.ADMIN, {trigger: true});
             }
         },
