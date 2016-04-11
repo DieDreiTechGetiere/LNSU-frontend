@@ -31,18 +31,9 @@ define(function(require)
 
         initialize: function()
         {
-            this.initViewListeners();
             this.render();
         },
         
-        
-        /**
-         * 
-         */
-        initViewListeners: function()
-        {
-      //      this.listenTo(this.model, "change", this.render, this);
-        },
         
         /* @Methods -------------------------------------------------------------------------- */
         

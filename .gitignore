@@ -5,3 +5,4 @@ htdocs/config.rb
 .DS_Store
 konzept/layout/_Schiffe.psd
 .idea
+htdocs/app/js/finalize-built.js
