@@ -106,7 +106,7 @@ define(function(require){
                 className: "profile_view",
                 model: this.model.get("profile")
             });
-            $(this.ui.profile).append(this.viewInstances[this.views.PROFILE].el);
+            $(this.ui.profile).html(this.viewInstances[this.views.PROFILE].el);
             this.viewInstances[this.views.PROFILE].finalize();
         },
         
@@ -140,7 +140,7 @@ define(function(require){
                 className: "admin_view",
                 model: this.model.get("admin")
             });
-            $(this.ui.admin).append(this.viewInstances[this.views.ADMIN].el);
+            $(this.ui.admin).html(this.viewInstances[this.views.ADMIN].el);
             this.viewInstances[this.views.ADMIN].finalize();
             
             this.animateAdminView();

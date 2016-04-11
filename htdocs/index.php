@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    
     <!--div id="mocha"></div-->
     <?php 
     /*
@@ -37,7 +38,7 @@
     ?>
 	<div class="loader-pos">
 		<div class="loader">
-			<img id="loader-img" src="media/image/loader.gif"/>
+			<img id="loader-img" draggable="false" src="media/image/loader_icon.png"/>
 		</div>
 	</div>
 	<div class="main-stage">

@@ -20,17 +20,23 @@ define(function(require) {
         hideLoader: function ()
         {
             setTimeout(function () {
-                $(".loader-pos").css("display", "none");
-            }, 100);
+                $(".loader-pos").fadeOut(100, function()
+                {
+                    $("#loader-img").removeClass("rotate");
+                });
+            }, 200);
         },
 
 
         /**
          *
          */
-        showLoader: function () 
+        showLoader: function ()
         {
-            $(".loader-pos").css("display", "block");
+            $(".loader-pos").fadeIn(200, function() 
+            {
+                $("#loader-img").addClass("rotate");
+            });
         },
         
         
