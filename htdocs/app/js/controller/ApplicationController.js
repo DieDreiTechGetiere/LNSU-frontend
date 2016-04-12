@@ -8,6 +8,8 @@ define(function(require)
     var Marionette = require('marionette');
     var Backbone = require('backbone');
     var TemplateMapper = require("TemplateMapper");
+    var PreloadController = require("PreloadController");
+    var PreloadCommand = require("PreloadCommand");
     var notification = require("notification");
     var settings = require("settings");
 
@@ -32,16 +34,28 @@ define(function(require)
 
         initialize: function()
         {
+            this.initBasics();
+            this.initEventListener();
+            this.registerLogger();
+            this.initTesting();
+        },
+        
+        
+        /**
+         * 
+         */
+        initBasics: function()
+        {
             app.global = new GlobalModel();
             app.global.showLoader();
             
             app.storageModel = new StorageModel();
 
             app.mapper = TemplateMapper;
-
-            this.initEventListener();
-            this.registerLogger();
-            this.initTesting();
+            
+            app.preload = new PreloadController();
+            //kick off image preloading
+            PreloadCommand.initialize();
         },
 
 

@@ -22,6 +22,7 @@ require.config({
         'jqueryui':         '../includes/libraries/jquery/jquery-ui.min',
         'jquerycollission': '../includes/libraries/jquery/jquery-collision.min',
         'jquerydraggable':  '../includes/libraries/jquery/jquery-ui-draggable-collision.min',
+        'preload':          '../includes/libraries/preload/preload-0.6.2-min',
         
         //TESTING LIBS
         'mocha':            '../includes/libraries/testing/mocha',
@@ -34,6 +35,8 @@ require.config({
         //BASICS
         'controller':       '../js/controller/ApplicationController',
         'ApplicationRouter': '../js/controller/ApplicationRouter',
+        'PreloadController':'../js/controller/PreloadController',
+        'PreloadCommand':   '../js/controller/commands/PreloadCommand',
         'appCommand':       '../js/controller/commands/ApplicationCommand',
         'MatchCommand':     '../js/controller/commands/MatchCommand',
         'settings':         'settings',
@@ -87,7 +90,7 @@ require.config({
 });
 
 // the require(["app"]) --> baseUrl + app + .js  thats where app.js gets loaded and instantiated (return new app...)
-require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "iscroll", "localstorage", "jquerydraggable", "jquerycollission"], function(app, ApplicationController) {
+require(["app", "controller", "jquery", "backbone", "marionette", "underscore", "tweenmax", "timeline", "loglevel", "iscroll", "localstorage", "jquerydraggable", "jquerycollission", "preload"], function(app, ApplicationController) {
     app.controller = new ApplicationController();
     app.controller.start();
 });

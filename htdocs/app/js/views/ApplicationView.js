@@ -126,7 +126,7 @@ define(function(require){
 
         finalize: function ()
         {
-            app.global.hideLoader();
+            //app.global.hideLoader();
             app.log.info("application ready");
             app.model.set("appReady", true);
         },

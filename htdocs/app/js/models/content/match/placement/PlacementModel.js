@@ -12,6 +12,9 @@ define(function(require)
     
     var PlacementModel = Backbone.Model.extend({
         
+        url: settings.backendBaseUrl + "game",
+        
+        
         initialize: function()
         {   
             this.initSubmodels();
@@ -76,6 +79,32 @@ define(function(require)
             }
         },
         
+        
+        /**
+         * 
+         */
+        sendShipsToServer: function()
+        {
+            var dataObj = 
+            {
+                placementphase: true,
+                matchID: app.matchModel.get("id"),
+                userID: parseInt(app.userModel.get("id")),
+                ships: this.get("gridArray")
+            };
+            
+            this.save(dataObj, 
+            {
+                success: function(data, response)
+                {
+                    console.log("send ships to server success: ", data, response);
+                },
+                error: function(data, error)
+                {
+                    console.log("send ships to server success: ", data, error);
+                }
+            });
+        }
         
     });
     return PlacementModel;

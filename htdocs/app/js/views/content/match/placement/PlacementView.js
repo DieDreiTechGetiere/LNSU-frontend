@@ -238,6 +238,7 @@ define(function(require){
                 
                 self.model.saveShipInGridArray(shipData);
             });
+            this.model.sendShipsToServer();
         },
         
         

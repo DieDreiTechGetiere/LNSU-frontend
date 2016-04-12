@@ -15,7 +15,7 @@ define(function(require)
         release: false,
         pushState: false, //history.pushState
         runTests: false,
-        imagesPath: 'media/images/',
+        imagesPath: 'media/image/',
         jsonPath: 'app/data/data.json',
         shipconfig: 'app/data/shipconfig.json',
         loglevel: 'trace', //trace, debug, info, warn, error
