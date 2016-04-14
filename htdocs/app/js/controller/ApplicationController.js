@@ -63,7 +63,7 @@ define(function(require)
                 {
                     window.location.reload();
                 }
-            }, 3601000);
+            }, 3701000);
         },
 
 
