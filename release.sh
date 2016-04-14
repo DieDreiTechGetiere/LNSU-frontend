@@ -42,7 +42,6 @@ elif [ "$1" == "media" ];then
     
 fi
 
-duck --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /Users/nmaier/projects/my-projects/2016/LNSU-frontend/release
-
+duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /Users/nmaier/projects/my-projects/2016/LNSU-frontend/release/$RELEASE_FOLDER
 
 exit 1;
