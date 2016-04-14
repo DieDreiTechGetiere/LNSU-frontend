@@ -123,16 +123,6 @@ define(function(require){
         /**
          * 
          */
-        reInit: function()
-        {
-            //$(".shipView.ui-draggable").draggable("destroy");
-            this.initDraggAndDrop();
-        },
-        
-        
-        /**
-         * 
-         */
         initDragg: function()
         {
             //$(".shipView:not(.dropped)").each(function(i){
@@ -183,7 +173,9 @@ define(function(require){
                         .css("left", left - 59)
                         .addClass("dropped")
                     ;    
-              //      setTimeout(self.reInit, 500);
+                    setTimeout(function(){
+                        self.initDraggAndDrop();
+                    }, 200);
                 }
             });
         },

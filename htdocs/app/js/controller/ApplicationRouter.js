@@ -56,7 +56,6 @@ define(function(require){
         routeDashboard: function()
         {
   //          console.log("route /dashboard");
-            
             app.storageModel.checkIfUserIsLoggedIn() == true ? app.model.set("contentRegion", "dashboardView") : app.router.navigate(notification.router.LOGIN);
             app.vent.trigger(notification.event.CLOSE_ADMIN, true);
         },
@@ -68,8 +67,11 @@ define(function(require){
         routeDashboardAdmin: function()
         {
    //         console.log("route dashboard/admin");
-            app.global.showLoader();
-            app.vent.trigger(notification.event.FETCH_ADMIN);
+            if(app.userModel.get("role") == 1)
+            {
+                app.global.showLoader();
+                app.vent.trigger(notification.event.FETCH_ADMIN);
+            }
         },
         
         

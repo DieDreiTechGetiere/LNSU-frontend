@@ -90,7 +90,16 @@ define(function(require)
                 {
                     this.$el.attr("data-direction", "horizontal");
                 }
-                
+                this.$el.simulate("drag");
+                var self = this;
+                setTimeout(function(){
+                    var curTop = self.$el.css("top");
+                    var curLeft = self.$el.css("left");
+                    
+                    self.$el
+                        .css("left", curLeft + 59 + "px")
+                        .css("top", curTop + 59 + "px");
+                },1000);
             }
         },
         

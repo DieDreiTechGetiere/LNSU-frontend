@@ -56,6 +56,14 @@ define(function(require)
             app.preload = new PreloadController();
             //kick off image preloading
             PreloadCommand.initialize();
+            
+            //alle 60min wird user gecheckt und rausgeworfen 
+            setInterval(function() {
+                if(window.location.hash != "#match")
+                {
+                    window.location.reload();
+                }
+            }, 3601000);
         },
 
 
