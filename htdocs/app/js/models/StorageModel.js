@@ -49,6 +49,8 @@ define(function(require){
             //    console.log("now: ", now, " getTime: ", now.getTime(), " gettime+1: ", now.getTime() + 3600);
                 if(now.getTime() > logginTime.getTime())
                 {
+                    Backbone.history.stop();
+                    Backbone.history.start();
                     return false;
                 }
                 else
@@ -58,6 +60,8 @@ define(function(require){
             }
             else
             {
+                Backbone.history.stop();
+                Backbone.history.start();
                 return false;
             }
         },
