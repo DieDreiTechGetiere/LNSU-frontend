@@ -92,18 +92,64 @@ define(function(require)
                 userID: parseInt(app.userModel.get("id")),
                 ships: this.get("gridArray")
             };
+            this.unset("gridArray");
             
+            var self = this;
             this.save(dataObj, 
             {
                 success: function(data, response)
                 {
                     console.log("send ships to server success: ", data, response);
+                    if(response.OpponentReady == false)
+                    {
+                        self.initOpponentReadyPolling();
+                    }
                 },
                 error: function(data, error)
                 {
                     console.log("send ships to server success: ", data, error);
                 }
             });
+        },
+        
+        
+        /**
+         * 
+         */
+        initOpponentReadyPolling: function()
+        {
+            var self = this;
+            this.set("pollInterval", setInterval(function(){
+                self.fetch({
+                    data: {
+                        matchID: app.matchModel.get("id"),
+                        userID: app.userModel.get("id"),
+                        round: 0
+                    },
+                    success: function(data, response)
+                    {
+                        if(response.OpponentReady == true)
+                        {
+                            self.clearOpponentReadyPolling();
+                            //app.execute(notification.command.match.ATTACK);
+                            console.log("opponent READY");
+                        }
+                    },
+                    error: function(error)
+                    {
+                        console.log("error: ", error);
+                    }
+                });
+            }, 2000));
+        },
+        
+        
+        /**
+         * 
+         */
+        clearOpponentReadyPolling: function()
+        {
+            clearInterval(this.get("pollInterval"));
         }
         
     });

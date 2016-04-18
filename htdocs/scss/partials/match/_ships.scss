@@ -3,12 +3,55 @@
 {
     cursor: move;
     height: 59px;
-    background: rgba(99,99,99,0.3);
+    //background: rgba(99,99,99,0.3);
     position: absolute;
     float: left;
     
     &.dropped
     {
         margin:59px;
+    }
+    
+    .ship_view
+    {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height:100%;
+        width:100%;
+        
+        &.ship_bg_1
+        {
+            background-image: url("../media/image/ships/ship_1.png");
+        }
+        
+        &.ship_bg_2
+        {
+            background-image: url("../media/image/ships/ship_2.png");
+            
+            &.vertical
+            {
+                background-image: url("../media/image/ships/ship_2_v.png");
+            }
+        }
+        
+        &.ship_bg_3
+        {
+            background-image: url("../media/image/ships/ship_3.png");
+            
+            &.vertical
+            {
+                background-image: url("../media/image/ships/ship_3_v.png");
+            }
+        }
+        
+        &.ship_bg_4
+        {
+            background-image: url("../media/image/ships/ship_4.png");
+            
+            &.vertical
+            {
+                background-image: url("../media/image/ships/ship_4_v.png");
+            }
+        }
     }
 }

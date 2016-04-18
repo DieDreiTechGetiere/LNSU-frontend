@@ -47,7 +47,15 @@ define(function(require)
             "ranks/oberlieutenant.png",
             "ranks/obermaat.png",
             "ranks/seekadett.png",
-            "ranks/stabsgefreiter.png"
+            "ranks/stabsgefreiter.png", 
+            
+            "ships/ship_1.png",
+            "ships/ship_2.png",
+            "ships/ship_2_v.png",
+            "ships/ship_3.png",
+            "ships/ship_3_v.png",
+            "ships/ship_4.png",
+            "ships/ship_4_v.png",
         ],
 
         initialize: function()

@@ -70,7 +70,7 @@ define(function(require)
          */
         turnShip: function(e)
         {
-            if(this.$el.hasClass("dropped"))
+            if(this.$el.hasClass("dropped") && this.model.get("shipLength") != 1)
             {
                 e.preventDefault();
                 
@@ -84,13 +84,16 @@ define(function(require)
                 
                 if(this.$el.attr("data-direction") === "horizontal")
                 {
+                    this.$(".ship_view").addClass("vertical");
                     this.$el.attr("data-direction", "vertical");
                 }
                 else
                 {
+                    this.$(".ship_view").removeClass("vertical");
                     this.$el.attr("data-direction", "horizontal");
                 }
                 this.$el.simulate("drag");
+                
                 var self = this;
                 setTimeout(function(){
                     var curTop = self.$el.css("top");
