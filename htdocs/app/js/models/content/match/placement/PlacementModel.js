@@ -118,13 +118,17 @@ define(function(require)
          */
         initOpponentReadyPolling: function()
         {
+            var dataString = app.matchModel.get("id")
+                        + ":"
+                        + app.userModel.get("id")
+                        + ":"
+                        + 0;
+            
             var self = this;
             this.set("pollInterval", setInterval(function(){
                 self.fetch({
                     data: {
-                        matchID: app.matchModel.get("id"),
-                        userID: app.userModel.get("id"),
-                        round: 0
+                        id: dataString
                     },
                     success: function(data, response)
                     {

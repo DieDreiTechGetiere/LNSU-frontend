@@ -142,7 +142,10 @@ define(function(require){
                         {
                     //        ui.draggable.animate(ui.draggable.data().origPosition,"slow");
                         }
-                        return self.checkShipPositionInGrid($(this));
+                        setTimeout(function(){
+                            self.initDraggAndDrop();
+                        }, 200);
+                    //    return self.checkShipPositionInGrid($(this));
                     },
                     revert : function(event, ui) {
                         $(this).data("ui-draggable").originalPosition = {
@@ -262,7 +265,7 @@ define(function(require){
             
             if(
                 //ragt es oben oder links raus?
-                (offsetTop < shipOffsetTop && offsetLeft < shipOffsetLeft) && 
+                (offsetTop <= shipOffsetTop && offsetLeft <= shipOffsetLeft) && 
                 //ragt es unten raus?
                 (shipOffsetTop + $ship.height() <= offsetTop + $(".grid_view").height()) &&
                 // ragt es rechts raus?
