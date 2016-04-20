@@ -125,34 +125,37 @@ define(function(require){
          */
         initDragg: function()
         {
-            //$(".shipView:not(.dropped)").each(function(i){
-              $(".shipView").each(function(i){
-                $(this)
-                    .draggable({
-                        start: function(event,ui) {
-                            if($(this).hasClass("dropped"))
-                            {
-                                $(this)
-                                    .removeClass("dropped")
-                                ;
-                            }
-                        },
-                        stop: function(event,ui) {
-                            
-                        },
-                        revert : function(event, ui) {
-                            $(this).data("ui-draggable").originalPosition = {
-                                top : $(this).data("defaulttop").slice(0, -2),
-                                left : 0
-                            };
-                            return !event;
-                        },
-                        grid: [59, 59],
-                        preventCollision: true,
-                        obstacle: '.shipView.dropped'
-                    })
-                ;
-            });
+            var self = this;
+            $(".shipView").each(function(i){
+                $(this).draggable({
+                    start: function(event,ui) {
+                        if($(this).hasClass("dropped"))
+                        {
+                            $(this)
+                                .removeClass("dropped")
+                            ;
+                        }
+                    },
+                    stop: function(event,ui) {
+                        console.log("stop");
+                        if(!self.checkShipPositionInGrid($(this)))
+                        {
+                    //        ui.draggable.animate(ui.draggable.data().origPosition,"slow");
+                        }
+                        return self.checkShipPositionInGrid($(this));
+                    },
+                    revert : function(event, ui) {
+                        $(this).data("ui-draggable").originalPosition = {
+                            top : $(this).data("defaulttop").slice(0, -2),
+                            left : 0
+                        };
+                        return !event;
+                    },
+                    grid: [59, 59],
+                    preventCollision: true,
+                    obstacle: '.shipView.dropped'
+                });//end draggable
+            });//end each
         },
         
         
@@ -246,6 +249,39 @@ define(function(require){
         },
         
         
+        /**
+         * @param $ship to check position
+         */
+        checkShipPositionInGrid: function($ship)
+        {
+            var offsetTop = $(".grid_view").offset().top,
+                offsetLeft = $(".grid_view").offset().left,
+                shipOffsetTop = $ship.offset().top,
+                shipOffsetLeft = $ship.offset().left;
+            
+            
+            if(
+                //ragt es oben oder links raus?
+                (offsetTop < shipOffsetTop && offsetLeft < shipOffsetLeft) && 
+                //ragt es unten raus?
+                (shipOffsetTop + $ship.height() <= offsetTop + $(".grid_view").height()) &&
+                // ragt es rechts raus?
+                (shipOffsetLeft + $ship.width() <= offsetLeft + $(".grid_view").width())
+              )
+            {
+                console.log("ship is valid");
+                return true;
+            }
+            else
+            {
+                console.log("ship is NOT valid");
+                return false;
+            }
+            
+            //console.log("offsetTop: ", offsetTop, " offsetLeft: ", offsetLeft);
+        },
+        
+        
         /* @Finalize ------------------------------------------------------------------------- */
         
         finalize: function()
@@ -253,7 +289,7 @@ define(function(require){
             this.initItemViews();
             var self = this;
             _.defer(function(){
-                self.initDraggAndDrop()
+                self.initDraggAndDrop();
             });
         },
         

@@ -1,0 +1,24 @@
+
+
+POST bei angriff (klick auf eine koordinate) /game
+    mitgeben:
+        - placementPhase = false
+        - userID
+        - matchID
+        - x = 3
+        - y = 3
+        
+        
+    return
+        true / false = getroffen oder nicht, bin nochmal oder nicht
+        valid = true / false   --> 12/12 wäre gehackt
+        win = true / false   --> wenn win true, dann weiteres feld mit zB eloWin = +30
+        
+GET "polling" für, bin ich drann oder oder nicht? /game
+    mitgeben:
+        - placementPhase = false
+        - userID
+        - matchID
+        
+    return:
+        - OpponentReady = true / false

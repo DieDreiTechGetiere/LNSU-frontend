@@ -107,7 +107,7 @@ define(function(require)
                 },
                 error: function(data, error)
                 {
-                    console.log("send ships to server success: ", data, error);
+                    console.log("send ships to server error: ", data, error);
                 }
             });
         },
