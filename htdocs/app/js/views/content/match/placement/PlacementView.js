@@ -145,6 +145,10 @@ define(function(require){
                     revert : function(event, ui) 
                     {
                         console.log("revert e: ", event);
+                        if(event == false)
+                        {
+                            
+                        }
                         if($(this).data("direction") == "vertical")
                         {
                             $(this).triggerHandler('contextmenu');
