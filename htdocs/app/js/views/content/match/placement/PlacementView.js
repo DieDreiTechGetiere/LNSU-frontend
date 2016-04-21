@@ -30,7 +30,8 @@ define(function(require){
          */
         ui: {
             info: ".info_region",
-            shipsRegion: ".ships_region"
+            shipsRegion: ".ships_region",
+            game: ".game"
         },
 
 
@@ -128,33 +129,34 @@ define(function(require){
             var self = this;
             $(".shipView").each(function(i){
                 $(this).draggable({
-                    start: function(event,ui) {
-                        if($(this).hasClass("dropped"))
-                        {
-                            $(this)
-                                .removeClass("dropped")
-                            ;
+                    start: function(event,ui) 
+                    {
+                        if($(event.currentTarget).hasClass("dropped"))
+                        {   
+                            $(this).removeClass("dropped");
+                            
+                            $(this).addClass("dragging");
                         }
                     },
-                    stop: function(event,ui) {
-                        console.log("stop");
-                        if(!self.checkShipPositionInGrid($(this)))
-                        {
-                    //        ui.draggable.animate(ui.draggable.data().origPosition,"slow");
-                        }
-                        setTimeout(function(){
-                            self.initDraggAndDrop();
-                        }, 200);
-                    //    return self.checkShipPositionInGrid($(this));
+                    stop: function(event,ui) 
+                    {
+                        
                     },
-                    revert : function(event, ui) {
+                    revert : function(event, ui) 
+                    {
+                        console.log("revert e: ", event);
+                        if($(this).data("direction") == "vertical")
+                        {
+                            $(this).triggerHandler('contextmenu');
+                        }
+                        $(this).removeClass("dragging");
                         $(this).data("ui-draggable").originalPosition = {
                             top : $(this).data("defaulttop").slice(0, -2),
-                            left : 0
+                            left : -30
                         };
                         return !event;
                     },
-                    grid: [59, 59],
+                    grid: [60, 60],
                     preventCollision: true,
                     obstacle: '.shipView.dropped'
                 });//end draggable
@@ -168,17 +170,37 @@ define(function(require){
         initDropp: function()
         {
             var self = this;
-            $('.game').droppable({
+            $(this.ui.game).droppable({
                 accept: '.shipView',
                 drop: function(event,ui) {
+                    
+                    if(self.checkShipPositionInGrid(ui.draggable) == false)
+                    {
+                        //console.log("dragData: ", ui.draggable.data());
+                        //ui.draggable.animate(ui.draggable.data().originalPosition,"slow");
+                    }
+                                       
+                                        
                     var top = parseInt(ui.draggable.css("top").slice(0, -2)),
                         left = parseInt(ui.draggable.css("left").slice(0, -2));
-
+                        
+                    if(ui.draggable.hasClass("dragging"))
+                    {
+                        ui.draggable.removeClass("dragging");
+                        
+                        ui.draggable
+                            .css("top", top)
+                            .css("left", left);
+                    }
+                    else
+                    {
+                        ui.draggable
+                            .css("top", top)
+                            .css("left", left);
+                    }
                     ui.draggable
-                        .css("top", top - 59)
-                        .css("left", left - 59)
-                        .addClass("dropped")
-                    ;    
+                        .addClass("dropped");
+                                
                     setTimeout(function(){
                         self.initDraggAndDrop();
                     }, 200);
@@ -262,14 +284,14 @@ define(function(require){
                 shipOffsetTop = $ship.offset().top,
                 shipOffsetLeft = $ship.offset().left;
             
-            
+            console.log("shipoffset+height: ", shipOffsetTop + $ship.height(), " <= ", offsetTop + $(".grid_view").height(), " gridviewheight+offset");
             if(
                 //ragt es oben oder links raus?
                 (offsetTop <= shipOffsetTop && offsetLeft <= shipOffsetLeft) && 
-                //ragt es unten raus?
-                (shipOffsetTop + $ship.height() <= offsetTop + $(".grid_view").height()) &&
+                //ragt es unten raus?   -1... idk why...
+                (shipOffsetTop + $ship.height() - 1 <= offsetTop + $(".grid_view").height()) &&
                 // ragt es rechts raus?
-                (shipOffsetLeft + $ship.width() <= offsetLeft + $(".grid_view").width())
+                (shipOffsetLeft + $ship.width() - 1 <= offsetLeft + $(".grid_view").width())
               )
             {
                 console.log("ship is valid");

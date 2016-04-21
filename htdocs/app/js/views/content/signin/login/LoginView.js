@@ -55,6 +55,7 @@ define(function(require){
         validateFormInput: function(event)
         {
             event.preventDefault();
+            this.clearRedBorder();
             
             var countEmptyFields = 0;
             $.each($(this.ui.textInput), function(){
@@ -73,6 +74,22 @@ define(function(require){
             {
                 $(this.ui.error).html(this.model.get("errorMessage"));
             }
+        },
+        
+        
+        /**
+         * 
+         */
+        clearRedBorder: function()
+        {
+
+            $.each($(this.ui.textInput), function()
+            {
+                if($(this).val() != "")  // $(this) ist pro Durchlauf das objekt (ohne) inhalt
+                {
+                    $(this).removeAttr("style");
+                }
+            }); // END $.each
         },
         
         

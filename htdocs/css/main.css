@@ -583,24 +583,24 @@ h1 {
   flex-wrap: wrap;
 }
 .grid_view .field {
-  width: 59px;
-  height: 59px;
+  width: 60px;
+  height: 60px;
 }
 .grid_view .field:hover {
-  background: rgba(99, 99, 99, 0.3);
+  background: rgba(188, 74, 119, 0.5);
 }
 
 .placement_view .placement_container {
   display: flex;
   width: 1366px;
   height: 798px;
-  outline: 1px solid yellow;
   background-image: url("../media/image/lnsu_background.jpg");
 }
 .placement_view .placement_container .game {
-  margin: 45px;
-  height: 708px;
-  width: 708px;
+  margin-left: 47px;
+  margin-top: 44px;
+  height: 720px;
+  width: 720px;
   background: url("../media/image/square.png") repeat;
   -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
   -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
@@ -610,7 +610,7 @@ h1 {
   width: 478px;
   height: 708px;
   margin-top: 45px;
-  margin-left: 14px;
+  margin-left: 61px;
   position: relative;
   background-color: #faf9f7;
   -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
@@ -626,12 +626,13 @@ h1 {
 
 .shipView {
   cursor: move;
-  height: 59px;
+  height: 60px;
   position: absolute;
   float: left;
+  margin: 30px;
 }
-.shipView.dropped {
-  margin: 59px;
+.shipView.dragging {
+  padding: 0px;
 }
 .shipView .ship_view {
   background-repeat: no-repeat;

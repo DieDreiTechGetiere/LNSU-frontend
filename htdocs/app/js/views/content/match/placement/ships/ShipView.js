@@ -56,8 +56,9 @@ define(function(require)
         
         markupConfig: function()
         {
-            this.$el.css("top", this.model.get("top"));
-            this.$el.css("width", this.model.get("shipLength") * 59);
+            this.$el.css("top", parseInt(this.model.get("top")));
+            this.$el.css("left", parseInt(this.model.get("left")));
+            this.$el.css("width", this.model.get("shipLength") * 60);
             
             this.$el.attr("data-defaulttop", this.model.get("top"));
             this.$el.attr("data-shiplength", this.model.get("shipLength"));
@@ -100,8 +101,8 @@ define(function(require)
                     var curLeft = self.$el.css("left");
                     
                     self.$el
-                        .css("left", curLeft + 59 + "px")
-                        .css("top", curTop + 59 + "px");
+                        .css("left", curLeft + 60 + "px")
+                        .css("top", curTop + 60 + "px");
                 },1000);
             }
         },

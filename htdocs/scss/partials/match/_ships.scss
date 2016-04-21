@@ -2,14 +2,15 @@
 .shipView
 {
     cursor: move;
-    height: 59px;
+    height: 60px;
     //background: rgba(99,99,99,0.3);
     position: absolute;
     float: left;
+    margin:30px;
     
-    &.dropped
+    &.dragging
     {
-        margin:59px;
+        padding:0px;
     }
     
     .ship_view

@@ -24,6 +24,7 @@ define(function(require){
             username: "#login_name",
             ingameName: "#ingame_name",
             password: "#password",
+            passwordRepeat: "#password_repeat",
             error: ".error",
             textInput: ".text_input"
         },
@@ -42,7 +43,6 @@ define(function(require){
         
         handleFormSuccess: function()
         {
-            console.log("success true");
             $.each($(this.ui.textInput), function(){
                 console.log("each");
                 $(this).val("");
@@ -72,6 +72,7 @@ define(function(require){
         validateFormInput: function(event)
         {
             event.preventDefault();
+            this.clearRedBorder();
             
             var countEmptyFields = 0;
             $.each($(this.ui.textInput), function(){
@@ -81,15 +82,42 @@ define(function(require){
                     countEmptyFields++;
                 }
             });
+            
             if(countEmptyFields == 0)
             {
-                app.global.showLoader();
-                this.handleRegisterSubmit();
+                if($(this.ui.password).val() !== $(this.ui.passwordRepeat).val())
+                {
+                    $(this.ui.passwordRepeat).css("border", "1px solid red");
+                    $(this.ui.password).css("border", "1px solid red");
+                    
+                    $(this.ui.error).html("your given passwords dont match");
+                }
+                else
+                {
+                    app.global.showLoader();
+                    this.handleRegisterSubmit();
+                }
             }
             else
             {
                 $(this.ui.error).html(this.model.get("errorMessage"));
             }
+        },
+        
+        
+        /**
+         * 
+         */
+        clearRedBorder: function()
+        {
+
+            $.each($(this.ui.textInput), function()
+            {
+                if($(this).val() != "")  // $(this) ist pro Durchlauf das objekt (ohne) inhalt
+                {
+                    $(this).removeAttr("style");
+                }
+            }); // END $.each
         },
         
         

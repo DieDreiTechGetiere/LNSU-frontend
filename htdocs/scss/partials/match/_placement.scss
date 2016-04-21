@@ -7,14 +7,14 @@
         display:flex;
         width:1366px;
         height:798px;
-        outline:1px solid yellow;
         background-image: url("../media/image/lnsu_background.jpg");
         
         .game
         {
-            margin: 45px;
-            height: 708px;
-            width: 708px;
+            margin-left: 47px;
+            margin-top: 44px;
+            height: 720px;
+            width: 720px;
             //background-color:red;
             background: url('../media/image/square.png') repeat;
             
@@ -28,8 +28,8 @@
             width: 478px;
             height: 708px;
             margin-top: 45px;
+            margin-left: 61px; 
             //left 14 because of the grid, saving ships after placing 
-            margin-left:14px;
             position: relative;
             background-color:$dashboardBG;
             
