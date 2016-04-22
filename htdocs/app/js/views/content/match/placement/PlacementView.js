@@ -144,11 +144,6 @@ define(function(require){
                     },
                     revert : function(event, ui) 
                     {
-                        console.log("revert e: ", event);
-                        if(event == false)
-                        {
-                            
-                        }
                         if($(this).data("direction") == "vertical")
                         {
                             $(this).triggerHandler('contextmenu');
@@ -180,11 +175,10 @@ define(function(require){
                     
                     if(self.checkShipPositionInGrid(ui.draggable) == false)
                     {
-                        //console.log("dragData: ", ui.draggable.data());
-                        //ui.draggable.animate(ui.draggable.data().originalPosition,"slow");
+                        self.resetShip(ui.draggable);   
                     }
-                                       
-                                        
+                    
+                    /*
                     var top = parseInt(ui.draggable.css("top").slice(0, -2)),
                         left = parseInt(ui.draggable.css("left").slice(0, -2));
                         
@@ -201,7 +195,7 @@ define(function(require){
                         ui.draggable
                             .css("top", top)
                             .css("left", left);
-                    }
+                    }*/
                     ui.draggable
                         .addClass("dropped");
                                 
@@ -210,6 +204,20 @@ define(function(require){
                     }, 200);
                 }
             });
+        },
+        
+        
+        /**
+         * reset ship to its originalPosition
+         * for any invalid case..
+         * @param $ship
+         */
+        resetShip: function($ship)
+        {
+            $ship.animate({
+                top: $ship.data("defaulttop"),
+                left: -30
+            }, 700);
         },
         
         
@@ -240,6 +248,8 @@ define(function(require){
         /**
          * called after initSaveShips,
          * when all ships are placed
+         * 
+         * saves each shipPosition in array like backend needs it 
          */
         saveShips: function()
         {
