@@ -77,6 +77,7 @@ define(function(require)
         {
             if(app.matchModel != undefined)
             {
+                alert("close before");
                 app.execute(notification.command.match.DELETE);
             }
         },
