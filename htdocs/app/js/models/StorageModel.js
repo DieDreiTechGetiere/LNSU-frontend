@@ -51,6 +51,7 @@ define(function(require){
                 {
                     Backbone.history.stop();
                     Backbone.history.start();
+                    console.log("user not logged in");
                     return false;
                 }
                 else
@@ -62,6 +63,7 @@ define(function(require){
             {
                 Backbone.history.stop();
                 Backbone.history.start();
+                console.log("user not logged in");
                 return false;
             }
         },

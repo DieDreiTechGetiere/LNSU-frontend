@@ -95,7 +95,7 @@ define(function(require)
             this.unset("gridArray");
             
             var self = this;
-            this.save(dataObj, 
+            this.save(dataObj,
             {
                 success: function(data, response)
                 {
@@ -103,6 +103,10 @@ define(function(require)
                     if(response.OpponentReady == false)
                     {
                         self.initOpponentReadyPolling();
+                    }
+                    else if(response.OpponentReady == true)
+                    {
+                        app.execute(notification.command.match.ATTACK);
                     }
                 },
                 error: function(data, error)
@@ -135,8 +139,8 @@ define(function(require)
                         if(response.OpponentReady == true)
                         {
                             self.clearOpponentReadyPolling();
-                            //app.execute(notification.command.match.ATTACK);
                             console.log("opponent READY");
+                            app.execute(notification.command.match.ATTACK);
                         }
                     },
                     error: function(error)

@@ -173,13 +173,13 @@ define(function(require){
                 accept: '.shipView',
                 drop: function(event,ui) {
                     
+                    ui.draggable
+                        .addClass("dropped");
+                    
                     if(self.checkShipPositionInGrid(ui.draggable) == false)
                     {
                         self.resetShip(ui.draggable);   
                     }
-                    
-                    ui.draggable
-                        .addClass("dropped");
                                 
                     setTimeout(function(){
                         self.initDraggAndDrop();
@@ -192,7 +192,7 @@ define(function(require){
         /**
          * reset ship to its originalPosition
          * for any invalid case..
-         * @param $ship
+         * @param $ship (jquery object)
          */
         resetShip: function($ship)
         {
@@ -200,6 +200,92 @@ define(function(require){
                 top: $ship.data("defaulttop"),
                 left: -30
             }, 700);
+        },
+        
+        
+        /**
+         * @param $ship to check position
+         */
+        checkShipPositionInGrid: function($ship)
+        {
+            var offsetTop = $(".grid_view").offset().top,
+                offsetLeft = $(".grid_view").offset().left,
+                shipOffsetTop = $ship.offset().top,
+                shipOffsetLeft = $ship.offset().left;
+            
+          //  console.log("shipoffset+height: ", shipOffsetTop + $ship.height(), " <= ", offsetTop + $(".grid_view").height(), " gridviewheight+offset");
+            if(
+                //ragt es oben oder links raus?
+                (offsetTop <= shipOffsetTop && offsetLeft <= shipOffsetLeft) && 
+                //ragt es unten raus?   -1... idk why...
+                (shipOffsetTop + $ship.height() - 1 <= offsetTop + $(".grid_view").height()) &&
+                // ragt es rechts raus?
+                (shipOffsetLeft + $ship.width() - 1 <= offsetLeft + $(".grid_view").width())
+              )
+            {
+                console.log("ship is valid");
+                if(this.checkForShipCollision($ship) == false)
+                {
+                    console.log("ship collision is valid too");
+                    return true;
+                }
+                else
+                {
+                    console.log("ship collision is NOT valid");
+                    return false;
+                }
+            }
+            else
+            {
+                console.log("ship is NOT valid");
+                return false;
+            }
+        },
+        
+        
+        /**
+         * @param $ship (jquery object)
+         */
+        checkForShipCollision: function($ship)
+        {
+            var collision;
+            _.each($(".shipView.dropped"), function(item)
+            {
+                var $item = $(item);
+                
+                if(!$item.hasClass("ui-draggable-dragging"))
+                {
+                    var itemLeft = $item.offset().left,
+                        itemTop = $item.offset().top,
+                        itemRight = $item.width() + itemLeft,
+                        itemBottom = $item.height() + itemTop,
+                        
+                        shipLeft = $ship.offset().left,
+                        shipTop = $ship.offset().top,
+                        shipRight = $ship.width() + shipLeft,
+                        shipBottom = $ship.height() + shipTop;
+                    
+                    if(
+                        (
+                            (itemLeft == shipLeft) && 
+                            (itemTop == shipTop ||  itemBottom == shipBottom)
+                        ) ||
+                        (
+                            (itemRight == shipRight) &&
+                            (itemTop == shipTop || itemBottom == shipBottom)
+                        )
+                    )
+                    {
+                        collision = true;
+                        return false;
+                    }
+                    else
+                    {
+                        collision = false;
+                    }
+                }
+            });
+            return collision == true ? true : false;
         },
         
         
@@ -267,37 +353,6 @@ define(function(require){
                     {
                         return $(this).offset().top == sTop && $(this).offset().left == sLeft;
                     });
-        },
-        
-        
-        /**
-         * @param $ship to check position
-         */
-        checkShipPositionInGrid: function($ship)
-        {
-            var offsetTop = $(".grid_view").offset().top,
-                offsetLeft = $(".grid_view").offset().left,
-                shipOffsetTop = $ship.offset().top,
-                shipOffsetLeft = $ship.offset().left;
-            
-            console.log("shipoffset+height: ", shipOffsetTop + $ship.height(), " <= ", offsetTop + $(".grid_view").height(), " gridviewheight+offset");
-            if(
-                //ragt es oben oder links raus?
-                (offsetTop <= shipOffsetTop && offsetLeft <= shipOffsetLeft) && 
-                //ragt es unten raus?   -1... idk why...
-                (shipOffsetTop + $ship.height() - 1 <= offsetTop + $(".grid_view").height()) &&
-                // ragt es rechts raus?
-                (shipOffsetLeft + $ship.width() - 1 <= offsetLeft + $(".grid_view").width())
-              )
-            {
-                console.log("ship is valid");
-                return true;
-            }
-            else
-            {
-                console.log("ship is NOT valid");
-                return false;
-            }
         },
         
         
