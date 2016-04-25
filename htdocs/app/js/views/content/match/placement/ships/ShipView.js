@@ -71,6 +71,7 @@ define(function(require)
          */
         turnShip: function(e)
         {
+            console.log("turn ship");
             if(this.$el.hasClass("dropped") && this.model.get("shipLength") != 1)
             {
                 e.preventDefault();
@@ -94,16 +95,10 @@ define(function(require)
                     this.$el.attr("data-direction", "horizontal");
                 }
                 this.$el.simulate("drag");
-                
                 var self = this;
                 setTimeout(function(){
-                    var curTop = self.$el.css("top");
-                    var curLeft = self.$el.css("left");
                     
-                    self.$el
-                        .css("left", curLeft + 60 + "px")
-                        .css("top", curTop + 60 + "px");
-                },1000);
+                },500);
             }
         },
         
@@ -133,7 +128,8 @@ define(function(require)
         
         
         events: {
-            "contextmenu": "turnShip"
+            "contextmenu": "turnShip",
+            "dblclick": "turnShip"
         }
     });
     return ShipView;

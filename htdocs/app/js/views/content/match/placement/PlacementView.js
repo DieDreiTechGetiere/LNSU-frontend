@@ -135,7 +135,7 @@ define(function(require){
                         {   
                             $(this).removeClass("dropped");
                             
-                            $(this).addClass("dragging");
+                      //      $(this).addClass("dragging");
                         }
                     },
                     stop: function(event,ui) 
@@ -144,10 +144,6 @@ define(function(require){
                     },
                     revert : function(event, ui) 
                     {
-                        if($(this).data("direction") == "vertical")
-                        {
-                            $(this).triggerHandler('contextmenu');
-                        }
                         $(this).removeClass("dragging");
                         $(this).data("ui-draggable").originalPosition = {
                             top : $(this).data("defaulttop").slice(0, -2),
@@ -199,7 +195,17 @@ define(function(require){
             $ship.animate({
                 top: $ship.data("defaulttop"),
                 left: -30
-            }, 700);
+            }, 700, function(){
+                console.log("dire: ", $(this).data("direction"));
+                if($(this).width() <= 60)
+                {
+                    var self = this;
+                    setTimeout(function(){
+                        $(self).trigger("contextmenu");
+                    }, 100);
+                    
+                }
+            });
         },
         
         
@@ -213,7 +219,6 @@ define(function(require){
                 shipOffsetTop = $ship.offset().top,
                 shipOffsetLeft = $ship.offset().left;
             
-          //  console.log("shipoffset+height: ", shipOffsetTop + $ship.height(), " <= ", offsetTop + $(".grid_view").height(), " gridviewheight+offset");
             if(
                 //ragt es oben oder links raus?
                 (offsetTop <= shipOffsetTop && offsetLeft <= shipOffsetLeft) && 
@@ -223,15 +228,12 @@ define(function(require){
                 (shipOffsetLeft + $ship.width() - 1 <= offsetLeft + $(".grid_view").width())
               )
             {
-                console.log("ship is valid");
                 if(this.checkForShipCollision($ship) == false)
                 {
-                    console.log("ship collision is valid too");
                     return true;
                 }
                 else
                 {
-                    console.log("ship collision is NOT valid");
                     return false;
                 }
             }
@@ -245,6 +247,7 @@ define(function(require){
         
         /**
          * @param $ship (jquery object)
+         * @return boolean
          */
         checkForShipCollision: function($ship)
         {
