@@ -48,9 +48,9 @@ duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /U
 
 
 # handle git release
+#git checkout release
 git add *
 git commit -m "Live Server Release $RELEASE_FOLDER"
-git checkout release
 git push origin release
  
 exit 1;
