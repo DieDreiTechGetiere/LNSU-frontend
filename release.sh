@@ -50,6 +50,7 @@ duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /U
 # handle git release
 git add *
 git commit -m "before release"
+git push
 
 git checkout master
 git merge develop
