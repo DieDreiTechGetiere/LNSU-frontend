@@ -31,6 +31,7 @@ elif [ "$1" == "js" ];then
     cd ..
     
     cp -r $SCRIPT_DIRECTORY/htdocs/app $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/app
+    cp -r $SCRIPT_DIRECTORY/htdocs/css $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/css
     
 elif [ "$1" == "css" ];then
 

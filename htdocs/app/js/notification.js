@@ -16,7 +16,8 @@ define({
             DELETE: "deleteMatch:match",
             START: "start:match",
             INIT_GRID: "initGrid:match",
-            SAVE_SHIPS: "saveShips:match"
+            SAVE_SHIPS: "saveShips:match",
+            ATTACK: "attack:match"
         }
     },
     

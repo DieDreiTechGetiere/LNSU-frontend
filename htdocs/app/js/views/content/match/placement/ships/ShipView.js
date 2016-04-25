@@ -71,8 +71,7 @@ define(function(require)
          */
         turnShip: function(e)
         {
-            console.log("turn ship");
-            if(this.$el.hasClass("dropped") && this.model.get("shipLength") != 1)
+            if(this.$el.data("direction") == "horizontal" && this.model.get("shipLength") != 1)
             {
                 e.preventDefault();
                 
@@ -95,10 +94,6 @@ define(function(require)
                     this.$el.attr("data-direction", "horizontal");
                 }
                 this.$el.simulate("drag");
-                var self = this;
-                setTimeout(function(){
-                    
-                },500);
             }
         },
         

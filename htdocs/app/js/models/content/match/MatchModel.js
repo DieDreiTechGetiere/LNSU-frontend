@@ -16,7 +16,6 @@ define(function(require)
         initialize: function()
         {
             this.set("id", parseInt(this.get("match").id));
-            
             this.initSubmodels();
         },
         

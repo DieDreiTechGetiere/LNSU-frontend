@@ -46,6 +46,15 @@ define(function(require)
         
         
         /**
+         * 
+         */
+        startAttack: function()
+        {
+            console.log("start attack");
+        },
+        
+        
+        /**
          * @param container
          */
         initGridView: function(container)

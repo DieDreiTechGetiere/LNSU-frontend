@@ -134,20 +134,26 @@ define(function(require){
                         if($(event.currentTarget).hasClass("dropped"))
                         {   
                             $(this).removeClass("dropped");
-                            
-                      //      $(this).addClass("dragging");
                         }
                     },
                     stop: function(event,ui) 
                     {
-                        
+                        var offsetLeftGrid = $(".grid_view").offset().left + $(".grid_view").width();
+                        if($(this).offset().left > offsetLeftGrid)
+                        {
+                            if($(this).width() <= 60)
+                            {
+                                $(this).trigger("contextmenu");
+                                var self = this;
+                            }
+                        }
                     },
                     revert : function(event, ui) 
                     {
                         $(this).removeClass("dragging");
                         $(this).data("ui-draggable").originalPosition = {
                             top : $(this).data("defaulttop").slice(0, -2),
-                            left : -30
+                            left : 30
                         };
                         return !event;
                     },
@@ -174,7 +180,7 @@ define(function(require){
                     
                     if(self.checkShipPositionInGrid(ui.draggable) == false)
                     {
-                        self.resetShip(ui.draggable);   
+                        self.resetShip(ui.draggable);
                     }
                                 
                     setTimeout(function(){
@@ -194,9 +200,8 @@ define(function(require){
         {
             $ship.animate({
                 top: $ship.data("defaulttop"),
-                left: -30
+                left: 30
             }, 700, function(){
-                console.log("dire: ", $(this).data("direction"));
                 if($(this).width() <= 60)
                 {
                     var self = this;

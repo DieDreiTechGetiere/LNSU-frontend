@@ -8,6 +8,11 @@ define(function(require) {
 
     var GlobalModel = Backbone.Model.extend({
 
+        defaults: {
+            matchActive: undefined
+        },
+        
+        
         initialize: function()
         {
 

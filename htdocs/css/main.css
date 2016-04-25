@@ -622,6 +622,8 @@ h1 {
 }
 .placement_view .placement_container .info_region .ships_region {
   position: relative;
+  height: 430px;
+  width: 325px;
 }
 
 .shipView {

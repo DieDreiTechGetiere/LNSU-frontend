@@ -61,8 +61,6 @@ define(function(require){
             }
             else
             {
-                Backbone.history.stop();
-                Backbone.history.start();
                 console.log("user not logged in");
                 return false;
             }
@@ -75,6 +73,7 @@ define(function(require){
         destroy: function(options) 
         {
             localStorage.removeItem("lnsu-storage-" + this.id);
+            this.unset("logginTime");
         },
 
         
