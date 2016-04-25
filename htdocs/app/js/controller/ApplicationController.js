@@ -57,9 +57,6 @@ define(function(require)
             //kick off image preloading
             PreloadCommand.initialize();
             
-            //delete match in case user closes browser
-            window.onbeforeunload = this.deleteMatchOnBrowserClose();
-            
             //alle 60min wird user gecheckt und rausgeworfen 
             setInterval(function() {
                 if(window.location.hash != "#match")
@@ -67,19 +64,6 @@ define(function(require)
                     window.location.reload();
                 }
             }, 3701000);
-        },
-
-
-        /**
-         * 
-         */
-        deleteMatchOnBrowserClose: function()
-        {
-            if(app.matchModel != undefined)
-            {
-                alert("close before");
-                app.execute(notification.command.match.DELETE);
-            }
         },
         
         
