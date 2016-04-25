@@ -178,24 +178,6 @@ define(function(require){
                         self.resetShip(ui.draggable);   
                     }
                     
-                    /*
-                    var top = parseInt(ui.draggable.css("top").slice(0, -2)),
-                        left = parseInt(ui.draggable.css("left").slice(0, -2));
-                        
-                    if(ui.draggable.hasClass("dragging"))
-                    {
-                        ui.draggable.removeClass("dragging");
-                        
-                        ui.draggable
-                            .css("top", top)
-                            .css("left", left);
-                    }
-                    else
-                    {
-                        ui.draggable
-                            .css("top", top)
-                            .css("left", left);
-                    }*/
                     ui.draggable
                         .addClass("dropped");
                                 
@@ -316,8 +298,6 @@ define(function(require){
                 console.log("ship is NOT valid");
                 return false;
             }
-            
-            //console.log("offsetTop: ", offsetTop, " offsetLeft: ", offsetLeft);
         },
         
         
