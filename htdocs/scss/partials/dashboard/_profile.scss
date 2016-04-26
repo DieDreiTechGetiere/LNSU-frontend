@@ -13,14 +13,20 @@
             width:100%;
             position: relative;
             border-bottom:1px solid $dashboard_border;
+            overflow:visible;
+            
+            .moewe_img
+            {
+                position:absolute;
+                top: -50px;
+                right: -52px;
+            }
             
             .profile_picture
             {
                 margin:auto;
                 display:block;
             }
-            
-            
             
             .ranking 
             {

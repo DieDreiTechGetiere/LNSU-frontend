@@ -91,8 +91,7 @@ body {
   padding-top: 50px;
   margin: auto;
   z-index: 5;
-  max-width: 1366px;
-  width: 100%;
+  width: 1366px;
   margin: auto;
 }
 
@@ -291,7 +290,6 @@ h1 {
   margin-top: 68px;
   position: relative;
   background-color: #faf9f7;
-  overflow: hidden;
   -webkit-box-shadow: 0px 0px 42px -12px #0e0d2a;
   -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
   box-shadow: 0px 0px 42px -12px #0e0d2a;
@@ -304,7 +302,16 @@ h1 {
 .highscore_view .highscore_content {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+}
+.highscore_view .highscore_content .dreizack_img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.highscore_view .highscore_content .fisch_img {
+  position: absolute;
+  bottom: -50px;
+  left: -90px;
 }
 .highscore_view .highscore_content .highscore_header {
   padding: 25px 25px 23px 25px;
@@ -321,6 +328,8 @@ h1 {
 }
 .highscore_view .highscore_content .highscores {
   background-color: #f6f5f3;
+  overflow: hidden;
+  height: 226px;
 }
 .highscore_view .highscore_content .highscores .highscore_collection .highscore_item {
   border-top: 1px solid #eae9e8;
@@ -397,6 +406,12 @@ h1 {
   width: 100%;
   position: relative;
   border-bottom: 1px solid #eae9e8;
+  overflow: visible;
+}
+.profile_view .profile_view_container .profile_head .moewe_img {
+  position: absolute;
+  top: -50px;
+  right: -52px;
 }
 .profile_view .profile_view_container .profile_head .profile_picture {
   margin: auto;
@@ -480,6 +495,8 @@ h1 {
 
 .recentgames_view {
   width: 100%;
+  overflow: hidden;
+  height: 219px;
 }
 .recentgames_view .recent_game_item {
   cursor: pointer;
@@ -688,5 +705,3 @@ h1 {
 .shipView .ship_view.ship_bg_4.vertical {
   background-image: url("../media/image/ships/ship_4_v.png");
 }
-
-/*# sourceMappingURL=main.css.map */
