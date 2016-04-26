@@ -28,6 +28,9 @@ define(function(require)
             "square.png",
             "steuerrad.png",
             "wins_icon.png",
+            "moewe.pmg",
+            "fisch.png",
+            "dreizack.png",
             
             "profilepictures/flottenadmiral.png",
             "profilepictures/fregattenkapitaen.png",

@@ -78,10 +78,11 @@ define(function(require)
                 var currHeight = this.$el.height(),
                     currWidth = this.$el.width();
                     
-                this.$el
-                    .height(currWidth)
-                    .width(currHeight)
-                ;
+                this.$el.animate({
+                    width: currHeight,
+                    height: currWidth
+                }, 150);
+                    
                 
                 if(this.$el.attr("data-direction") === "horizontal")
                 {
