@@ -1,7 +1,12 @@
+@font-face {
+  font-family: 'InterstateMazdaRegular';
+  @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+}
 body {
   width: 100%;
   position: relative;
-  font-family: 'Helvetica Neue', Helvetica, Arial;
+  font-family: 'Montserrat', Helvetica, Arial;
+  font-weight: normal;
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -63,17 +68,20 @@ body {
 .button {
   margin-top: 20px;
   border: 0;
-  background-color: #D39E41;
+  background-color: #bc4a77;
   padding: 10px;
   color: #fff;
   font-size: 16px;
   box-shadow: none;
   cursor: pointer;
   border-radius: 3px;
-  background-color: #f1705d;
 }
 .button.active {
   background-color: #796570;
+}
+
+.link {
+  color: #bc4a77;
 }
 
 .main-stage {
@@ -126,6 +134,14 @@ body {
   border-bottom-left-radius: 3px;
 }
 
+@keyframes buttonhHover {
+  from {
+    color: rgba(195, 79, 125, 0.9);
+  }
+  to {
+    color: rgba(151, 44, 103, 0.9);
+  }
+}
 p {
   margin: 0;
 }
@@ -271,8 +287,8 @@ h1 {
 }
 .dashboard_view .dashboard_container .profile_region {
   width: 320px;
-  height: 639px;
-  margin-top: 81px;
+  height: 652px;
+  margin-top: 68px;
   position: relative;
   background-color: #faf9f7;
   overflow: hidden;
@@ -350,7 +366,8 @@ h1 {
 }
 .playersearch_view .playersearch_container p {
   display: inline-block;
-  color: #c34f7d;
+  font-weight: bold;
+  color: rgba(195, 79, 125, 0.9);
   font-size: 110px;
   width: 100%;
   text-align: center;
@@ -360,7 +377,13 @@ h1 {
   z-index: 2;
 }
 .playersearch_view .playersearch_container p:active {
-  color: #972c67;
+  color: rgba(151, 44, 103, 0.9);
+}
+.playersearch_view .playersearch_container p:hover {
+  -webkit-transition: color 0.3s;
+  /* Safari */
+  transition: color 0.3s;
+  color: rgba(151, 44, 103, 0.9);
 }
 
 .profile_view {
@@ -396,7 +419,7 @@ h1 {
   text-align: center;
 }
 .profile_view .profile_view_container .profile_head .ranking_name {
-  font-size: 13px;
+  font-size: 15px;
   color: #bc4a77;
   text-align: center;
   padding-top: 2px;
@@ -416,7 +439,9 @@ h1 {
   background-position: 20px center;
 }
 .profile_view .profile_view_container .profile_stats .stat p {
-  padding: 23px 20px;
+  padding: 23px 10px;
+  font-size: 18px;
+  font-weight: normal;
 }
 .profile_view .profile_view_container .profile_stats .wins {
   background-image: url("../media/image/wins_icon.png");
@@ -663,3 +688,5 @@ h1 {
 .shipView .ship_view.ship_bg_4.vertical {
   background-image: url("../media/image/ships/ship_4_v.png");
 }
+
+/*# sourceMappingURL=main.css.map */

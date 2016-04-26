@@ -42,7 +42,8 @@
         p 
         { 
             display: inline-block;
-            color: #c34f7d;
+            font-weight: bold;
+            color: rgba(195,79,125, 0.9);
             font-size: 110px;
             width: 100%;
             text-align: center;
@@ -51,8 +52,16 @@
             margin-top:80px;
             z-index:2;
             
-            &:active {
-                color:#972c67;
+            &:active 
+            {
+                color: rgba(151,44,103, 0.9);
+            }
+            
+            &:hover
+            {
+                -webkit-transition: color 0.3s; /* Safari */
+                transition: color 0.3s;
+                color: rgba(151,44,103, 0.9);
             }
         }
     }
