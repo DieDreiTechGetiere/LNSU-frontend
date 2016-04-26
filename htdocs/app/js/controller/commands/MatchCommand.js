@@ -17,18 +17,27 @@ define(function(require)
          */
         deleteMatch: function()
         {
-            app.matchModel.destroy({
-                url: settings.backendBaseUrl + "game/search?id=" + app.matchModel.get("id"),
-                
-                success: function(data)
-                {
-                    console.log("delete success: ", data);
-                },
-                error: function(error)
-                {
-                    console.log("delete error: ", error);
-                }
-            });
+            try 
+            {
+                app.matchModel.destroy({
+                    url: settings.backendBaseUrl + "game/search?id=" + app.matchModel.get("id"),
+                    
+                    success: function(data)
+                    {
+                        console.log("delete success: ", data);
+                    },
+                    error: function(error)
+                    {
+                        console.log("delete error: ", error);
+                    }
+                });
+            }
+            catch(err) 
+            {
+                //no matchModel instanze yet
+            }
+            
+            
         },
         
         
@@ -50,7 +59,7 @@ define(function(require)
          */
         startAttack: function()
         {
-            console.log("start attack");
+            app.view.initAttackView();
         },
         
         

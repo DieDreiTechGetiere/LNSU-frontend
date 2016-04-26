@@ -112,7 +112,6 @@ define(function(require){
         },
 
         
-        
         /**
          * 
          */
@@ -122,6 +121,18 @@ define(function(require){
         },
 
 
+        /**
+         * 
+         */
+        initAttackView: function()
+        {
+            if(this.model.get("contentRegion") === "matchView")
+            {
+                this.viewInstances[this.model.get("contentRegion")].initAttackMode();
+            }
+        },
+        
+        
         /* @Finalize ------------------------------------------------------------------------- */
 
         finalize: function ()

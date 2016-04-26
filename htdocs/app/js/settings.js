@@ -1,7 +1,7 @@
 
 define(function(require)
 {
-    var underscopre = require("underscore");
+    var underscore = require("underscore");
         
     var appEnvironments = {
         local: "local",
@@ -11,7 +11,6 @@ define(function(require)
 
     var defaultConfig = {
         appEnvironment: "dev",
-     //   backendBaseUrl: "http://lnsubackend.jakobklamser.net/",
         release: false,
         pushState: false, //history.pushState
         runTests: false,

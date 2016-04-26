@@ -28,7 +28,7 @@ define(function(require)
             "square.png",
             "steuerrad.png",
             "wins_icon.png",
-            "moewe.pmg",
+            "moewe.png",
             "fisch.png",
             "dreizack.png",
             

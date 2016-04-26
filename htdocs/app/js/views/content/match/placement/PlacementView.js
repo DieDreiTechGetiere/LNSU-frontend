@@ -5,6 +5,7 @@ define(function(require){
     var Backbone = require("backbone");
     var Marionette = require("marionette");
     var notification = require("notification");
+    var settings = require("settings");
     
     var PlacementView = Backbone.Marionette.ItemView.extend({
         
@@ -87,15 +88,15 @@ define(function(require){
         initShips: function()
         {
             var self = this;
-            this.shipsView = new Backbone.Marionette.CollectionView({
+            this.viewInstances[this.views.SHIPS] = new Backbone.Marionette.CollectionView({
                 id: "shipsView",
                 className: "ships_view",
                 collection: self.model.get("ships"),
                 childView: app.mapper.getViewFor(self.views.SHIPS)
             });
-            $(this.ui.shipsRegion).html(this.shipsView.render().el);
+            $(this.ui.shipsRegion).html(this.viewInstances[this.views.SHIPS].render().el);
             
-            this.shipsView.children.each(function(view){
+            this.viewInstances[this.views.SHIPS].children.each(function(view){
                 view.finalize();
             });
         },
@@ -110,9 +111,7 @@ define(function(require){
         },
         
         
-        
         /* @Methods -------------------------------------------------------------------------- */
-        
         
         initDraggAndDrop: function()
         {
@@ -285,7 +284,8 @@ define(function(require){
                     )
                     {
                         collision = true;
-                        return false;
+                        return true;
+                        
                     }
                     else
                     {
@@ -311,11 +311,24 @@ define(function(require){
             
             if(allShipsPlaced == true)
             {
-                this.saveShips();
-                console.log("gridArray: ", this.model.get("gridArray"));
+                if(this.checkForShipSpacing() == true)
+                {
+                    this.saveShips();
+                    console.log("gridArray: ", this.model.get("gridArray"));
+                }
+                else
+                {
+                    alert("Now all ships are placed correctly.");
+                }
             }
             else
             {
+                if(settings.appEnvironment == "dev")
+                {
+                    //to initialize attack view immediately
+                    app.execute(notification.command.match.ATTACK);
+                    return false;
+                }
                 alert("Please place all ships before saving!");
             }
         },
@@ -366,6 +379,21 @@ define(function(require){
         
         /* @Finalize ------------------------------------------------------------------------- */
         
+        /**
+         * delete/destroy all childviews
+         */
+        onBeforeDestroy: function()
+        {
+            for(e in this.viewInstances)
+            {
+                this.viewInstances[e].destroy();
+            }
+        },
+        
+        
+        /**
+         * 
+         */
         finalize: function()
         {
             this.initItemViews();

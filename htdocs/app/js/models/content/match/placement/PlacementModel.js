@@ -100,6 +100,7 @@ define(function(require)
                 success: function(data, response)
                 {
                     console.log("send ships to server success: ", data, response);
+                    
                     if(response.OpponentReady == false)
                     {
                         self.initOpponentReadyPolling();

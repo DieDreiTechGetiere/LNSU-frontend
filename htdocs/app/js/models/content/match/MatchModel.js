@@ -8,6 +8,7 @@ define(function(require)
     var settings = require("settings");
     
     var PlacementModel = require("models/content/match/placement/PlacementModel");
+    var AttackModel = require("models/content/match/attack/AttackModel");
     
     var MatchModel = Backbone.Model.extend({
         baseUrl: settings.backendBaseUrl + "game",
@@ -26,6 +27,7 @@ define(function(require)
         initSubmodels: function()
         {
             this.set("placement", new PlacementModel());
+            this.set("attack", new AttackModel());
         }
         
     });

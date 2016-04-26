@@ -14,7 +14,8 @@ define(function(require)
          */
         views: {
             GAME: "gameView",
-            PLACEMENT: "placementView"
+            PLACEMENT: "placementView",
+            ATTACK: "attackView"
         },
         /**
          * 
@@ -28,7 +29,6 @@ define(function(require)
          * 
          */
         ui: {
-            placement: ".placement_region",
             game: ".game_region"
         },
 
@@ -71,12 +71,34 @@ define(function(require)
                 className: "placement_view",
                 model: this.model.get("placement")
             });
-            $(this.ui.placement).html(this.viewInstances[this.views.PLACEMENT].el);
+            $(this.ui.game).html(this.viewInstances[this.views.PLACEMENT].el);
             this.viewInstances[this.views.PLACEMENT].finalize();
         },
         
+        
         /* @Methods -------------------------------------------------------------------------- */
         
+        initAttackMode: function()
+        {
+            this.viewInstances[this.views.PLACEMENT].destroy();
+            this.initAttackView();
+        },
+        
+        
+        /**
+         * 
+         */
+        initAttackView: function()
+        {
+            var AttackView = app.mapper.getViewFor(this.views.ATTACK);
+            this.viewInstances[this.views.ATTACK] = new AttackView({
+                id: this.views.ATTACK,
+                className: "attack_view",
+                model: this.model.get("attack")
+            });
+            $(this.ui.game).html(this.viewInstances[this.views.ATTACK].el);
+            this.viewInstances[this.views.ATTACK].finalize();
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */

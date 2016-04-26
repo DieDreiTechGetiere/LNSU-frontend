@@ -7,6 +7,7 @@ define(function(require)
 {
     var app = require("app");
     var UserModel = require("models/UserModel");
+    var notification = require("notification");
 
     var ApplicationCommand = {
         //@methods----------------------------------------------------------------------
@@ -33,11 +34,6 @@ define(function(require)
             app.storageModel.save("role", parseInt(userData.role));
             app.storageModel.save("logginTime", now.toUTCString());
             
-           // document.cookie = "userId=" + userData.id + '; expires=' + now.toUTCString() + "; path=/";
-           // document.cookie = "ingameName=" + userData.ingameName + '; expires=' + now.toUTCString() + "; path=/";
-           // document.cookie = "loginName=" + userData.loginName + '; expires=' + now.toUTCString() + "; path=/";
-           // document.cookie = "role=" + parseInt(userData.role) + '; expires=' + now.toUTCString() + "; path=/";
-            
             app.model.get("dashboard").fetchDashboardData();
         },
 
@@ -57,6 +53,7 @@ define(function(require)
         logOut: function()
         {
             app.storageModel.destroy();
+            app.execute(notification.command.match.DELETE);
             location.reload();
         }
     };

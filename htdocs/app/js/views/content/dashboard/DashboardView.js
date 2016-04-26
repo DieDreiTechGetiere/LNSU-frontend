@@ -124,6 +124,11 @@ define(function(require){
                 childView: app.mapper.getViewFor(self.views.RECENTGAMES)
             });
             $(this.ui.recentgames).html(this.recentGamesView.render().el);
+
+            if(this.recentGamesView.children.length <= 0)
+            {
+                $(this.ui.recentgames).html("<p class='no_games'>you haven´t played yet, noob</p>");
+            }
         },
         
         

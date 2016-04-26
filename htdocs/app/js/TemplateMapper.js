@@ -29,6 +29,7 @@ define(function(require)
     var PlacementView = require("views/content/match/placement/PlacementView");
     var InfoView = require("views/content/match/placement/info/InfoView");
     var ShipView = require("views/content/match/placement/ships/ShipView");
+    var AttackView = require("views/content/match/attack/AttackView");
     
     // MODELS
 
@@ -85,6 +86,9 @@ define(function(require)
         },
         shipView: {
             defaultView: ShipView
+        },
+        attackView: {
+            defaultView: AttackView
         }
         
     };
