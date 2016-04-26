@@ -256,9 +256,9 @@ define(function(require){
         checkForShipCollision: function($ship)
         {
             var collision;
-            _.each($(".shipView.dropped"), function(item)
+            $.each($(".shipView.dropped"), function(item)
             {
-                var $item = $(item);
+                var $item = $(this);
                 
                 if(!$item.hasClass("ui-draggable-dragging"))
                 {
@@ -284,8 +284,7 @@ define(function(require){
                     )
                     {
                         collision = true;
-                        return true;
-                        
+                        return false;
                     }
                     else
                     {
