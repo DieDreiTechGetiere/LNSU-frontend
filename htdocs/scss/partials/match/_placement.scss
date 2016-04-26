@@ -14,39 +14,23 @@
             margin-top: 44px;
             height: 720px;
             width: 720px;
-            //background-color:red;
-            background: url('../media/image/square.png') repeat;
+            outline: 1px solid #677ba4;
             
             -webkit-box-shadow: $boxShadow;
             -moz-box-shadow: $boxShadow;
             box-shadow: $boxShadow;
         }
         
-        .info_region
+        .save_ships
         {
-            width: 478px;
-            height: 708px;
-            margin-top: 45px;
-            margin-left: 61px; 
-            //left 14 because of the grid, saving ships after placing 
+            margin:0;
+        }
+        
+        .ships_region
+        {
             position: relative;
-            background-color:$dashboardBG;
-            
-            -webkit-box-shadow: $boxShadow;
-            -moz-box-shadow: $boxShadow;
-            box-shadow: $boxShadow;
-            
-            .save_ships
-            {
-                margin:0;
-            }
-            
-            .ships_region
-            {
-                position: relative;
-                height: 430px;
-                width:325px;
-            }
+            height: 430px;
+            width:325px;
         }
     }
 }

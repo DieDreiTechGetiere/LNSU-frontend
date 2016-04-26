@@ -28,8 +28,11 @@ define(function(require)
     var GridView = require("views/content/match/grid/GridView");
     var PlacementView = require("views/content/match/placement/PlacementView");
     var InfoView = require("views/content/match/placement/info/InfoView");
-    var ShipView = require("views/content/match/placement/ships/ShipView");
+    var ShipView = require("views/content/match/ships/ShipView");
     var AttackView = require("views/content/match/attack/AttackView");
+    var OpponentFieldView = require("views/content/match/attack/fields/OpponentFieldView");
+    var UserFieldView = require("views/content/match/attack/fields/UserFieldView");
+    var ControlsView = require("views/content/match/attack/controls/ControlsView");
     
     // MODELS
 
@@ -89,6 +92,15 @@ define(function(require)
         },
         attackView: {
             defaultView: AttackView
+        },
+        opponentFieldView: {
+            defaultView: OpponentFieldView
+        },
+        userFieldView: {
+            defaultView: UserFieldView
+        },
+        controlsView: {
+            defaultView: ControlsView
         }
         
     };

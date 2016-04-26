@@ -5,6 +5,7 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var Marionette = require("marionette");
+    var notification = require("notification");
     
     var ControlsView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
@@ -24,7 +25,7 @@ define(function(require){
          * 
          */
         ui: {
-            
+            switchBtns: ".button",
         },
 
 
@@ -38,6 +39,10 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        switchFields: function(e)
+        {
+            app.vent.trigger(notification.event.SWITCH_GAME_FIELDS, "#" + $(e.currentTarget).attr('class').split(' ')[1]);
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */
@@ -66,7 +71,7 @@ define(function(require){
         
         
         events: {
-            
+            "click @ui.switchBtns": "switchFields"
         }
     });
     return ControlsView;

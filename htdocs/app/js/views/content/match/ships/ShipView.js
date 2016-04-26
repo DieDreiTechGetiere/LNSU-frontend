@@ -16,7 +16,7 @@ define(function(require)
         /**
          * 
          */
-        template: require("text!views/content/match/placement/ships/shipView.html"),
+        template: require("text!views/content/match/ships/shipView.html"),
         /**
          * 
          */

@@ -37,7 +37,7 @@ define(function(require){
         /**
          * 
          */
-        viewsToBeReady: 1,
+        viewsToBeReady: 2,
 
 
         /* @Initialize ----------------------------------------------------------------------- */
@@ -137,9 +137,9 @@ define(function(require){
 
         finalize: function ()
         {
-            //app.global.hideLoader();
             app.log.info("application ready");
             app.model.set("appReady", true);
+            app.global.hideLoader();
         },
 
 

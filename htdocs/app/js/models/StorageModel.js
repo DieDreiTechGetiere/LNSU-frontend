@@ -51,7 +51,7 @@ define(function(require){
                 {
                     Backbone.history.stop();
                     Backbone.history.start();
-                    console.log("user not logged in");
+                    app.log.info("user is not logged in yet");
                     return false;
                 }
                 else
@@ -61,7 +61,7 @@ define(function(require){
             }
             else
             {
-                console.log("user not logged in");
+                app.log.info("user is not logged in yet");
                 return false;
             }
         },

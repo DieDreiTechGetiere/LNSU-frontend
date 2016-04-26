@@ -5,6 +5,7 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var Marionette = require("marionette");
+    var notification = require("notification");
     
     var OpponentFieldView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
@@ -36,6 +37,24 @@ define(function(require){
         },
         
         
+        /**
+         * 
+         */
+        initSubViews: function()
+        {
+            this.initGridView();
+        },
+        
+        
+        /**
+         * 
+         */
+        initGridView: function()
+        {
+            app.execute(notification.command.match.INIT_GRID, ".opponent_field", "opponentField");
+        },
+        
+        
         /* @Methods -------------------------------------------------------------------------- */
         
         
@@ -44,7 +63,7 @@ define(function(require){
         
         finalize: function()
         {
-            
+            this.initSubViews();
         },
         
         

@@ -5,6 +5,7 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var Marionette = require("marionette");
+    var notification = require("notification");
     
     var UserFieldView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
@@ -24,7 +25,7 @@ define(function(require){
          * 
          */
         ui: {
-            
+            field: ".user_field"
         },
 
 
@@ -36,6 +37,24 @@ define(function(require){
         },
         
         
+        /**
+         * 
+         */
+        initSubViews: function()
+        {
+            this.initGridView();
+        },
+        
+        
+        /**
+         * 
+         */
+        initGridView: function()
+        {
+            app.execute(notification.command.match.INIT_GRID, ".user_field", "userField");
+        },
+        
+        
         /* @Methods -------------------------------------------------------------------------- */
         
         
@@ -44,7 +63,7 @@ define(function(require){
         
         finalize: function()
         {
-            
+            this.initSubViews();
         },
         
         

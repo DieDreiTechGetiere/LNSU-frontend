@@ -34,6 +34,7 @@ define({
         SECTION_READY: "sectionReady:event",
         SHOW_ADMIN: "showAdminView:event",
         FETCH_ADMIN: "fetchAdmin:event",
-        CLOSE_ADMIN: "closeAdminView:event"
+        CLOSE_ADMIN: "closeAdminView:event",
+        SWITCH_GAME_FIELDS: "switchGameFields:event"
     }
 });

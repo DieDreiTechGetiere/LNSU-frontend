@@ -7,5 +7,19 @@
         width:1366px;
         height:798px;
         background-image: url("../media/image/lnsu_background.jpg");
+        
+        .controls_field
+        {
+            width: 478px;
+            height: 708px;
+            margin-top: 45px;
+            margin-left: 61px;
+            position: relative;
+            background-color:$dashboardBG;
+            
+            -webkit-box-shadow: $boxShadow;
+            -moz-box-shadow: $boxShadow;
+            box-shadow: $boxShadow;
+        }
     }
 }

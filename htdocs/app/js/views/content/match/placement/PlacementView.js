@@ -74,7 +74,7 @@ define(function(require){
             var InfoView = app.mapper.getViewFor(this.views.INFO);
             this.viewInstances[this.views.INFO] = new InfoView({
                 id: this.views.INFO,
-                className: "info_view",
+                className: "info_view controls_field",
                 model: this.model.get("info")
             });
             $(this.ui.info).html(this.viewInstances[this.views.INFO].el);

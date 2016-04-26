@@ -19,7 +19,6 @@ define(function (require)
 		*/
 		initialize: function(options)
 		{
-            console.log("init preloadController");
 			this.startQueue = new createjs.LoadQueue();
 			this.startQueue.setMaxConnections(100);
 			this.startQueue.on("fileload", this.onStartQueueFileload, this);
@@ -65,9 +64,8 @@ define(function (require)
 		*/
 		onStartQueueComplete: function(event)
 		{
-            console.log("onStartQueueComplete");
-            app.global.hideLoader();
-			//app.vent.trigger(notification.event.application.ASSETS_READY);
+            app.log.info("startQueue loaded");
+			app.vent.trigger(notification.event.SECTION_READY);
 		},
 
 		/**

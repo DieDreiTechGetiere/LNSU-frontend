@@ -4,6 +4,7 @@ define(function(require){
     var app = require("app");
     var Backbone = require("backbone");
     var Marionette = require("marionette");
+    var notification = require("notification");
     
     var AttackView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
@@ -16,9 +17,13 @@ define(function(require){
         /**
          * 
          */
+        viewInstances: new Array(),
+        /**
+         * 
+         */
         views: {
-            OPPONENTFIELD: "gridView",
-            USERFIELD: "gridView",
+            OPPONENTFIELD: "opponentFieldView",
+            USERFIELD: "userFieldView",
             CONTROLS: "controlsView"
         },
         /**
@@ -34,6 +39,7 @@ define(function(require){
 
         initialize: function()
         {
+            this.listenTo(app.vent, notification.event.SWITCH_GAME_FIELDS, this.switchGameFields, this);
             this.render();
         },
         
@@ -43,12 +49,85 @@ define(function(require){
          */
         initSubViews: function()
         {
+            this.initOpponentField();
+            this.initUserField();
+            this.initControlsView();
             
+            this.whatGridFirst();
+        },
+        
+        
+        /**
+         * 
+         */
+        whatGridFirst: function()
+        {
+            $("#" + this.views.USERFIELD).css("visibility", "visible");
+        },
+        
+        
+        /**
+         * 
+         */
+        initOpponentField: function()
+        {
+            var OpponentField = app.mapper.getViewFor(this.views.OPPONENTFIELD);
+            this.viewInstances[this.views.OPPONENTFIELD] = new OpponentField({
+                id: this.views.OPPONENTFIELD,
+                className: "opponent_field_view",
+                model: this.model.get("opponentField")
+            });
+            $(this.ui.fields).append(this.viewInstances[this.views.OPPONENTFIELD].$el);
+            this.viewInstances[this.views.OPPONENTFIELD].finalize();
+        },
+        
+        
+        /**
+         * 
+         */
+        initUserField: function()
+        {
+            var UserFieldView = app.mapper.getViewFor(this.views.USERFIELD);
+            this.viewInstances[this.views.USERFIELD] = new UserFieldView({
+                id: this.views.USERFIELD,
+                className: "user_field_view",
+                model: this.model.get("userField")
+            });
+            $(this.ui.fields).append(this.viewInstances[this.views.USERFIELD].$el);
+            this.viewInstances[this.views.USERFIELD].finalize();
+        },
+        
+        
+        /**
+         * 
+         */
+        initControlsView: function()
+        {
+            var ControlsView = app.mapper.getViewFor(this.views.CONTROLS);
+            this.viewInstances[this.views.CONTROLS] = new ControlsView({
+                id: this.views.CONTROLS,
+                className: "controls_view",
+                model: this.model.get("controls")
+            });
+            $(this.ui.controls).html(this.viewInstances[this.views.CONTROLS].el);
+            this.viewInstances[this.views.CONTROLS].finalize();
         },
         
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        switchGameFields: function(activeField)
+        {
+            //TODO why is this switch so bullshit?
+            passiveField = activeField == "#opponentFieldView" ? "#userFieldView" : "#opponentFieldView";
+            console.log("switch: ", activeField);
+            console.log("switch passive: ", passiveField);
+            $(passiveField).fadeOut(300, function()
+                {
+                    console.log("callback ", $(activeField));
+                    $(activeField).fadeIn( 300 );
+                });
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */

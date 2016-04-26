@@ -11,7 +11,10 @@ define(function(require)
 
     var MatchCommand = {
         //@methods----------------------------------------------------------------------
-
+        
+        gridView: undefined,
+        
+        
         /**
          *
          */
@@ -66,15 +69,17 @@ define(function(require)
         /**
          * @param container
          */
-        initGridView: function(container)
+        initGridView: function(container, classId)
         {
+            var gridViewId = classId == undefined ? "gridView" : classId;
+            
             var GridView = app.mapper.getViewFor("gridView");
-            var gridView = new GridView({
-                id: "gridView",
+            this.gridView = new GridView({
+                id: gridViewId,
                 className: "grid_view"
             });
-            $(container).html(gridView.el);
-            gridView.finalize();
+            $(container).html(this.gridView.el);
+            this.gridView.finalize();
         },
         
     };
