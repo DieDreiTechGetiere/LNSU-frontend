@@ -8,6 +8,7 @@ define(function(require)
 
     // VIEWS
     var ApplicationView = require("views/ApplicationView");
+    var OverlayView = require("views/content/overlay/OverlayView");
     
     // login
     var LoginView = require("views/content/signin/login/LoginView");
@@ -40,6 +41,9 @@ define(function(require)
     var mapper = {
         applicationView: {
             defaultView: ApplicationView
+        },
+        overlayView: {
+            defaultView: OverlayView
         },
         loginView: {
             defaultView: LoginView

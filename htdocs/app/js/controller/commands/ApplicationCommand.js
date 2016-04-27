@@ -55,6 +55,26 @@ define(function(require)
             app.storageModel.destroy();
             app.execute(notification.command.match.DELETE);
             location.reload();
+        },
+        
+        
+        /**
+         * 
+         */
+        openOverlay: function(overlay)
+        {
+            var viewClass = app.mapper.getViewFor("overlayView");
+            var model = app.model.get("overlays").getOverlayContentModel(overlay);
+            
+            var viewData = 
+            {
+                viewClass: viewClass,
+                viewModel: model,
+                id: overlay,
+                className: "overlay_view"
+            };
+            
+            app.model.set("overlayRegion", viewData);
         }
     };
     return ApplicationCommand;

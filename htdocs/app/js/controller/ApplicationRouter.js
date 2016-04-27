@@ -50,18 +50,7 @@ define(function(require){
          */
         warnUserToLeaveMatch: function()
         {
-            if (confirm('if you leave your match now, you will automatically lose!'))
-            {
-                // wenn ok geklickt
-                console.log("delete match");
-                app.execute(notification.command.match.DELETE);
-                app.execute(notification.command.application.LOGOUT);
-            }
-            else
-            {
-                // wenn abbruch geklickt
-                app.router.navigate(notification.router.MATCH);
-            }
+            app.execute(notification.command.application.OPEN_OVERLAY, "leaveMatchWarning");
         },
         
         

@@ -77,6 +77,7 @@ define(function(require)
             app.commands.setHandler(notification.command.application.LOGIN_SUCCESS, ApplicationCommand.handleLoginSuccess);
             app.commands.setHandler(notification.command.application.INIT_DASHBOARD, ApplicationCommand.initDashboardView);
             app.commands.setHandler(notification.command.application.LOGOUT, ApplicationCommand.logOut);
+            app.commands.setHandler(notification.command.application.OPEN_OVERLAY, ApplicationCommand.openOverlay);
             
             //Match Command
             app.commands.setHandler(notification.command.match.DELETE, MatchCommand.deleteMatch);

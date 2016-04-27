@@ -8,11 +8,12 @@
     .game_fields
     {
         margin-left: 47px;
-        margin-top: 44px;
+        margin-top: 40px;
         height: 720px;
         width: 720px;
         display:flex;
         position: relative;
+        outline: 1px solid #677ba4;
         
         -webkit-box-shadow: $boxShadow;
         -moz-box-shadow: $boxShadow;
@@ -23,6 +24,16 @@
         {
             position: absolute;
             visibility: hidden;
+        }
+    }
+    
+    .controls
+    {
+        padding:25px;
+        
+        .button
+        {
+            display:inline-block;
         }
     }
 }

@@ -1,11 +1,14 @@
 html
 {
-	
+	width:100%;
+    height:100%;
+    padding-top:50px;
 }
 
 body
 {
 	width:100%;
+    height:100%;
 	position: relative;
     font-family: 'Montserrat', Helvetica, Arial;
     font-weight:normal;
@@ -88,8 +91,14 @@ body
     cursor: pointer;
     border-radius: $b-rad;
     
-    &.active {
-        background-color: $inactive;
+    &.passive 
+    {
+        background-color: $btnbg-inactive;
+    }
+    
+    &:hover
+    {
+        background-color:$magenta;
     }
 }
 
@@ -102,7 +111,6 @@ body
     min-height:320px;
     position:relative;
     z-index:99;
-    padding-top:50px;
     margin:auto;
     z-index: 5;
     width:1366px;

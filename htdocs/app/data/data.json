@@ -40,5 +40,39 @@
                 "label": "Register Now"
             }
         }
+    },
+    "overlays":
+    {
+        "attackInfo": 
+        {
+            "headline": "How Shit Works!",
+            "message": "this is how you play our game..",
+            "icon": "info_icon.png"
+        },
+        "error": 
+        {
+            "headline": "Sorry Bro...",
+            "message": "There has been an server error... We suck at programming.",
+            "icon": "error_icon.png"
+        },
+        "leaveMatchWarning": 
+        {
+            "headline": "You are about to leave the match!",
+            "message": "If you leave the match now, you gonna lose immediately!<br><br>Are you sure?",
+            "icon": "warning_icon.png",
+            "confirm": "leaveMatch"
+        },
+        "cheating":
+        {
+            "headline": "You are Cheating! Fuck off!",
+            "message": "Congratulations, you managed to cheat. Your Problem is, we know about it.<br>You automatically lost this game.!",
+            "icon": "error_icon.png"
+        },
+        "placeAllShips":
+        {
+            "headline": "Please place all ships before saving!",
+            "message": "Since the rules say, you need to place all ships...<br>PLACE THEM!",
+            "icon": "info_icon.png"
+        }
     }
 }

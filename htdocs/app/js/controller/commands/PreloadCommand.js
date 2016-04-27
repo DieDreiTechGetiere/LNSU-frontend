@@ -32,6 +32,10 @@ define(function(require)
             "fisch.png",
             "dreizack.png",
             
+            "overlay/error_icon.png",
+            "overlay/info_icon.png",
+            "overlay/warning_icon.png",
+            
             "profilepictures/flottenadmiral.png",
             "profilepictures/fregattenkapitaen.png",
             "profilepictures/hauptbootsmann.png",

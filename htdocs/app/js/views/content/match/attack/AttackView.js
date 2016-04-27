@@ -63,6 +63,7 @@ define(function(require){
         whatGridFirst: function()
         {
             $("#" + this.views.USERFIELD).css("visibility", "visible");
+            $(".button." + this.views.USERFIELD).removeClass("passive");
         },
         
         
@@ -118,15 +119,11 @@ define(function(require){
         
         switchGameFields: function(activeField)
         {
-            //TODO why is this switch so bullshit?
             passiveField = activeField == "#opponentFieldView" ? "#userFieldView" : "#opponentFieldView";
-            console.log("switch: ", activeField);
-            console.log("switch passive: ", passiveField);
-            $(passiveField).fadeOut(300, function()
-                {
-                    console.log("callback ", $(activeField));
-                    $(activeField).fadeIn( 300 );
-                });
+            
+            TweenMax.to($(passiveField), 0.3, {autoAlpha: 0, onComplete: function(){
+                TweenMax.to($(activeField), 0.3, {autoAlpha: 1});
+            }});
         },
         
         

@@ -75,7 +75,8 @@ define(function(require)
             }
             else
             {
-                alert("you are cheating - fuck off!");
+                app.execute(notification.command.application.OPEN_OVERLAY, "cheating");
+                app.execute(notificationcommand.match.DELETE);
             }
         },
         

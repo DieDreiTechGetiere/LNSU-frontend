@@ -7,10 +7,10 @@ define(function(require){
     var Marionette = require("marionette");
     var notification = require("notification");
     
-    var ControlsView = Backbone.Marionette.ItemView.extend({
+    var OverlayView = Backbone.Marionette.ItemView.extend({
         /* @Properties ----------------------------------------------------------------------- */
         
-        template: require("text!views/content/match/attack/controls/controlsView.html"),
+        template: require("text!views/content/overlay/overlayView.html"),
         /**
          * 
          */
@@ -25,7 +25,8 @@ define(function(require){
          * 
          */
         ui: {
-            switchBtns: ".button",
+            closeBtn: ".overlay_close_icon",
+            button: ".button"
         },
 
 
@@ -39,11 +40,30 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
-        switchFields: function(e)
+        closeOverlay: function()
         {
-            app.vent.trigger(notification.event.SWITCH_GAME_FIELDS, "#" + $(e.currentTarget).attr('class').split(' ')[1]);
-            this.$(".button").addClass("passive");
-            $(e.currentTarget).removeClass("passive");
+            app.model.set("overlayRegion", undefined);
+            this.destroy();
+        },
+        
+        
+        /**
+         * 
+         */
+        leaveMatchWarning: function(e)
+        {
+            if ($(e.currentTarget).hasClass("confirm"))
+            {
+                // wenn ok geklickt
+                console.log("delete match");
+                app.execute(notification.command.match.DELETE);
+                app.execute(notification.command.application.LOGOUT);
+            }
+            else
+            {
+                // wenn abbruch geklickt
+                app.router.navigate(notification.router.MATCH);
+            }
         },
         
         
@@ -73,8 +93,9 @@ define(function(require){
         
         
         events: {
-            "click @ui.switchBtns": "switchFields"
+            "click @ui.closeBtn": "closeOverlay",
+            "click @ui.button": "leaveMatchWarning"
         }
     });
-    return ControlsView;
+    return OverlayView;
 });

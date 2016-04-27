@@ -42,6 +42,8 @@
 	</div>
 	<div class="main-stage">
         <div id="main_region"></div>
+        <div id="overlay_region"></div>
     </div>
+    
 </body>
 </html>

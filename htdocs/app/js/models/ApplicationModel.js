@@ -10,12 +10,14 @@ define(function(require){
 
     var SigninModel = require("SigninModel");
     var DashboardModel = require("models/content/dashboard/DashboardModel");
+    var OverlaysModel = require("models/content/overlay/OverlayModel");
 
     var ApplicationModel = Backbone.Model.extend
     ({
         defaults: {
             appReady: false,
-            contentRegion: undefined
+            contentRegion: undefined,
+            overlayRegion: undefined
         },
         
         
@@ -37,6 +39,7 @@ define(function(require){
         {
             this.set("signin", new SigninModel(data.signin));
             this.set("dashboard", new DashboardModel());
+            this.set("overlays", new OverlaysModel(data.overlays));
         },
         
         

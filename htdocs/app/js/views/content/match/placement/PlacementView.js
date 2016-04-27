@@ -310,25 +310,18 @@ define(function(require){
             
             if(allShipsPlaced == true)
             {
-                if(this.checkForShipSpacing() == true)
-                {
-                    this.saveShips();
-                    console.log("gridArray: ", this.model.get("gridArray"));
-                }
-                else
-                {
-                    alert("Now all ships are placed correctly.");
-                }
+                this.saveShips();
+                console.log("gridArray: ", this.model.get("gridArray"));
             }
             else
             {
-                if(settings.appEnvironment == "dev")
+                if(settings.appEnvironment !== "dev")
                 {
                     //to initialize attack view immediately
                     app.execute(notification.command.match.ATTACK);
                     return false;
                 }
-                alert("Please place all ships before saving!");
+                app.execute(notification.command.application.OPEN_OVERLAY, "placeAllShips");
             }
         },
         

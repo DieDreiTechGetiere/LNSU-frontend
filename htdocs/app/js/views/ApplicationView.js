@@ -19,7 +19,8 @@ define(function(require){
          *
          */
         regions: {
-            mainRegion: "#main_region"
+            mainRegion: "#main_region",
+            overlayRegion: "#overlay_region"
         },
         views: {
             SIGNIN: "signinView",
@@ -56,7 +57,8 @@ define(function(require){
          */
         initViewListeners: function()
         {
-            this.listenTo(this.model, "change:contentRegion", this.showRegionView, this);
+            this.listenTo(this.model, "change:contentRegion", this.showMainRegionView, this);
+            this.listenTo(this.model, "change:overlayRegion", this.showOverlayRegion, this);
             this.listenTo(app.vent, notification.event.SECTION_READY, this.countSectionsReady);
         },
 
@@ -115,9 +117,35 @@ define(function(require){
         /**
          * 
          */
-        showRegionView: function()
+        showMainRegionView: function()
         {
             this.mainRegion.show(this.viewInstances[this.model.get("contentRegion")], { preventDestroy: true });
+            //TODO replace all alerts with overlays!!!!!
+            //app.execute(notification.command.application.OPEN_OVERLAY, "leaveMatchWarning");
+        },
+        
+        
+        /**
+         * 
+         */
+        showOverlayRegion: function(appModel, viewData)
+        {
+            if(app.model.get("overlayRegion") != undefined)
+            {
+                $("#overlay_region").css("display", "block");
+                var view = new viewData
+                            .viewClass({
+                                id: viewData.id,
+                                model: viewData.viewModel,
+                                className: viewData.className
+                            });
+                this.overlayRegion.show(view);
+            }
+            else
+            {
+                this.overlayRegion.empty();
+                $("#overlay_region").css("display", "none");
+            }
         },
 
 

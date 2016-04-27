@@ -1,8 +1,4 @@
 
-/**
- *  TODO : style ships, get the draggable working!
- */
-
 define(function(require)
 {
     var app = require("app");
