@@ -311,7 +311,7 @@ define(function(require){
             if(allShipsPlaced == true)
             {
                 this.saveShips();
-                console.log("gridArray: ", this.model.get("gridArray"));
+                console.log("shipsArray: ", this.model.get("ships"));
             }
             else
             {

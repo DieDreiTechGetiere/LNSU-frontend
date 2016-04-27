@@ -30,8 +30,16 @@ elif [ "$1" == "js" ];then
     node r.js -o build.js
     cd ..
     
-    cp -r $SCRIPT_DIRECTORY/htdocs/app $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/app
-    cp -r $SCRIPT_DIRECTORY/htdocs/css $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/css
+    if [ "$2" == "fin" ];then
+        cp $SCRIPT_DIRECTORY/htdocs/app/js/finalize-built.js $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER
+        
+        #upload files via ftps to liveserver
+        duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend/app/js/finalize-built.js /Users/nmaier/projects/my-projects/2016/LNSU-frontend/release/$RELEASE_FOLDER/finalize-built.js
+        exit 0;
+    else
+        cp -r $SCRIPT_DIRECTORY/htdocs/app $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/app
+        cp -r $SCRIPT_DIRECTORY/htdocs/css $SCRIPT_DIRECTORY/release/$RELEASE_FOLDER/css
+    fi
     
 elif [ "$1" == "css" ];then
 

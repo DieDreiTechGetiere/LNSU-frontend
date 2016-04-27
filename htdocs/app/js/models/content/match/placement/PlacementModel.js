@@ -55,7 +55,6 @@ define(function(require)
          */
         saveShipInGridArray: function(shipData)
         {
-            console.log("shipData: ", shipData);
             if(shipData.direction === "horizontal")
             {
                 for(l = 0; l < shipData.length; l++)
@@ -101,7 +100,7 @@ define(function(require)
             {
                 success: function(data, response)
                 {
-                    console.log("send ships to server success: ", data, response);
+                    console.log("send ships to server success response: ", response);
                     
                     if(response.OpponentReady == false)
                     {
