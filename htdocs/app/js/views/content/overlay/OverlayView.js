@@ -63,6 +63,7 @@ define(function(require){
             {
                 // wenn abbruch geklickt
                 app.router.navigate(notification.router.MATCH);
+                app.model.set("overlayRegion", undefined);
             }
         },
         
