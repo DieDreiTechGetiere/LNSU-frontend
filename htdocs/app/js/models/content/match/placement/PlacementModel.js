@@ -55,6 +55,7 @@ define(function(require)
          */
         saveShipInGridArray: function(shipData)
         {
+            console.log("shipData: ", shipData);
             if(shipData.direction === "horizontal")
             {
                 for(l = 0; l < shipData.length; l++)

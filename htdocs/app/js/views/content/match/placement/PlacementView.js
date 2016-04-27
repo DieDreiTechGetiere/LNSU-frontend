@@ -364,7 +364,7 @@ define(function(require){
         {
             return $(".field").filter(function(i)
                     {
-                        return $(this).offset().top == sTop && $(this).offset().left == sLeft;
+                        return $(this).offset().top == sTop - 1 && $(this).offset().left == sLeft - 1;
                     });
         },
         
