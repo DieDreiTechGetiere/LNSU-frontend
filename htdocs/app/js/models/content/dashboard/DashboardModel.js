@@ -65,6 +65,8 @@ define(function(require){
                     error: function(error)
                     {
                         console.log("error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                        app.global.hideLoader();
                     }
                 }
             );
@@ -87,6 +89,8 @@ define(function(require){
                     error: function(error)
                     {
                         console.log("fetchAdmin error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                        app.global.hideLoader();
                     }
                 }
             );

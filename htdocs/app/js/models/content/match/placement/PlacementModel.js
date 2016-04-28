@@ -102,18 +102,30 @@ define(function(require)
                 {
                     console.log("send ships to server success response: ", response);
                     
-                    if(response.OpponentReady == false)
+                    if(response.error != undefined)
                     {
-                        self.initOpponentReadyPolling();
+                        app.execute(notification.command.application.OPEN_OVERLAY, "cheating");
+                        app.execute(notification.command.match.DELETE);
+                        app.global.hideLoader();
                     }
-                    else if(response.OpponentReady == true)
+                    else
                     {
-                        app.execute(notification.command.match.ATTACK);
+                        if(response.OpponentReady == false)
+                        {
+                            self.initOpponentReadyPolling();
+                        }
+                        else if(response.OpponentReady == true)
+                        {
+                            app.execute(notification.command.match.ATTACK);
+                        }
                     }
+                    
                 },
                 error: function(data, error)
                 {
                     console.log("send ships to server error: ", data, error);
+                    app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                    app.global.hideLoader();
                 }
             });
         },
@@ -148,6 +160,8 @@ define(function(require)
                     error: function(error)
                     {
                         console.log("error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                        app.global.hideLoader();
                     }
                 });
             }, 2000));

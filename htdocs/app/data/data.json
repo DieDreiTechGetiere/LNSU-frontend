@@ -65,7 +65,7 @@
         "cheating":
         {
             "headline": "You are Cheating! Fuck off!",
-            "message": "Congratulations, you managed to cheat. Your Problem is, we know about it.<br>You automatically lost this game.!",
+            "message": "Congratulations, you managed to cheat. Your Problem is, we know about it.<br>You automatically lost this game!",
             "icon": "error_icon.png"
         },
         "placeAllShips":

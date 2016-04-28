@@ -88,15 +88,15 @@ define(function(require){
         initShips: function()
         {
             var self = this;
-            this.viewInstances[this.views.SHIPS] = new Backbone.Marionette.CollectionView({
+            this.shipsCollection = new Backbone.Marionette.CollectionView({
                 id: "shipsView",
                 className: "ships_view",
                 collection: self.model.get("ships"),
                 childView: app.mapper.getViewFor(self.views.SHIPS)
             });
-            $(this.ui.shipsRegion).html(this.viewInstances[this.views.SHIPS].render().el);
+            $(this.ui.shipsRegion).html(this.shipsCollection.render().el);
             
-            this.viewInstances[this.views.SHIPS].children.each(function(view){
+            this.shipsCollection.children.each(function(view){
                 view.finalize();
             });
         },
@@ -308,6 +308,13 @@ define(function(require){
                 allShipsPlaced = false;
             });
             
+            if(settings.appEnvironment == "dev")
+            {
+                //to initialize attack view immediately
+                app.execute(notification.command.match.ATTACK);
+                return false;
+            }
+            
             if(allShipsPlaced == true)
             {
                 this.saveShips();
@@ -315,12 +322,6 @@ define(function(require){
             }
             else
             {
-                if(settings.appEnvironment !== "dev")
-                {
-                    //to initialize attack view immediately
-                    app.execute(notification.command.match.ATTACK);
-                    return false;
-                }
                 app.execute(notification.command.application.OPEN_OVERLAY, "placeAllShips");
             }
         },
@@ -372,10 +373,15 @@ define(function(require){
         /* @Finalize ------------------------------------------------------------------------- */
         
         /**
-         * delete/destroy all childviews
+         * delete/destroy all childviews except ships
+         * 
+         * app.placedShips saves all shipViews so we can append them
+         * to userFieldView in attack instance
          */
         onBeforeDestroy: function()
         {
+            app.placedShips = this.shipsCollection;
+            
             for(e in this.viewInstances)
             {
                 this.viewInstances[e].destroy();

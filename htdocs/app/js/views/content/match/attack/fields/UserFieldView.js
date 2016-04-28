@@ -25,7 +25,7 @@ define(function(require){
          * 
          */
         ui: {
-            field: ".user_field"
+            gamefield: ".user_field",
         },
 
 
@@ -43,6 +43,7 @@ define(function(require){
         initSubViews: function()
         {
             this.initGridView();
+            this.initUserShips();
         },
         
         
@@ -52,6 +53,15 @@ define(function(require){
         initGridView: function()
         {
             app.execute(notification.command.match.INIT_GRID, ".user_field", "userField");
+        },
+        
+        
+        /**
+         * 
+         */
+        initUserShips: function()
+        {
+            $(this.ui.gamefield).append(app.placedShips.el);
         },
         
         

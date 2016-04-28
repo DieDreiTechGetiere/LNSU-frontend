@@ -25,8 +25,9 @@ define(function(require){
          * 
          */
         ui: {
-            
+            koordinate: ".field"
         },
+        clickSample: "hit",
 
 
         /* @Initialize ----------------------------------------------------------------------- */
@@ -57,7 +58,11 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
-        
+        clickKoordinate: function(e)
+        {   
+            $(e.currentTarget).addClass(this.clickSample);
+            this.clickSample = this.clickSample == "hit" ? "water" : "hit";
+        },
         
         /* @Finalize ------------------------------------------------------------------------- */
         
@@ -85,7 +90,7 @@ define(function(require){
         
         
         events: {
-            
+            "click @ui.koordinate": "clickKoordinate"
         }
     });
     return OpponentFieldView;

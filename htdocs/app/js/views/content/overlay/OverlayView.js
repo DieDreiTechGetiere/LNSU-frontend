@@ -55,9 +55,8 @@ define(function(require){
             if ($(e.currentTarget).hasClass("confirm"))
             {
                 // wenn ok geklickt
-                console.log("delete match");
-                app.execute(notification.command.match.DELETE);
-                app.execute(notification.command.application.LOGOUT);
+                app.global.showLoader();
+                app.execute(notification.command.match.DELETE, true);
             }
             else
             {

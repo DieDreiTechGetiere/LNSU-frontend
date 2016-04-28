@@ -256,6 +256,8 @@ define(function(require){
                     error: function(error)
                     {
                         console.log("dev error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                        app.global.hideLoader();
                     }
                 });
             }

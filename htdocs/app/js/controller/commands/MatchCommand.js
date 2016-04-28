@@ -16,9 +16,9 @@ define(function(require)
         
         
         /**
-         *
+         * @param logout : boolean
          */
-        deleteMatch: function()
+        deleteMatch: function(logout)
         {
             try 
             {
@@ -28,10 +28,16 @@ define(function(require)
                     success: function(data)
                     {
                         console.log("delete success: ", data);
+                        if(logout == true)
+                        {
+                            app.execute(notification.command.application.LOGOUT);
+                        }
                     },
                     error: function(error)
                     {
                         console.log("delete error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
+                        app.global.hideLoader();
                     }
                 });
             }

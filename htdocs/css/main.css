@@ -4,7 +4,6 @@
 }
 html {
   width: 100%;
-  height: 100%;
   padding-top: 50px;
 }
 
@@ -231,6 +230,9 @@ h1 {
   padding-top: 90px;
   padding-right: 44px;
   margin-left: 215px;
+}
+#overlay_region .overlay_view .content p {
+  line-height: 23px;
 }
 #overlay_region .overlay_view .content .button {
   display: inline-block;
@@ -554,6 +556,7 @@ h1 {
   padding: 18px 0 19px 75px;
   border-top: 1px solid #eae9e8;
   position: relative;
+  background-color: #faf9f7;
 }
 .recentgames_view .recent_game_item:first-child {
   border-top: 0px;
@@ -695,9 +698,34 @@ h1 {
   width: 60px;
   height: 60px;
   background: url("../media/image/square.png") no-repeat;
+  position: relative;
 }
 .grid_view .field:hover {
   background: rgba(188, 74, 119, 0.5);
+}
+.grid_view .field.hit:before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  background-image: url("../media/image/hit_icon.png");
+}
+.grid_view .field.hit:hover {
+  background: url("../media/image/square.png") no-repeat;
+}
+.grid_view .field.water:before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  background-image: url("../media/image/water_icon.png");
+}
+.grid_view .field.water:hover {
+  background: url("../media/image/square.png") no-repeat;
 }
 
 .placement_view .placement_container {
@@ -760,6 +788,14 @@ h1 {
 }
 .shipView .ship_view.ship_bg_4.vertical {
   background-image: url("../media/image/ships/ship_4_v.png");
+}
+
+#userField + .ships_view {
+  position: absolute;
+  top: 1px;
+  width: 0;
+  height: 0;
+  right: -61px;
 }
 
 .attack_view {

@@ -11,10 +11,49 @@
         width:60px;
         height:60px;
         background: url('../media/image/square.png') no-repeat;
+        position:relative;
         
         &:hover
         {
             background: rgba(188,74,119,0.5);
+        }
+        
+        &.hit
+        {
+            &:before
+            {
+                content:"";
+                position:absolute;
+                width:60px;
+                height:60px;
+                top:0;
+                left:0;
+                background-image:url("../media/image/hit_icon.png");
+            }
+            
+            &:hover
+            {
+                background: url('../media/image/square.png') no-repeat;
+            }
+        }
+        
+        &.water
+        {
+            &:before
+            {
+                content:"";
+                position:absolute;
+                width:60px;
+                height:60px;
+                top:0;
+                left:0;
+                background-image:url("../media/image/water_icon.png");
+            }
+            
+            &:hover
+            {
+                background: url('../media/image/square.png') no-repeat;
+            }
         }
     }
 }

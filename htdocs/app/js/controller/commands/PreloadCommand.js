@@ -31,6 +31,8 @@ define(function(require)
             "moewe.png",
             "fisch.png",
             "dreizack.png",
+            "hit_icon.png",
+            "water_icon.png",
             
             "overlay/error_icon.png",
             "overlay/info_icon.png",

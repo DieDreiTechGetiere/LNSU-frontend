@@ -173,7 +173,9 @@ define(function(require)
             app.view = new ApplicationView({
                 model: app.model
             });
-            app.vent.trigger(notification.event.SECTION_READY);
+            _.defer(function(){
+                app.vent.trigger(notification.event.SECTION_READY);
+            });
         },
 
 

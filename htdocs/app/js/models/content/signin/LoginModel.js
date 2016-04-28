@@ -44,6 +44,7 @@ define(function(require){
                 {
                     app.global.hideLoader();
                     console.log("error: ", error);
+                    app.execute(notification.command.application.OPEN_OVERLAY, "error");
                 }
             })
         }

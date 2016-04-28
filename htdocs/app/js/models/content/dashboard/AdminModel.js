@@ -70,6 +70,7 @@ define(function(require){
                         app.global.hideLoader();
                         app.vent.trigger(notification.event.CLOSE_ADMIN);
                         console.log("error: ", error);
+                        app.execute(notification.command.application.OPEN_OVERLAY, "error");
                     }
                 });
             }

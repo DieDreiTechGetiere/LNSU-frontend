@@ -56,3 +56,12 @@
         }
     }
 }
+
+#userField + .ships_view 
+{
+    position: absolute;
+    top: 1px;
+    width: 0;
+    height: 0;
+    right: -61px;
+}

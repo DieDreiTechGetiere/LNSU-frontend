@@ -120,8 +120,6 @@ define(function(require){
         showMainRegionView: function()
         {
             this.mainRegion.show(this.viewInstances[this.model.get("contentRegion")], { preventDestroy: true });
-            //TODO replace all alerts with overlays!!!!!
-            //app.execute(notification.command.application.OPEN_OVERLAY, "leaveMatchWarning");
         },
         
         
