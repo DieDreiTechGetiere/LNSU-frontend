@@ -6,10 +6,17 @@ define(function(require){
     
     var UserFieldModel = Backbone.Model.extend({
         
+        defaults: 
+        {
+            
+        },
+        
         initialize: function()
         {
             
         },
+        
+        
     });
     return UserFieldModel;
 });

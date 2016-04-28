@@ -60,8 +60,17 @@ define(function(require){
         
         clickKoordinate: function(e)
         {   
+            //TODO allow only if matchModel.myTurn == true
             $(e.currentTarget).addClass(this.clickSample);
             this.clickSample = this.clickSample == "hit" ? "water" : "hit";
+            
+            var coordinates = 
+            {
+                x : $(e.currentTarget).data("x"),
+                y : $(e.currentTarget).data("y")
+            };
+            
+            this.model.set("shotCoordinates", coordinates);
         },
         
         /* @Finalize ------------------------------------------------------------------------- */

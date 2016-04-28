@@ -10,7 +10,7 @@ POST bei angriff (klick auf eine koordinate) /game
         
         
     return
-        true / false = getroffen oder nicht, bin nochmal oder nicht
+        hit = true / false = getroffen oder nicht, bin nochmal oder nicht
         valid = true / false   --> 12/12 wäre gehackt
         win = true / false   --> wenn win true, dann weiteres feld mit zB eloWin = +30
         
@@ -21,4 +21,7 @@ GET "polling" für, bin ich drann oder oder nicht? /game
         - matchID
         
     return:
-        - OpponentReady = true / false
+        - OpponentReady = true / false (bei true bin ich wieder drann)
+        WENN false:
+        hat gegner schon geschossen? Wenn ja wohin?
+        
