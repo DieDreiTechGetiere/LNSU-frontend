@@ -678,7 +678,7 @@ h1 {
 }
 .match_view .game_region .controls_field {
   width: 478px;
-  height: 708px;
+  height: 718px;
   margin-top: 41px;
   margin-left: 61px;
   position: relative;
@@ -743,13 +743,32 @@ h1 {
   -moz-box-shadow: 0px 0px 42px -12px #0e0d2a;
   box-shadow: 0px 0px 42px -12px #0e0d2a;
 }
-.placement_view .placement_container .save_ships {
-  margin: 0;
+.placement_view .placement_container .infoview_container {
+  display: flex;
 }
-.placement_view .placement_container .ships_region {
+.placement_view .placement_container .infoview_container .shipcount_region {
+  width: 120px;
+  height: 500px;
+  margin-top: 60px;
+}
+.placement_view .placement_container .infoview_container .shipcount_region .counter {
+  height: 120px;
+  width: 120px;
+}
+.placement_view .placement_container .infoview_container .shipcount_region .counter p {
+  font-size: 19px;
+  text-align: center;
+  padding-top: 31px;
+}
+.placement_view .placement_container .infoview_container .ships_region {
   position: relative;
-  height: 430px;
+  height: 500px;
   width: 325px;
+}
+.placement_view .placement_container .save_ships {
+  margin-left: 120px;
+  margin-top: 30px;
+  display: inline-block;
 }
 
 .shipView {

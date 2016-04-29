@@ -13,7 +13,7 @@ define(function(require)
          * 
          */
         views: {
-            
+            SHIPCOUNT: "shipCountView"
         },
         /**
          * 
@@ -23,7 +23,8 @@ define(function(require)
          * 
          */
         ui: {
-            saveBtn: ".save_ships"
+            saveBtn: ".save_ships",
+            shipCount: ".shipcount_region"
         },
 
 
@@ -44,6 +45,23 @@ define(function(require)
             this.listenTo(this.model, "change", this.render, this);
         },
         
+        
+        /**
+         * 
+         */
+        initViewCountView: function()
+        {
+            var ShipCountView = app.mapper.getViewFor(this.views.SHIPCOUNT);
+            this.shipCountView = new ShipCountView({
+                id: this.views.SHIPCOUNT,
+                className: "shipcount_view",
+                model: this.model.get("shipCount")
+            });
+            $(this.ui.shipCount).html(this.shipCountView.$el);
+            this.shipCountView.finalize();
+        },
+        
+        
         /* @Methods -------------------------------------------------------------------------- */
         
         initSaveShips: function()
@@ -56,7 +74,7 @@ define(function(require)
         
         finalize: function()
         {
-            
+            this.initViewCountView();
         },
         
         

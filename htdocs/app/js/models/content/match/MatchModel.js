@@ -44,7 +44,7 @@ define(function(require)
             var dataString = 
                 false +
                 ":" + 
-                app.userModel.get("id") + 
+                app.userModel.get("id") +
                 ":" +
                 this.get("id")
             ;

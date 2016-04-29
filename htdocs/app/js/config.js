@@ -9,11 +9,11 @@ require.config({
 
     paths: {
         //LIBS
+        'jquery':           '../includes/libraries/jquery/jquery-1.11.1.min',
         'backbone':         '../includes/libraries/backbone/backbone',
         'localstorage':     '../includes/libraries/backbone/backbone.localstorage.min',
         'underscore':       '../includes/libraries/underscore/underscore-min',
         'text':             '../includes/libraries/require/text',
-        'jquery':           '../includes/libraries/jquery/jquery-1.11.1.min',
         'tweenmax':         '../includes/libraries/greensock/TweenMax.min',
         'timeline':         '../includes/libraries/greensock/TimelineMax.min',
         'marionette':       '../includes/libraries/marionette/backbone.marionette.min',
@@ -61,7 +61,7 @@ require.config({
             deps: ['jqueryui', 'jquerydraggable']
         },
         jquerydraggable: {
-            deps: ['jqueryui']
+            deps: ['jquery', 'jqueryui']
         },
         jquerySimulate: {
             deps: ['jquery']

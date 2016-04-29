@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="app/includes/libraries/testing/mocha.css"/>
 
 	<!-- scripts -->
+    <script src="app/includes/libraries/jquery/jquery-1.11.1.min.js"></script>
     <script data-main="app/js/config.js" src="app/includes/libraries/require/require.js"></script>
 
 </head>

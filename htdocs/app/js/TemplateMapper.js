@@ -29,6 +29,7 @@ define(function(require)
     var GridView = require("views/content/match/grid/GridView");
     var PlacementView = require("views/content/match/placement/PlacementView");
     var InfoView = require("views/content/match/placement/info/InfoView");
+    var ShipCountView = require("views/content/match/placement/info/ShipCountView");
     var ShipView = require("views/content/match/ships/ShipView");
     var AttackView = require("views/content/match/attack/AttackView");
     var OpponentFieldView = require("views/content/match/attack/fields/OpponentFieldView");
@@ -90,6 +91,9 @@ define(function(require)
         },
         infoView: {
             defaultView: InfoView
+        },
+        shipCountView: {
+            defaultView: ShipCountView
         },
         shipView: {
             defaultView: ShipView

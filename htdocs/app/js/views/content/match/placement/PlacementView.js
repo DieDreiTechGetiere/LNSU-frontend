@@ -152,8 +152,14 @@ define(function(require){
                         $(this).removeClass("dragging");
                         $(this).data("ui-draggable").originalPosition = {
                             top : $(this).data("defaulttop").slice(0, -2),
-                            left : 30
+                            left: -30
                         };
+                        
+                        if($(this).hasClass("hasBeenDropped") && event == false)
+                        {
+                            app.vent.trigger(notification.event.SHIP_COUNT_UPDATE, $(this).attr("data-shipLength"), true);
+                            $(this).removeClass("hasBeenDropped");
+                        }
                         return !event;
                     },
                     grid: [60, 60],
@@ -181,7 +187,12 @@ define(function(require){
                     {
                         self.resetShip(ui.draggable);
                     }
-                                
+                    else if(!ui.draggable.hasClass("hasBeenDropped"))
+                    {
+                        app.vent.trigger(notification.event.SHIP_COUNT_UPDATE, ui.draggable.attr("data-shipLength"), false);
+                        ui.draggable.addClass("hasBeenDropped");
+                    }
+                    
                     setTimeout(function(){
                         self.initDraggAndDrop();
                     }, 200);
@@ -197,17 +208,25 @@ define(function(require){
          */
         resetShip: function($ship)
         {
+            
             $ship.animate({
                 top: $ship.data("defaulttop"),
-                left: 30
-            }, 700, function(){
+                left: -30
+            }, 700, function()
+            {
+                if($ship.hasClass("hasBeenDropped"))
+                {
+                    app.vent.trigger(notification.event.SHIP_COUNT_UPDATE, $(this).attr("data-shipLength"), true);
+                    $ship.removeClass("hasBeenDropped");
+                }
+                
+                
                 if($(this).width() <= 60)
                 {
                     var self = this;
                     setTimeout(function(){
                         $(self).trigger("contextmenu");
                     }, 100);
-                    
                 }
             });
         },
