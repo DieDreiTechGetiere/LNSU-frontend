@@ -703,6 +703,13 @@ h1 {
 .grid_view .field:hover {
   background: rgba(188, 74, 119, 0.5);
 }
+.grid_view .field .grid_pos {
+  width: 24px;
+  padding-top: 3px;
+  text-align: center;
+  color: #bcbcbc;
+  font-size: 14px;
+}
 .grid_view .field.hit:before {
   content: "";
   position: absolute;

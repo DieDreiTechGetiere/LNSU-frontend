@@ -65,7 +65,9 @@ define(function (require)
 		onStartQueueComplete: function(event)
 		{
             app.log.info("startQueue loaded");
-			app.vent.trigger(notification.event.SECTION_READY);
+			_.defer(function(){
+				app.vent.trigger(notification.event.SECTION_READY);
+			});
 		},
 
 		/**

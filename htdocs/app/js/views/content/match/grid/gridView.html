@@ -1,5 +1,15 @@
+<% letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]; %>
+<% numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]; %>
+
 <% for(var r = 0; r < 12; r++) { %>
     <% for(var i = 0; i < 12; i++) { %>
-        <div class="field field_<%=r%>_<%=i%>" data-x="<%=i%>" data-y="<%=r%>"></div>
+        <div class="field field_<%=r%>_<%=i%>" data-x="<%=i%>" data-y="<%=r%>">
+            <% if(r == 0) { %>
+                <p class="coloumn_number grid_pos"><%=numbers[i]%></p>
+            <% } %>
+            <% if(i == 0) { %>
+                <p class="row_letter grid_pos"><%=letters[r]%></p>
+            <% } %>
+        </div>
     <% } %>
 <% } %>
