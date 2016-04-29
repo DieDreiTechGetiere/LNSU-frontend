@@ -43,6 +43,10 @@ define(function(require){
         closeOverlay: function()
         {
             app.model.set("overlayRegion", undefined);
+            if(this.model.get("headline") === "You are Cheating! Fuck off!")
+            {
+                location.reload();
+            }
             this.destroy();
         },
         
