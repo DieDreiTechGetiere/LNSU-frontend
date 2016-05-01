@@ -25,3 +25,6 @@ GET "polling" für, bin ich drann oder oder nicht? /game
         WENN false:
         hat gegner schon geschossen? Wenn ja wohin?
         
+        
+wärend ich warte, button ausgegraut zum abschicken der koordinate ausgegraut.
+textlich, dass gegner gerade drann ist.
