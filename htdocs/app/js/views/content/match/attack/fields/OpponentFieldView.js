@@ -34,6 +34,8 @@ define(function(require){
 
         initialize: function()
         {
+            this.listenTo(this.model, "hit", this.handleHit, this);
+            this.listenTo(this.model, "miss", this.handleMiss, this);
             this.render();
         },
         
@@ -58,20 +60,49 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        
+        /**
+         * set clicked coordinate in model,
+         * model send data on "y:change" to server, so always set y second
+         */
         clickKoordinate: function(e)
         {   
-            //TODO allow only if matchModel.myTurn == true
-            $(e.currentTarget).addClass(this.clickSample);
-            this.clickSample = this.clickSample == "hit" ? "water" : "hit";
-            
-            var coordinates = 
+            if(app.matchModel.get("myTurn") == true)
             {
-                x : $(e.currentTarget).data("x"),
-                y : $(e.currentTarget).data("y")
-            };
-            
-            this.model.set("shotCoordinates", coordinates);
+                app.global.showLoader();
+                $(e.currentTarget).addClass("active");
+                
+                this.model.set("x", $(e.currentTarget).data("x"));
+                this.model.set("y", $(e.currentTarget).data("y"));
+            }
+            else
+            {
+                app.execute(notification.command.application.OPEN_OVERLAY, "notYourTurn");
+            }
         },
+        
+        
+        /**
+         * add hit icon to the clicked field
+         * remove aim icon from clicked field
+         */
+        handleHit: function(a, b)
+        {
+            console.log("handleHit a: ", a, "b: ", b);
+            $("field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
+        },
+        
+        
+        /**
+         * add miss icon to the clicked field
+         * remove aim icon from clicked field
+         */
+        handleMiss: function(a, b)
+        {
+            console.log("handleMiss a: ", a, "b: ", b);
+            $("field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
+        },
+        
         
         /* @Finalize ------------------------------------------------------------------------- */
         

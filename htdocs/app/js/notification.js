@@ -30,13 +30,14 @@ define({
         MATCH: "match"
     },
         
-    event: 
+    event:
     {
         SECTION_READY: "sectionReady:event",
         SHOW_ADMIN: "showAdminView:event",
         FETCH_ADMIN: "fetchAdmin:event",
         CLOSE_ADMIN: "closeAdminView:event",
         SWITCH_GAME_FIELDS: "switchGameFields:event",
-        SHIP_COUNT_UPDATE: "shipCountUpdate:event"
+        SHIP_COUNT_UPDATE: "shipCountUpdate:event",
+        OPPONENT_HIT_ME: "opponentHitMe:event"
     }
 });

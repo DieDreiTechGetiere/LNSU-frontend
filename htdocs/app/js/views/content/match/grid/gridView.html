@@ -3,7 +3,7 @@
 
 <% for(var r = 0; r < 12; r++) { %>
     <% for(var i = 0; i < 12; i++) { %>
-        <div class="field field_<%=r%>_<%=i%>" data-x="<%=i%>" data-y="<%=r%>">
+        <div class="field field_<%=i%>_<%=r%>" data-x="<%=i%>" data-y="<%=r%>">
             <% if(r == 0) { %>
                 <p class="coloumn_number grid_pos"><%=numbers[i]%></p>
             <% } %>

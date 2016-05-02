@@ -699,6 +699,7 @@ h1 {
   height: 60px;
   background: url("../media/image/square.png") no-repeat;
   position: relative;
+  display: flex;
 }
 .grid_view .field:hover {
   background: rgba(188, 74, 119, 0.5);
@@ -710,11 +711,17 @@ h1 {
   color: #bcbcbc;
   font-size: 14px;
 }
+.grid_view .field .grid_pos.row_letter {
+  text-align: right;
+  padding-right: 7px;
+  width: 100%;
+}
 .grid_view .field.hit:before {
   content: "";
   position: absolute;
   width: 60px;
   height: 60px;
+  z-index: 3;
   top: 0;
   left: 0;
   background-image: url("../media/image/hit_icon.png");
@@ -725,6 +732,7 @@ h1 {
 .grid_view .field.water:before {
   content: "";
   position: absolute;
+  z-index: 3;
   width: 60px;
   height: 60px;
   top: 0;
@@ -733,6 +741,11 @@ h1 {
 }
 .grid_view .field.water:hover {
   background: url("../media/image/square.png") no-repeat;
+}
+
+.opponent_field #opponentField .field:hover, .opponent_field #opponentField .field.active {
+  background: none;
+  background-image: url("../media/image/aim_icon.png");
 }
 
 .placement_view .placement_container {
@@ -821,7 +834,7 @@ h1 {
   top: 1px;
   width: 0;
   height: 0;
-  right: -61px;
+  right: -181px;
 }
 
 .attack_view {

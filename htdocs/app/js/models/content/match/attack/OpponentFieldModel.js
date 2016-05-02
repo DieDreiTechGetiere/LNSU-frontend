@@ -11,7 +11,6 @@ define(function(require){
         url: settings.backendBaseUrl + "game",
         
         defaults: {
-            shotCoordinates: undefined,
             placementPhase: false,
             userID: undefined
         },
@@ -19,19 +18,19 @@ define(function(require){
         
         initialize: function()
         {
-            this.on("change:shotCoordinates", this.sendShotToServer, this);
+            this.on("change:y", this.sendShotToServer, this);
             
             this.set("userID", parseInt( app.userModel.get("id") ));
         },
         
         
         /**
-         * 
+         * sends my shot to the server and tells view about the hit or miss
+         * further sets the myTurn prop. of matchModel to true or false
          */
         sendShotToServer: function()
         {
             this.set("matchID", app.matchModel.get("id"));
-            app.global.showLoader();
             
             this.save(null, {
                 success: function(data, response)
@@ -44,10 +43,12 @@ define(function(require){
                             if(reponse.hit == true)
                             {
                                 app.matchModel.set("myTurn", true);
+                                self.trigger("hit");
                             }
                             else if(response.hit == false)
                             {
                                 app.matchModel.set("myTurn", false);
+                                self.trigger("miss");
                             }
                         }
                         else if(response.win == true)

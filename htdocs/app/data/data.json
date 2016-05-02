@@ -73,6 +73,12 @@
             "headline": "Please place all ships before saving!",
             "message": "Since the rules say, you need to place all ships...<br>PLACE THEM!",
             "icon": "info_icon.png"
+        },
+        "notYourTurn":
+        {
+            "headline": "It´s not your turn at the moment!",
+            "message": "Please stay calm until your opponent shot and missed...<br>You gonna be notified when it is your turn again!",
+            "icon": "info_icon.png"
         }
     }
 }

@@ -54,8 +54,6 @@ define(function(require)
             app.mapper = TemplateMapper;
             
             app.preload = new PreloadController();
-            //kick off image preloading
-            PreloadCommand.initialize();
             
             //alle 60min wird user gecheckt und rausgeworfen 
             setInterval(function() {
@@ -165,7 +163,7 @@ define(function(require)
 
 
         /**
-         *
+         * init applicationView and kick of image-preloading
          */
         instantiateApplicationView: function()
         {
@@ -175,6 +173,8 @@ define(function(require)
             });
             _.defer(function(){
                 app.vent.trigger(notification.event.SECTION_READY);
+                //kick off image preloading
+                PreloadCommand.initialize();
             });
         },
 

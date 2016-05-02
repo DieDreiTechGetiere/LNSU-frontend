@@ -23,8 +23,11 @@ GET "polling" für, bin ich drann oder oder nicht? /game
     return:
         - OpponentReady = true / false (bei true bin ich wieder drann)
         WENN false:
-        hat gegner schon geschossen? Wenn ja wohin?
+        hat gegner schon geschossen? Wenn ja wohin? UND hat er getroffen oder nicht?
+        hat gegner gewonnen oder nicht? (parameter fehlt)
+        
+        BSP: OpponentReady: true/false, x: 1, y: 2, hit: true/false
         
         
-wärend ich warte, button ausgegraut zum abschicken der koordinate ausgegraut.
+wärend ich warte, button ausgegraut zum abschicken der koordinate.
 textlich, dass gegner gerade drann ist.

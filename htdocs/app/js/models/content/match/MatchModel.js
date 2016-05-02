@@ -15,7 +15,7 @@ define(function(require)
         baseUrl: settings.backendBaseUrl + "game",
         
         defaults: {
-            myTurn: undefined,
+            myTurn: true,
             myTurnPolling: undefined
         },
         
@@ -48,7 +48,7 @@ define(function(require)
                 ":" +
                 this.get("id")
             ;
-            
+            var self = this;
             this.set("myTurnPolling", 
                 setInterval(function()
                 {
@@ -56,7 +56,25 @@ define(function(require)
                         data: dataString,
                         success: function(data, response)
                         {
+                            //TODO hat gegner mich getroffen ja->hit anzeigen/nein->myTurn
                             console.log("myTurnPolling success: ", response);
+                            if(response.opponentWin == false)
+                            {
+                                if(typeof response.coordinates != undefined)
+                                {
+                                    console.log("opponent did shot");
+                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.coordinates);
+                                }
+                                
+                                if(OpponentReady == true)
+                                {    
+                                    self.set("myTurn", true);
+                                }
+                            }
+                            else
+                            {
+                                alert("opponent won! you suck");
+                            }
                         },
                         error: function(error)
                         {
@@ -65,7 +83,7 @@ define(function(require)
                             app.global.hideLoader();
                         }
                     });
-                }, 1500)
+                }, 2500)
             );
         },
         

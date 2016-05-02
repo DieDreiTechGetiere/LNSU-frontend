@@ -43,10 +43,16 @@ define(function(require){
         closeOverlay: function()
         {
             app.model.set("overlayRegion", undefined);
-            if(this.model.get("headline") === "You are Cheating! Fuck off!")
+            
+            if(this.model.get("headline") !== "Sorry Bro...")
+            {
+                app.router.navigate(notification.router.MATCH);
+            }
+            else if(this.model.get("headline") === "You are Cheating! Fuck off!")
             {
                 location.reload();
             }
+            
             this.destroy();
         },
         

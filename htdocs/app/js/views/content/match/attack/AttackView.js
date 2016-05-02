@@ -62,8 +62,16 @@ define(function(require){
          */
         whatGridFirst: function()
         {
-            $("#" + this.views.USERFIELD).css("visibility", "visible");
-            $(".button." + this.views.USERFIELD).removeClass("passive");
+            if(app.matchModel.get("myTurn") == true)
+            {
+                $("#" + this.views.USERFIELD).css("visibility", "visible");
+                $(".button." + this.views.USERFIELD).removeClass("passive");
+            }
+            else
+            {
+                $("#" + this.views.OPPONENTFIELD).css("visibility", "visible");
+                $(".button." + this.views.OPPONENTFIELD).removeClass("passive");
+            }
         },
         
         
