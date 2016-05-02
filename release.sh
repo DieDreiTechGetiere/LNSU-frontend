@@ -52,7 +52,7 @@ elif [ "$1" == "media" ];then
 fi
 
 
-#upload files via ftps to liveserver
+#upload selected files via ftps to liveserver
 duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /Users/nmaier/projects/my-projects/2016/LNSU-frontend/release/$RELEASE_FOLDER
 
 
@@ -60,13 +60,5 @@ duck -e overwrite --upload ftps://ud19_420@ud19.udmedia.de/html/lnsu-frontend /U
 git add *
 git commit -m "Live Server Release $RELEASE_FOLDER"
 git push
-
-git checkout master
-git merge develop
-git add *
-git commit -m "Live Server Release $RELEASE_FOLDER"
-git push
-
-git checkout develop
 
 exit 1;
