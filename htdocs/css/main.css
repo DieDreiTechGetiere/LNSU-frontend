@@ -705,8 +705,9 @@ h1 {
   background: rgba(188, 74, 119, 0.5);
 }
 .grid_view .field .grid_pos {
-  width: 24px;
+  width: 15px;
   padding-top: 3px;
+  padding-left: 6px;
   text-align: center;
   color: #bcbcbc;
   font-size: 14px;
