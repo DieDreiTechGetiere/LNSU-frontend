@@ -13,7 +13,7 @@ define(function(require)
         appEnvironment: "dev",
         release: false,
         pushState: false, //history.pushState
-        runTests: false,
+        runTests: true,
         imagesPath: 'media/image/',
         jsonPath: 'app/data/data.json',
         shipconfig: 'app/data/shipconfig.json',

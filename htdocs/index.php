@@ -17,7 +17,7 @@
 
 </head>
 <body>
-    <!--div id="mocha"></div-->
+    <div id="mocha"></div>
     <?php 
     /*
         function listFolderFiles($dir){
