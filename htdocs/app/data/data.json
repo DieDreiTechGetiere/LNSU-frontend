@@ -79,6 +79,12 @@
             "headline": "It´s not your turn at the moment!",
             "message": "Please stay calm until your opponent shot and missed...<br>You gonna be notified when it is your turn again!",
             "icon": "info_icon.png"
+        },
+        "howToPlay":
+        {
+            "headline": "This is how you play the game!",
+            "message": "<b>Placements:</b><br>- Drag and drop your ships into the grid!<br>- Right- or doubleclick ships to turn them<br>- Hit the save button when you are finished, and wait 'till your opponent is done as well!<br><br><b>Attacking:</b><br>- After the placements... to attack, klick on a field on the opponent grid<br>- if you hit, its your turn again, if not it´s your oponnents turn<br>- see where your opponent has hit you on your own field",
+            "icon": "info_icon.png"
         }
     }
 }

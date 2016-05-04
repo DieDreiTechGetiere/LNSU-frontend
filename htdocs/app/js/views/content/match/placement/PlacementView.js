@@ -262,7 +262,6 @@ define(function(require){
             }
             else
             {
-                console.log("ship is NOT valid");
                 return false;
             }
         },

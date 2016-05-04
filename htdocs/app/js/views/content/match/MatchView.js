@@ -106,6 +106,7 @@ define(function(require)
         onShow: function()
         {
             this.initItemViews();
+            app.execute(notification.command.application.OPEN_OVERLAY, "howToPlay");
         },
         
         
