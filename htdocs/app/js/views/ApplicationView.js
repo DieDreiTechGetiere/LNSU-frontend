@@ -166,7 +166,10 @@ define(function(require){
             app.log.info("application ready");
             app.model.set("appReady", true);
             app.global.hideLoader();
-            app.controller.initTesting();
+            
+            setTimeout(function(){
+                app.controller.initTesting();
+            }, 500);
         },
 
 

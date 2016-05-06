@@ -133,6 +133,7 @@ body {
 #mocha .test pre.error {
   color: #c00;
   max-height: 300px;
+  height:auto;
   overflow: auto;
 }
 
