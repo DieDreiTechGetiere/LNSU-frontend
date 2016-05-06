@@ -167,24 +167,46 @@ define(function(require) {
         });
     });
     
-    var startDashboard = function(){
+    var startDashboard = function()
+    {
         describe("Dashboard", function(){
             
             it("should log me in, to route /#dashboard ( as admin user )", function(){
                 //login with valid user
                 $(".switch_link").trigger("click");
+                this.timeout(600);
                 
+                
+                var self = this;
                 setTimeout(function(){
                     $("#login_name").val("h");
                     $("#password").val("h");
-                    
                     $(".button").trigger("click");
                     
+                    self.timeout(600);
+                    setTimeout(function(){
+                        window.location.hash.should.equal("#dashboard");
+                        startOnDashboardLoaded();
+                    }, 900);
                     
                 },400);
-                this.timeout(600);
-                window.location.hash.should.equal("#dashboard");
+                
             });
         });
-    }
+        
+        
+        
+    };
+    var startOnDashboardLoaded = function()
+        {
+            describe("Dashboard AdminSection", function(){
+                it("should add class hoverLogo on mouseover", function(){
+                    $(".logo_container").trigger("mouseover");
+                    console.log("asdf");
+                    $(".logo_container").attr("class").split(" ")[2].should.equal("hoverLogo");
+                });
+                
+                
+            });
+        };
 });
