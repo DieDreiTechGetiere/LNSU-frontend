@@ -44,9 +44,8 @@ define(function(require){
         handleFormSuccess: function()
         {
             $.each($(this.ui.textInput), function(){
-                console.log("each");
                 $(this).val("");
-            })
+            });
         },
         
         
@@ -90,7 +89,7 @@ define(function(require){
                     $(this.ui.passwordRepeat).css("border", "1px solid red");
                     $(this.ui.password).css("border", "1px solid red");
                     
-                    $(this.ui.error).html("your given passwords dont match");
+                    this.$(this.ui.error).html("your given passwords dont match");
                 }
                 else
                 {
@@ -100,7 +99,7 @@ define(function(require){
             }
             else
             {
-                $(this.ui.error).html(this.model.get("errorMessage"));
+                this.$(this.ui.error).html(this.model.get("errorMessage"));
             }
         },
         

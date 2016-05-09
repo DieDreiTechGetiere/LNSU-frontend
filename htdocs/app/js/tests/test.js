@@ -5,12 +5,15 @@ define(function(require) {
     var app = require("app");
     var sinon = require("sinon");
     
+    var TemplateMapper = require("TemplateMapper");
+    var PreloadController = require("PreloadController");
     
     // VIEWS
     var ApplicationView = require("views/ApplicationView");
     
     // MODELS
     var ApplicationModel = require("appModel");
+    var StorageModel = require("models/StorageModel");
     
     
     // START OF TESTS
@@ -29,9 +32,15 @@ define(function(require) {
             });
         });
         
-        describe("app.view", function(){
-            it("should be an instance of ApplicationView", function(){
+        describe("Global app-bound instances", function(){
+            it("app.view should be an instance of ApplicationView", function(){
                 chai.expect(app.view).to.be.an.instanceof(ApplicationView);
+            });
+            it("app.storageModel should be an instance of StorageModel", function(){
+                chai.expect(app.storageModel).to.be.an.instanceof(StorageModel);
+            });
+            it("app.preload should be an instance of PreloadController", function(){
+                chai.expect(app.preload).to.be.an.instanceof(PreloadController);
             });
         });
         
@@ -45,11 +54,17 @@ define(function(require) {
             }));
             
             it('should hide loader', sinon.test(function() {
-                app.global.hideLoader();
+                var hideLoader = app.global.hideLoader();
                 
-                this.clock.tick(400);
+                //return chai.expect(hideLoader).to.eventually.equal("none");
                 
-                $(".loader-pos").css("display").should.equal("none");
+                hideLoader.then(function(){
+                    $(".loader-pos").css("display").should.equal("none");
+                    done();
+                });
+                //this.clock.tick(400);
+                
+                
             }));
         });
     });
@@ -192,21 +207,26 @@ define(function(require) {
                 },400);
                 
             });
-        });
-        
-        
-        
-    };
-    var startOnDashboardLoaded = function()
-        {
-            describe("Dashboard AdminSection", function(){
+            
+            var startOnDashboardLoaded = function()
+            {
                 it("should add class hoverLogo on mouseover", function(){
                     $(".logo_container").trigger("mouseover");
                     console.log("asdf");
                     $(".logo_container").attr("class").split(" ")[2].should.equal("hoverLogo");
                 });
+            };
+            
+            
+            describe("Dashboard AdminSection", function(){
+                
                 
                 
             });
-        };
+        });
+        
+        
+        
+    };
+    
 });

@@ -34,6 +34,7 @@ require.config({
         'qunit':            '../includes/libraries/testing/qunit',
         'chaiChanges':      '../includes/libraries/testing/chaichanges',
         'chaibackbone':     '../includes/libraries/testing/chaibackbone',
+        'chaiAsPromise':    '../includes/libraries/testing/chai-as-promise',
         
         //BASICS
         'controller':       '../js/controller/ApplicationController',
@@ -89,7 +90,7 @@ require.config({
             deps: ['qunit']
         },
         SpecRunner: {
-            deps: ['mocha', 'chai', 'chai-jquery', 'sinon', 'chaibackbone', 'sinonQunit']
+            deps: ['mocha', 'chai', 'chai-jquery', 'sinon', 'chaibackbone', 'sinonQunit', 'chaiAsPromise']
         },
         chaibackbone: {
             deps: ['sinon', 'chaiChanges', 'underscore', 'backbone']

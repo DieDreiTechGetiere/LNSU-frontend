@@ -23,13 +23,17 @@ define(function(require) {
          *
          */
         hideLoader: function ()
-        {
-            setTimeout(function () {
-                $(".loader-pos").fadeOut(100, function()
-                {
-                    $("#loader-img").removeClass("rotate");
-                });
-            }, 200);
+        {   
+            return new Promise(function(resolve, reject)
+            {
+                setTimeout(function () {
+                    $(".loader-pos").fadeOut(100, function()
+                    {
+                        $("#loader-img").removeClass("rotate");
+                        resolve();
+                    });
+                }, 200);
+            });
         },
 
 

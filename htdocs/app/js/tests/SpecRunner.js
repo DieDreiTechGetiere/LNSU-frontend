@@ -15,6 +15,7 @@ define(function(require) {
             var chaiJquery = require('chai-jquery');
             var chaiChanges = require("chaiChanges");
             var chaiBackbone = require("chaibackbone");
+            var chaiAsPromise = require("chaiAsPromise");
 
             // Chai
             var should = chai.should();
@@ -23,6 +24,7 @@ define(function(require) {
             chai.use(chaiJquery);
             chai.use(chaiChanges);
             chai.use(chaiBackbone);
+            chai.use(chaiAsPromise);
             mocha.setup('bdd');
 
             require([

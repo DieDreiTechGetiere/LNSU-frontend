@@ -72,7 +72,7 @@ define(function(require){
             }
             else
             {
-                $(this.ui.error).html(this.model.get("errorMessage"));
+                this.$(this.ui.error).html(this.model.get("errorMessage"));
             }
         },
         
