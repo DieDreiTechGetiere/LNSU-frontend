@@ -1,3 +1,16 @@
+/**
+ * 
+ * start selenium:
+ * cd/to/selenium.jar
+ * java -jar selenium-server-standalone-{VERSION}.jar
+ * 
+ * 
+ * start tests
+ * cd/to/nightwatch.js
+ * (node) nightwatch
+ * 
+ */
+
 module.exports = {
   'try to log in' : function (browser) {
     browser
