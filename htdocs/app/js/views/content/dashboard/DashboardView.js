@@ -210,7 +210,10 @@ define(function(require){
          */
         hoverLogo: function()
         {
-            $(".logo_flipper").addClass("hoverLogo");
+            if(app.userModel.get("role") == 1)
+            {
+                $(".logo_flipper").addClass("hoverLogo");
+            }
         },
         
         

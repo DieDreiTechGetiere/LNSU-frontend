@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="4">
+
+  <testsuite name="lnsu-frontend_tests"
+    errors="0" failures="0" hostname="" id="" package="lnsu-frontend_tests" skipped="0"
+    tests="4" time="16.34" timestamp="Tue, 10 May 2016 15:43:21 GMT">
+  
+    <testcase name="try to log in" time="10.13" assertions="3">
+<system-out>[[ATTACHMENT|/Users/nmaier/projects/my-projects/2016/LNSU-frontend/NightwatchTesting/screenshots/lnsu-frontend_tests/try-to-log-in_ERROR_May-10-2016-174326-GMT+0200.png]]</system-out>
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="dashboard specific tests as none admin user" time="0.5460" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="logout as none admin - relogin as admin user" time="1.633" assertions="5">
+<system-out>[[ATTACHMENT|/Users/nmaier/projects/my-projects/2016/LNSU-frontend/NightwatchTesting/screenshots/lnsu-frontend_tests/logout-as-none-admin---relogin-as-admin-user_ERROR_May-10-2016-174333-GMT+0200.png]]</system-out>
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="dashboard specific admin tests (admin section)" time="4.026" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
