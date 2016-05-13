@@ -25,6 +25,11 @@
             height:18px;
         }
         
+        .space 
+        {
+            height:40px;
+        }
+        
         .buttons
         {
             position: absolute;
@@ -41,8 +46,7 @@
         {
             margin-left: 220px;
             width: 435px;
-            height: 573px;
-            padding-top:40px;
+            height: 620px;
             overflow:hidden;
             
             .inactive_user

@@ -15,6 +15,9 @@ define(function(require){
         views: {
             
         },
+        /**
+         * 
+         */
         rotationTL: new TimelineMax({onComplete: function(){
             this.restart();
         }}),
@@ -29,6 +32,22 @@ define(function(require){
             playBtn: ".play_btn",
             playBg: ".play_bg"
         },
+        /**
+         * 
+         */
+        timerValue: "PLAY",
+        /**
+         * 
+         */
+        timerInterval: undefined,
+        /**
+         * 
+         */
+        timerSeconds: 0,
+        /**
+         * 
+         */
+        timerMinutes: 0,
 
 
         /* @Initialize ----------------------------------------------------------------------- */
@@ -46,7 +65,9 @@ define(function(require){
         initViewListeners: function()
         {
             this.listenTo(this.model, "change", this.render, this);
+            this.listenTo(this.model, "clearTimer", this.stopTimer, this);
         },
+        
         
         /* @Methods -------------------------------------------------------------------------- */
         
@@ -56,6 +77,7 @@ define(function(require){
             {
                 this.animateLoader();
                 this.model.initSearchGame();
+                this.startTimer();
             }
             else
             {
@@ -63,6 +85,7 @@ define(function(require){
                 app.execute(notification.command.match.DELETE);
                 this.model.clearPlayersearchInterval();
                 this.model.set("sending", false);
+                this.stopTimer();
             }
         },
         
@@ -84,14 +107,56 @@ define(function(require){
             }
         },
         
+        
+        /**
+         * sadly i couldnt go over the model here because of the re-rendering
+         * after re-rendering the rotation animation stopps immediately... -.-""
+         */
+        startTimer: function()
+        {
+            var self = this;
+            this.timerInterval = setInterval(function(){
+                var timerSeconds = parseInt(self.timerSeconds) + 1;
+                
+                if(timerSeconds > 59)
+                {
+                    var timerMinutes = parseInt(self.timerMinutes) + 1;
+                    self.timerSeconds = 00;
+                    self.timerMinutes = timerMinutes;
+                }
+                else if(timerSeconds < 10)
+                {
+                    self.timerSeconds = "0" + timerSeconds;
+                }
+                else
+                {
+                    self.timerSeconds = timerSeconds;
+                }
+                self.timerValue = self.timerMinutes + ":" + self.timerSeconds;
+                self.$(".play_btn").html(self.timerValue);
+            }, 1000);
+        },
+        
+        
+        /**
+         * 
+         */
+        stopTimer: function()
+        {
+            clearInterval(this.timerInterval);
+            this.timerSeconds = 0;
+            this.timerMinutes = 0;
+            this.timerValue = "PLAY";
+            this.$(".play_btn").html(this.timerValue);
+        },
+        
+        
         /* @Finalize ------------------------------------------------------------------------- */
         
         initTimeLineForRotation: function()
         {
-            var rotationTween = 
-                
             this.rotationTL.add(
-            TweenMax.fromTo($(this.ui.playBg), 6, 
+            TweenMax.fromTo($(this.ui.playBg), 6,
                 {
                     rotation: 0,
                 },
@@ -123,8 +188,6 @@ define(function(require){
                 this.$el.html(renderedTemplate);
                 this.rendered = true;
             }
-            else
-            {}
         },
         
         

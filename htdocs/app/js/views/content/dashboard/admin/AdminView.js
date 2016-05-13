@@ -82,9 +82,12 @@ define(function(require){
         
         finalize: function()
         {
-            var iscroll = new IScroll(".inactives", {
-                mouseWheel: true,
-                click: true
+            _.defer(function(){
+                $(".inactives_pos").height($(".inactives_pos").height() + 40);
+                var iscroll = new IScroll(".inactives", {
+                    mouseWheel: true,
+                    click: true
+                });
             });
         },
         

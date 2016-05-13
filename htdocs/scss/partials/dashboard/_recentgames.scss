@@ -1,9 +1,20 @@
 
+
+.recentgames
+{
+    .no_games
+    {
+        padding:30px;
+        line-height: 23px;
+    }
+}
+
 .recentgames_view
 {
     width:100%;
     overflow:hidden;
     height: 219px;
+    
     
     .recent_game_item
     {

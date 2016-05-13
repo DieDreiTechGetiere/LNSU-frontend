@@ -4,24 +4,28 @@
     "ships":
     [
         {
+            "id": "ship_1",
             "shipLength": 1,
             "imageUrl": "",
             "top": "30px",
             "left": "-30px"
         },
         {
+            "id": "ship_2",
             "shipLength": 1,
             "imageUrl": "",
             "top": "30px",
             "left": "-30px"
         },
         {
+            "id": "ship_3",
             "shipLength": 1,
             "imageUrl": "",
             "top": "30px",
             "left": "-30px"
         },
         {
+            "id": "ship_4",
             "shipLength": 1,
             "imageUrl": "",
             "top": "30px",
@@ -30,18 +34,21 @@
         
         
         {
+            "id": "ship_5",
             "shipLength": 2,
             "imageUrl": "",
             "top": "150px",
             "left": "-30px"
         },
         {
+            "id": "ship_6",
             "shipLength": 2,
             "imageUrl": "",
             "top": "150px",
             "left": "-30px"
         },
         {
+            "id": "ship_7",
             "shipLength": 2,
             "imageUrl": "",
             "top": "150px",
@@ -50,12 +57,14 @@
         
         
         {
+            "id": "ship_8",
             "shipLength": 3,
             "imageUrl": "",
             "top": "270px",
             "left": "-30px"
         },
         {
+            "id": "ship_9",
             "shipLength": 3,
             "imageUrl": "",
             "top": "270px",
@@ -64,6 +73,7 @@
         
         
         {
+            "id": "ship_10",
             "shipLength": 4,
             "imageUrl": "",
             "top": "390px",

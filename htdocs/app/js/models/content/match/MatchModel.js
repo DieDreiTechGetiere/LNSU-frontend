@@ -32,6 +32,14 @@ define(function(require)
         initSubmodels: function()
         {
             this.set("placement", new PlacementModel());
+        },
+        
+        
+        /**
+         * 
+         */
+        initAttackModel: function()
+        {
             this.set("attack", new AttackModel());
         },
         

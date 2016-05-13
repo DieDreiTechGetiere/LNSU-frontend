@@ -201,26 +201,9 @@ define(function(require) {
                     self.timeout(600);
                     setTimeout(function(){
                         window.location.hash.should.equal("#dashboard");
-                        startOnDashboardLoaded();
                     }, 900);
                     
                 },400);
-                
-            });
-            
-            var startOnDashboardLoaded = function()
-            {
-                it("should add class hoverLogo on mouseover", function(){
-                    $(".logo_container").trigger("mouseover");
-                    console.log("asdf");
-                    $(".logo_container").attr("class").split(" ")[2].should.equal("hoverLogo");
-                });
-            };
-            
-            
-            describe("Dashboard AdminSection", function(){
-                
-                
                 
             });
         });

@@ -546,6 +546,11 @@ h1 {
   color: #bcbcbc;
 }
 
+.recentgames .no_games {
+  padding: 30px;
+  line-height: 23px;
+}
+
 .recentgames_view {
   width: 100%;
   overflow: hidden;
@@ -608,6 +613,9 @@ h1 {
   width: 18px;
   height: 18px;
 }
+.admin_view .admin_container .space {
+  height: 40px;
+}
 .admin_view .admin_container .buttons {
   position: absolute;
   top: 70px;
@@ -619,8 +627,7 @@ h1 {
 .admin_view .admin_container .inactives {
   margin-left: 220px;
   width: 435px;
-  height: 573px;
-  padding-top: 40px;
+  height: 620px;
   overflow: hidden;
 }
 .admin_view .admin_container .inactives .inactive_user {

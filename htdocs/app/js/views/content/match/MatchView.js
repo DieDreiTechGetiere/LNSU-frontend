@@ -81,6 +81,7 @@ define(function(require)
         initAttackMode: function()
         {
             this.viewInstances[this.views.PLACEMENT].destroy();
+            this.model.initAttackModel();
             this.initAttackView();
         },
         

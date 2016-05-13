@@ -10,7 +10,7 @@ define(function(require)
     };
 
     var defaultConfig = {
-        appEnvironment: "dev",
+        appEnvironment: "live",
         release: false,
         pushState: false, //history.pushState
         runTests: false,

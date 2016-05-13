@@ -127,7 +127,7 @@ define(function(require){
 
             if(this.recentGamesView.children.length <= 0)
             {
-                $(this.ui.recentgames).html("<p class='no_games'>you haven´t played yet, noob</p>");
+                $(this.ui.recentgames).html("<p class='no_games'>you haven´t played any game yet, noob.</p>");
             }
         },
         

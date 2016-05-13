@@ -59,6 +59,7 @@ define(function(require)
             this.$el.attr("data-defaulttop", this.model.get("top"));
             this.$el.attr("data-shiplength", this.model.get("shipLength"));
             this.$el.attr("data-direction", "horizontal");
+            this.$el.attr("id", this.model.get("id"));
         },
         
         

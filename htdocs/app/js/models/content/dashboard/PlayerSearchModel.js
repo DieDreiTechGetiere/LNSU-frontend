@@ -12,7 +12,7 @@ define(function(require){
         url: settings.backendBaseUrl + "game/search",
         
         defaults: {
-            sending: false
+            sending: false,
         },
         
         
@@ -41,6 +41,7 @@ define(function(require){
                     }
                     else
                     {
+                        self.trigger("clearTimer");
                         app.execute(notification.command.match.START);
                     }
                 },
@@ -71,6 +72,7 @@ define(function(require){
                         if(response.foundOpponent == true)
                         {
                             self.clearPlayersearchInterval();
+                            self.trigger("clearTimer");
                             app.execute(notification.command.match.START);
                         }
                     },
@@ -82,7 +84,7 @@ define(function(require){
                     }
                 });
                 
-            }, 1000));
+            }, 1100));
         },
         
         
