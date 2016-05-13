@@ -249,6 +249,19 @@ module.exports = {
     browser.click(".overlay_close_icon");
     browser.expect.element("#placeAllShips").to.not.be.present.before(100);
     browser.expect.element("#overlay_region").to.have.css("display").which.equals("none").before(200);
+  },
+  
+  'trying to leave #placements/#match route, and expect warning overlay that you are about to leave your match': function(browser)
+  {
+    browser.execute(function () {
+      window.history.back()
+    });
+    
+    browser.expect.element("#overlay_region").to.have.css("display").which.equals("block").before(200);
+    browser.expect.element("#leaveMatchWarning").to.be.present.before(100);
+    browser.click(".interrupt");
+    browser.expect.element("#leaveMatchWarning").to.not.be.present.before(100);
+    browser.expect.element("#overlay_region").to.have.css("display").which.equals("none").before(200);
     
     //browser.pause(100000);
     
