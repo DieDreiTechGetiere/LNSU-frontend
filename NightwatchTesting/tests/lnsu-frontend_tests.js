@@ -139,7 +139,7 @@ module.exports = {
       .mouseButtonDown(0)
       .moveToElement("#gridView",  300,  500) // Move to offset position of 200(x) 600(y)
       .mouseButtonUp(0)
-      //.pause(200);
+      
     browser.expect.element("#ship_4").to.have.css("top").which.equals("450px").before(200);
     browser.expect.element("#ship_4").to.have.css("left").which.equals("-630px").before(200);
   },
@@ -149,15 +149,14 @@ module.exports = {
     browser
       .moveToElement('#ship_3',  5,  5)
       .mouseButtonDown(0)
-      .moveToElement('#gridView',  -61,  -61) // Move to offset position of 200(x) 600(y)
+      .moveToElement('#gridView',  -61,  -61)
       .mouseButtonUp(0)
-   //   .pause(200);
       
     browser.expect.element("#ship_3").to.have.css("top").which.equals("30px").before(200);
     browser.expect.element("#ship_3").to.have.css("left").which.equals("-30px").before(200);
   },
   
-  'trying to turn a ship': function(browser) 
+  'trying to turn a ship and turn back': function(browser) 
   {
     browser
       .moveToElement('#ship_9',  5,  5)
@@ -182,26 +181,77 @@ module.exports = {
     browser.expect.element("#ship_9").to.have.css("left").which.equals("-810px").before(200);
   },
   
-  'testing ship validation': function(browser)
+  'ship validation, turn ship into another and expect it to shift back to its original position': function(browser)
   {
     browser
       .moveToElement('#ship_10',  5,  5)
       .mouseButtonDown(0)
-      .moveToElement('#gridView',  120,  240) // Move to offset position of 200(x) 600(y)
+      .moveToElement('#gridView',  120,  240)
       .mouseButtonUp(0)
       .moveToElement('#ship_9',  5,  5)
       .mouseButtonClick('right')
     
     browser.expect.element("#ship_9").to.have.css("width").which.equals("180px").before(600);
     browser.expect.element("#ship_9").to.have.css("height").which.equals("60px").before(600);
-    browser.expect.element("#ship_9").to.have.css("top").which.equals("270px").before(200);
-    browser.expect.element("#ship_9").to.have.css("left").which.equals("-30px").before(200);
+    browser.expect.element("#ship_9").to.have.css("top").which.equals("270px").before(700);
+    browser.expect.element("#ship_9").to.have.css("left").which.equals("-30px").before(700);
+  }, 
+  
+  'ship validation, place ship half inside the grid, half outside the grid and expect it to shift back': function(browser)
+  {
+    browser
+      .moveToElement('#ship_9',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  610,  310) 
+      .mouseButtonUp(0)
+      
+    browser.expect.element("#ship_9").to.have.css("top").which.equals("270px").before(700);
+    browser.expect.element("#ship_9").to.have.css("left").which.equals("-30px").before(700);
+  },
+  
+  'ship validation, turn a valid ship outside the grid': function(browser)
+  {
+    browser
+      .moveToElement('#ship_10',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  125,  550) 
+      .mouseButtonUp(0)
+      .moveToElement('#ship_10',  5,  5)
+      .mouseButtonClick('right')
     
+    browser.expect.element("#ship_10").to.have.css("top").which.equals("390px").before(700);
+    browser.expect.element("#ship_10").to.have.css("left").which.equals("-30px").before(700);
+    browser.expect.element("#ship_10").to.have.css("width").which.equals("240px").before(600);
+    browser.expect.element("#ship_10").to.have.css("height").which.equals("60px").before(600);
+  },
+  
+  'ship validation, trying to place one ship over the other': function(browser)
+  {
+    browser
+      .moveToElement('#ship_4',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  542,  122) 
+      .mouseButtonUp(0)
+      .moveToElement('#ship_3',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  542,  122) 
+      .mouseButtonUp(0)
+    
+    browser.expect.element("#ship_3").to.have.css("top").which.equals("-30px").before(700);
+    browser.expect.element("#ship_3").to.have.css("left").which.equals("-390px").before(700);
+  },
+    
+  'placement phase, click save ships button before all ships are placed and expect warning overlay': function(browser)
+  {
+    browser.click(".save_ships");
+    browser.expect.element("#overlay_region").to.have.css("display").which.equals("block").before(200);
+    browser.expect.element("#placeAllShips").to.be.present.before(100);
+    browser.click(".overlay_close_icon");
+    browser.expect.element("#placeAllShips").to.not.be.present.before(100);
+    browser.expect.element("#overlay_region").to.have.css("display").which.equals("none").before(200);
     
     //browser.pause(100000);
     
     browser.end();
-  },
-  
-  
+  }
 };
