@@ -214,7 +214,7 @@ module.exports = {
     browser
       .moveToElement('#ship_10',  5,  5)
       .mouseButtonDown(0)
-      .moveToElement('#gridView',  125,  550) 
+      .moveToElement('#gridView',  125,  550)
       .mouseButtonUp(0)
       .moveToElement('#ship_10',  5,  5)
       .mouseButtonClick('right')
@@ -234,7 +234,7 @@ module.exports = {
       .mouseButtonUp(0)
       .moveToElement('#ship_3',  5,  5)
       .mouseButtonDown(0)
-      .moveToElement('#gridView',  542,  122) 
+      .moveToElement('#gridView',  542,  122)
       .mouseButtonUp(0)
     
     browser.expect.element("#ship_3").to.have.css("top").which.equals("-30px").before(700);
@@ -254,7 +254,7 @@ module.exports = {
   'trying to leave #placements/#match route, and expect warning overlay that you are about to leave your match': function(browser)
   {
     browser.execute(function () {
-      window.history.back()
+      window.history.back();
     });
     
     browser.expect.element("#overlay_region").to.have.css("display").which.equals("block").before(200);
