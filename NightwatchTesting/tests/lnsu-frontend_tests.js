@@ -265,8 +265,7 @@ module.exports = {
   },
   
   'place all ships and click save': function(browser)
-  { 
-    
+  {
     browser
       .moveToElement('#ship_4',  0,  5)
       .mouseButtonDown(0)
