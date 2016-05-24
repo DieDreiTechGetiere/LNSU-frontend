@@ -262,8 +262,66 @@ module.exports = {
     browser.click(".interrupt");
     browser.expect.element("#leaveMatchWarning").to.not.be.present.before(100);
     browser.expect.element("#overlay_region").to.have.css("display").which.equals("none").before(200);
+  },
+  
+  'place all ships and click save': function(browser)
+  { 
     
-    //browser.pause(100000);
+    browser
+      .moveToElement('#ship_4',  0,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  1,  1)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_3',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  0,  125)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_2',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  0,  250)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_1',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  0,  370)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_7',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  0,  490)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_6',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  0,  610)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_5',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  125,  1)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_9',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  190,  240)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_8',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  190,  240)
+      .mouseButtonUp(0)
+      
+      .moveToElement('#ship_10',  5,  5)
+      .mouseButtonDown(0)
+      .moveToElement('#gridView',  190,  480)
+      .mouseButtonUp(0)
+      
+      .click(".save_ships");
+    
+    
+    browser.pause(100000);
     
     browser.end();
   }

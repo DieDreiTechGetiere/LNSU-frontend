@@ -53,14 +53,14 @@ define(function(require){
             this.initUserField();
             this.initControlsView();
             
-            this.whatGridFirst();
+            this.whichGridFirst();
         },
         
         
         /**
          * 
          */
-        whatGridFirst: function()
+        whichGridFirst: function()
         {
             if(app.matchModel.get("myTurn") == true)
             {

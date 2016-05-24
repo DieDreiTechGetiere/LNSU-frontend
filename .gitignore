@@ -8,3 +8,5 @@ konzept/layout/_Schiffe.psd
 htdocs/app/js/finalize-built.js
 konzept/layout/Schiffe.psd
 NightwatchTesting/screenshots
+NightwatchTesting/reports
+NightwatchTesting/selenium-debug.log
