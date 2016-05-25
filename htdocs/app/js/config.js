@@ -30,7 +30,6 @@ require.config({
         'chai':             '../includes/libraries/testing/chai',
         'chai-jquery':      '../includes/libraries/testing/chai-jquery',
         'sinon':            '../includes/libraries/testing/sinon',
-        'sinonQunit':       '../includes/libraries/testing/sinon-qunit',
         'qunit':            '../includes/libraries/testing/qunit',
         'chaiChanges':      '../includes/libraries/testing/chaichanges',
         'chaibackbone':     '../includes/libraries/testing/chaibackbone',
@@ -86,11 +85,8 @@ require.config({
         timeline: {
             deps: ['tweenmax']
         },
-        sinonQunit: {
-            deps: ['qunit']
-        },
         SpecRunner: {
-            deps: ['mocha', 'chai', 'chai-jquery', 'sinon', 'chaibackbone', 'sinonQunit', 'chaiAsPromise']
+            deps: ['mocha', 'chai', 'chai-jquery', 'sinon', 'chaibackbone', 'chaiAsPromise']
         },
         chaibackbone: {
             deps: ['sinon', 'chaiChanges', 'underscore', 'backbone']

@@ -10,7 +10,6 @@
 	<!-- stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" href="app/includes/libraries/testing/mocha.css"/>
-    <link rel="stylesheet" href="app/includes/libraries/testing/qunit.css"/>
 
 	<!-- scripts -->
     <script src="app/includes/libraries/jquery/jquery-1.11.1.min.js"></script>
