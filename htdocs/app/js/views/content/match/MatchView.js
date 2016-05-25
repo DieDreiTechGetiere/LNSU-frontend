@@ -99,6 +99,7 @@ define(function(require)
             });
             $(this.ui.game).html(this.viewInstances[this.views.ATTACK].el);
             this.viewInstances[this.views.ATTACK].finalize();
+            app.global.hideLoader();
         },
         
         

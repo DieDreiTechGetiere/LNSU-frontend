@@ -8,7 +8,7 @@ define(function(require){
         
         initialize: function()
         {
-            this.on(app.matchModel, "change:myTurn", this.handleTurnChange, this);
+            this.listenTo(app.matchModel, "change:myTurn", this.handleTurnChange, this);
         },
         
         
