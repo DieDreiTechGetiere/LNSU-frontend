@@ -82,7 +82,6 @@ define(function(require)
             app.commands.setHandler(notification.command.match.INIT_GRID, MatchCommand.initGridView);
             app.commands.setHandler(notification.command.match.ATTACK, MatchCommand.startAttack);
             
-            app.commands.setHandler(notification.command.application.SIGN_IN, ApplicationCommand.renderToDo);
         },
 
 

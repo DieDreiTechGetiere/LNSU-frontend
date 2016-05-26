@@ -325,13 +325,13 @@ define(function(require){
             {
                 allShipsPlaced = false;
             });
-            
+            /*
             if(settings.appEnvironment == "dev")
             {
                 //to initialize attack view immediately
                 app.execute(notification.command.match.ATTACK);
                 return false;
-            }
+            }*/
             
             if(allShipsPlaced == true)
             {
@@ -365,7 +365,7 @@ define(function(require){
                     shipData = 
                     {
                         length: $(item).data("shiplength"),
-                        direction: $(item).data("direction")
+                        direction: $(item).attr("data-direction")
                     };
                 
                 shipData.$matchedField = self.getMatchedFieldTooShipPos(sTop, sLeft);
@@ -393,7 +393,7 @@ define(function(require){
         /**
          * delete/destroy all childviews except ships
          * 
-         * app.placedShips saves all shipViews so we can append them
+         * app.placedShips saves all shipViews so we can re-append them
          * to userFieldView in attack instance
          */
         onBeforeDestroy: function()

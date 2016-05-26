@@ -12,7 +12,7 @@ define(function(require)
     
     var MatchModel = Backbone.Model.extend({
         
-        baseUrl: settings.backendBaseUrl + "game",
+        url: settings.backendBaseUrl + "game",
         
         defaults: {
             myTurn: true,
@@ -50,31 +50,33 @@ define(function(require)
         initMyTurnPolling: function()
         {
             var dataString = 
-                false +
-                ":" + 
-                app.userModel.get("id") +
-                ":" +
-                this.get("id")
+                app.matchModel.get("id")
+                + ":" + 
+                app.userModel.get("id")
+                + ":" + 
+                0
             ;
             var self = this;
             this.set("myTurnPolling", 
                 setInterval(function()
                 {
-                    this.fetch({
-                        data: dataString,
+                    self.fetch({
+                        data: {
+                            id: dataString
+                        },
                         success: function(data, response)
                         {
                             //TODO hat gegner mich getroffen ja->hit anzeigen/nein->myTurn
                             console.log("myTurnPolling success: ", response);
-                            if(response.opponentWin == false)
+                            if(response.OpponentWon == false)
                             {
-                                if(typeof response.coordinates != undefined)
+                                if(typeof response.hits != undefined)
                                 {
                                     console.log("opponent did shot");
-                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.coordinates);
+                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.hits);
                                 }
                                 
-                                if(OpponentReady == true)
+                                if(response.OpponentReady == true)
                                 {    
                                     self.set("myTurn", true);
                                 }

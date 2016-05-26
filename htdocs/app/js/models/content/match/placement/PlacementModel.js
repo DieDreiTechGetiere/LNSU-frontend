@@ -60,7 +60,7 @@ define(function(require)
                 for(l = 0; l < shipData.length; l++)
                 {
                     this.get("gridArray")
-                        [ shipData.$matchedField.data("y") ]
+                        [ parseInt( shipData.$matchedField.data("y") ) ]
                         [ parseInt( shipData.$matchedField.data("x") ) + l ] = 1;
                 }
             }
@@ -70,7 +70,7 @@ define(function(require)
                 {
                     this.get("gridArray")
                         [ parseInt( shipData.$matchedField.data("y") ) + l ]
-                        [ shipData.$matchedField.data("x") ] = 1;
+                        [ parseInt( shipData.$matchedField.data("x") ) ] = 1;
                 }
             }
             else
@@ -112,6 +112,7 @@ define(function(require)
                     {
                         if(response.OpponentReady == false)
                         {
+                            app.matchModel.set("myTurn", false);
                             self.initOpponentReadyPolling();
                         }
                         else if(response.OpponentReady == true)
@@ -140,13 +141,13 @@ define(function(require)
                         + ":"
                         + app.userModel.get("id")
                         + ":"
-                        + 0;
+                        + 1;
             
             var self = this;
             this.set("pollInterval", setInterval(function(){
                 self.fetch({
                     data: {
-                        id: dataString
+                        id: dataString,
                     },
                     success: function(data, response)
                     {
