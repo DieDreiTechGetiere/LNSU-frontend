@@ -85,6 +85,18 @@
             "headline": "This is how you play the game!",
             "message": "<b>Placements:</b><br>- Drag and drop your ships into the grid!<br>- Right- or doubleclick ships to turn them<br>- Hit the save button when you are finished, and wait 'till your opponent is done as well!<br><br><b>Attacking:</b><br>- After the placements... to attack, klick on a field on the opponent grid<br>- if you hit, its your turn again, if not it´s your oponnents turn<br>- see where your opponent has hit you on your own field",
             "icon": "info_icon.png"
+        },
+        "win":
+        {
+            "headline": "Congrats dude! You won this match!",
+            "message": "You won XX Elo<br>Your new elo is:",
+            "icon": "info_icon.png"
+        },
+        "loss":
+        {
+            "headline": "You lost this match... Noob...",
+            "message": "You lost XX Elo<br>Your new elo is:",
+            "icon": "info_icon.png"
         }
     }
 }

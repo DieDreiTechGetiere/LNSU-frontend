@@ -60,15 +60,10 @@ define(function(require){
          */
         render: function()
         {
-            if(!this.rendered)
-            {
-                var renderedTemplate = _.template(this.template)(this.model.toJSON());
+            var renderedTemplate = _.template(this.template)(this.model.toJSON());
                 
-                this.$el.html(renderedTemplate);
-                this.rendered = true;
-            }
-            else
-            {}
+            this.$el.html(renderedTemplate);
+            this.rendered = true;
         },
         
         

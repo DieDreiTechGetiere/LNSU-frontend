@@ -33,6 +33,7 @@ define(function(require){
 
         initialize: function()
         {
+            this.listenTo(this.model, "change:hits", this.showHits, this);
             this.render();
         },
         
@@ -67,6 +68,24 @@ define(function(require){
         
         /* @Methods -------------------------------------------------------------------------- */
         
+        
+        /**
+         * 
+         */
+        showHits: function()
+        {
+            console.log("showHits()");
+            $(".button.userFieldView").trigger("click");
+            
+            var self = this;
+            setTimeout(function(){
+                for(e in self.model.get("hits"))
+                {
+                    self.$(".field_" + self.model.get("hits")[e][0] + "_" + self.model.get("hits")[e][1] + "").addClass("hit");
+                }
+            }, 310);
+            
+        },
         
         
         /* @Finalize ------------------------------------------------------------------------- */

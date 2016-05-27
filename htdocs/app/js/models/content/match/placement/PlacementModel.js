@@ -105,18 +105,20 @@ define(function(require)
                     if(response.error != undefined)
                     {
                         app.execute(notification.command.application.OPEN_OVERLAY, "cheating");
-                        app.execute(notification.command.match.DELETE);
+                    //    app.execute(notification.command.match.DELETE);
                         app.global.hideLoader();
                     }
                     else
                     {
+                        //deciding who´s first. you sent your ships first? its your turn!
                         if(response.OpponentReady == false)
                         {
-                            app.matchModel.set("myTurn", false);
+                            app.matchModel.set("myTurn", true);
                             self.initOpponentReadyPolling();
                         }
                         else if(response.OpponentReady == true)
                         {
+                            app.matchModel.set("myTurn", false);
                             app.execute(notification.command.match.ATTACK);
                         }
                     }
@@ -154,7 +156,6 @@ define(function(require)
                         if(response.OpponentReady == true)
                         {
                             self.clearOpponentReadyPolling();
-                            console.log("opponent READY");
                             app.execute(notification.command.match.ATTACK);
                         }
                     },

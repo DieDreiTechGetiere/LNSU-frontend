@@ -95,6 +95,7 @@ body {
 
 .main-stage {
   min-height: 320px;
+  height: 100%;
   position: relative;
   z-index: 99;
   margin: auto;
@@ -212,6 +213,9 @@ h1 {
   margin: auto;
   margin-top: 160px;
   position: relative;
+}
+#overlay_region .overlay_view#howToPlay {
+  height: 525px;
 }
 #overlay_region .overlay_view .icons img {
   position: absolute;
@@ -872,4 +876,7 @@ h1 {
 }
 .attack_view .controls .button {
   display: inline-block;
+}
+.attack_view .controls .whose_turn {
+  margin-top: 40px;
 }

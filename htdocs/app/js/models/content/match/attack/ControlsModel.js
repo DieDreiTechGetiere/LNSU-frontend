@@ -6,9 +6,15 @@ define(function(require){
     
     var ControlsModel = Backbone.Model.extend({
         
+        defaults: {
+            whoseTurn: "",
+            whoseTurnCopy: ["it´s your turn! Do something!", "your opponent is currently trying to hit you..."]
+        },
+        
         initialize: function()
         {
             this.listenTo(app.matchModel, "change:myTurn", this.handleTurnChange, this);
+            this.handleTurnChange();
         },
         
         
@@ -17,9 +23,16 @@ define(function(require){
          */
         handleTurnChange: function()
         {
-            //TODO
-            console.log("handleTurnChange");
+            if(app.matchModel.get("myTurn") == true)
+            {
+                this.set("whoseTurn", this.get("whoseTurnCopy")[0]);
+            }
+            else
+            {
+                this.set("whoseTurn", this.get("whoseTurnCopy")[1]);
+            }
         }
     });
+    
     return ControlsModel;
 });

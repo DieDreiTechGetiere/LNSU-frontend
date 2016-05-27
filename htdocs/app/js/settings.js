@@ -28,7 +28,8 @@ define(function(require)
         }
         else
         {
-            defaultConfig.backendBaseUrl = "http://lnsu-backend.local/";
+            //defaultConfig.backendBaseUrl = "http://lnsu-backend.local/";
+            defaultConfig.backendBaseUrl = "http://lnsubackend.jakobklamser.net/";
         }
     }
     setBackendUrl();

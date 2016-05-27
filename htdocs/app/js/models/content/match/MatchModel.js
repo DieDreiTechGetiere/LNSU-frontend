@@ -22,6 +22,8 @@ define(function(require)
         initialize: function()
         {
             this.set("id", parseInt(this.get("match").id));
+            this.on("change:myTurn", this.reactToTurnChange, this);
+            
             this.initSubmodels();
         },
         
@@ -47,6 +49,18 @@ define(function(require)
         /**
          * 
          */
+        reactToTurnChange: function()
+        {
+            if(this.get("myTurn") == false)
+            {
+                this.initMyTurnPolling();
+            }
+        },
+        
+        
+        /**
+         * 
+         */
         initMyTurnPolling: function()
         {
             var dataString = 
@@ -57,7 +71,7 @@ define(function(require)
                 0
             ;
             var self = this;
-            this.set("myTurnPolling", 
+            this.set("myTurnPolling",
                 setInterval(function()
                 {
                     self.fetch({
@@ -70,20 +84,21 @@ define(function(require)
                             console.log("myTurnPolling success: ", response);
                             if(response.OpponentWon == false)
                             {
-                                if(typeof response.hits != undefined)
+                                if(response.Hits.length > 0)
                                 {
                                     console.log("opponent did shot");
-                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.hits);
+                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.Hits);
                                 }
                                 
                                 if(response.OpponentReady == true)
-                                {    
+                                {
+                                    self.clearMyTurnPolling();
                                     self.set("myTurn", true);
                                 }
                             }
                             else
                             {
-                                alert("opponent won! you suck");
+                                app.execute(notification.command.application.OPEN_OVERLAY, "loss");
                             }
                         },
                         error: function(error)

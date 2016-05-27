@@ -47,7 +47,7 @@ define(function(require)
          */
         initViewListeners: function()
         {
-            this.listenTo(this.model, "change", this.render, this);
+         //   this.listenTo(this.model, "change", this.render, this);
         },
 
 

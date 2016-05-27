@@ -89,7 +89,7 @@ define(function(require){
         handleHit: function(a, b)
         {
             console.log("handleHit a: ", a, "b: ", b);
-            $("field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
+            $(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
         },
         
         
@@ -100,7 +100,7 @@ define(function(require){
         handleMiss: function(a, b)
         {
             console.log("handleMiss a: ", a, "b: ", b);
-            $("field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
+            $(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
         },
         
         

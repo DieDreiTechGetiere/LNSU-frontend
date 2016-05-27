@@ -13,12 +13,7 @@ define(function(require){
         },
         
         initialize: function()
-        {
-            if(app.matchModel.get("myTurn") == false)
-            {
-                app.matchModel.initMyTurnPolling();
-            }
-            
+        {   
             this.listenTo(app.vent, notification.event.OPPONENT_HIT_ME, this.setHits, this);
         },
         

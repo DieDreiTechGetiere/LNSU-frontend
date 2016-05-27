@@ -42,18 +42,18 @@ define(function(require){
                         {
                             if(reponse.hit == true)
                             {
-                                app.matchModel.set("myTurn", true);
+                       //         app.matchModel.set("myTurn", true);
                                 self.trigger("hit");
                             }
                             else if(response.hit == false)
                             {
-                                app.matchModel.set("myTurn", false);
                                 self.trigger("miss");
+                                app.matchModel.set("myTurn", false);
                             }
                         }
                         else if(response.win == true)
                         {
-                            alert("handle win");
+                            app.execute(notification.command.application.OPEN_OVERLAY, "win");
                         }
                     }
                     app.global.hideLoader();

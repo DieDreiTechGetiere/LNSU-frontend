@@ -64,13 +64,11 @@ define(function(require){
         {
             if(app.matchModel.get("myTurn") == true)
             {
-                $("#" + this.views.USERFIELD).css("visibility", "visible");
-                $(".button." + this.views.USERFIELD).removeClass("passive");
+                $(".button." + this.views.OPPONENTFIELD).trigger("click");
             }
             else
             {
-                $("#" + this.views.OPPONENTFIELD).css("visibility", "visible");
-                $(".button." + this.views.OPPONENTFIELD).removeClass("passive");
+                $(".button." + this.views.USERFIELD).trigger("click");
             }
         },
         

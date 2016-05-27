@@ -44,13 +44,14 @@ define(function(require){
         {
             app.model.set("overlayRegion", undefined);
             
-            if(this.model.get("headline") !== "Sorry Bro...")
+            if(this.$el.attr("id") !== "error")
             {
                 app.router.navigate(notification.router.MATCH);
             }
-            else if(this.model.get("headline") === "You are Cheating! Fuck off!")
+            else if(this.$el.attr("id") == "win" || this.$el.attr("id") == "loss")
             {
-                location.reload();
+                //or location.reload() ??
+                app.router.navigate(notification.router.DASHBOARD, {trigger: true});
             }
             
             this.destroy();
@@ -68,11 +69,14 @@ define(function(require){
                 app.global.showLoader();
                 app.execute(notification.command.match.DELETE, true);
             }
-            else
+            else if($(e.currentTarget).hasClass("close"))
             {
-                // wenn abbruch geklickt
-                app.router.navigate(notification.router.MATCH);
-                app.model.set("overlayRegion", undefined);
+                if(this.$(".interrupt") != undefined)
+                {
+                    app.router.navigate(notification.router.MATCH);
+                    app.model.set("overlayRegion", undefined);
+                }
+                this.closeOverlay();
             }
         },
         
