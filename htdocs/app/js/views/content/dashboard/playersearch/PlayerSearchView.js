@@ -115,13 +115,14 @@ define(function(require){
         startTimer: function()
         {
             var self = this;
+            self.$(".play_btn").html("0:00");
             this.timerInterval = setInterval(function(){
                 var timerSeconds = parseInt(self.timerSeconds) + 1;
                 
                 if(timerSeconds > 59)
                 {
                     var timerMinutes = parseInt(self.timerMinutes) + 1;
-                    self.timerSeconds = 00;
+                    self.timerSeconds = "00";
                     self.timerMinutes = timerMinutes;
                 }
                 else if(timerSeconds < 10)
@@ -132,6 +133,7 @@ define(function(require){
                 {
                     self.timerSeconds = timerSeconds;
                 }
+                
                 self.timerValue = self.timerMinutes + ":" + self.timerSeconds;
                 self.$(".play_btn").html(self.timerValue);
             }, 1000);
@@ -162,7 +164,7 @@ define(function(require){
                 },
                 {
                     rotation: 360,
-                    ease:Linear.easeNone,
+                    ease:Linear.easeOut,
                     delay:0,
                     reapeat:-1
                 }

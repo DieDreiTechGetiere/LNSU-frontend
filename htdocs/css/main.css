@@ -200,7 +200,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.6);
   display: none;
   width: 100%;
-  height: 100%;
+  height: 798px;
   position: absolute;
   z-index: 3;
   top: 0;
@@ -215,7 +215,7 @@ h1 {
   position: relative;
 }
 #overlay_region .overlay_view#howToPlay {
-  height: 525px;
+  height: 535px;
 }
 #overlay_region .overlay_view .icons img {
   position: absolute;
