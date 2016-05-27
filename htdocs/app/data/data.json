@@ -94,7 +94,7 @@
         },
         "loss":
         {
-            "headline": "You lost this match... Noob...",
+            "headline": "That´s not how you play the game... You lost... Noob...",
             "message": "You lost XX Elo<br>Your new elo is:",
             "icon": "info_icon.png"
         }
