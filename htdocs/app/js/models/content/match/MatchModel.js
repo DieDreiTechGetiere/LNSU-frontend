@@ -51,6 +51,7 @@ define(function(require)
          */
         reactToTurnChange: function()
         {
+            console.log("reactToTurnChange()");
             if(this.get("myTurn") == false)
             {
                 this.initMyTurnPolling();
@@ -80,16 +81,21 @@ define(function(require)
                         },
                         success: function(data, response)
                         {
-                            //TODO hat gegner mich getroffen ja->hit anzeigen/nein->myTurn
-                            console.log("myTurnPolling success: ", response);
                             if(response.OpponentWon == false)
                             {
-                                if(response.Hits.length > 0)
+                                var hits = Array(response.Hits);
+                                var misses = Array(response.Miss);
+                                console.log("length hits: ", hits.length);
+                                if(hits.length > 0)
                                 {
-                                    console.log("opponent did shot");
-                                    app.vent.trigger(notification.event.OPPONENT_HIT_ME, response.Hits);
+                                    console.log("opponent did hit");
+                                    app.vent.trigger(notification.event.OPPONENT_HIT, hits);
                                 }
-                                
+                                if(misses.length > 0)
+                                {
+                                    console.log("opponent did miss");
+                                    app.vent.trigger(notification.event.OPPONENT_MISSED, misses);
+                                }
                                 if(response.OpponentReady == true)
                                 {
                                     self.clearMyTurnPolling();

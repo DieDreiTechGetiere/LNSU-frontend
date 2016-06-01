@@ -44,14 +44,14 @@ define(function(require){
         {
             app.model.set("overlayRegion", undefined);
             
-            if(this.$el.attr("id") !== "error")
+            if(this.$el.attr("id") != "error")
             {
                 app.router.navigate(notification.router.MATCH);
             }
             else if(this.$el.attr("id") == "win" || this.$el.attr("id") == "loss")
             {
-                //or location.reload() ??
-                app.router.navigate(notification.router.DASHBOARD, {trigger: true});
+                location.reload();
+               // app.router.navigate(notification.router.DASHBOARD, {trigger: true});
             }
             
             this.destroy();

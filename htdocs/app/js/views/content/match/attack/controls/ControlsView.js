@@ -33,6 +33,7 @@ define(function(require){
 
         initialize: function()
         {
+            this.listenTo(this.model, "change:whoseTurn", this.render, this);
             this.render();
         },
         

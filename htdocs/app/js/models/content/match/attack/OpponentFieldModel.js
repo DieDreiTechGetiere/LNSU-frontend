@@ -30,31 +30,28 @@ define(function(require){
          */
         sendShotToServer: function()
         {
+            console.log("sendShotToServer()");
             this.set("matchID", app.matchModel.get("id"));
             
             this.save(null, {
                 success: function(data, response)
                 {
                     console.log("success sendShotToServer: ", response);
-                    if(response.valid == true)
+                    if(response.YouWon == false)
                     {
-                        if(response.win == false)
+                        if(response.IsHit == true)
                         {
-                            if(reponse.hit == true)
-                            {
-                       //         app.matchModel.set("myTurn", true);
-                                self.trigger("hit");
-                            }
-                            else if(response.hit == false)
-                            {
-                                self.trigger("miss");
-                                app.matchModel.set("myTurn", false);
-                            }
+                            app.vent.trigger("hit");
                         }
-                        else if(response.win == true)
+                        else if(response.IsHit == false)
                         {
-                            app.execute(notification.command.application.OPEN_OVERLAY, "win");
+                            app.vent.trigger("miss");
+                            app.matchModel.set("myTurn", false);
                         }
+                    }
+                    else if(response.YouWon == true)
+                    {
+                        app.execute(notification.command.application.OPEN_OVERLAY, "win");
                     }
                     app.global.hideLoader();
                 },

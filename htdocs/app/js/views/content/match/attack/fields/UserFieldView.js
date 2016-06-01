@@ -34,6 +34,7 @@ define(function(require){
         initialize: function()
         {
             this.listenTo(this.model, "change:hits", this.showHits, this);
+            this.listenTo(this.model, "change:misses", this.showMisses, this);
             this.render();
         },
         
@@ -85,6 +86,15 @@ define(function(require){
                 }
             }, 310);
             
+        },
+        
+        
+        /**
+         * 
+         */
+        showMisses: function()
+        {
+            $("#userField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).addClass("water");
         },
         
         

@@ -38,6 +38,7 @@ define({
         CLOSE_ADMIN: "closeAdminView:event",
         SWITCH_GAME_FIELDS: "switchGameFields:event",
         SHIP_COUNT_UPDATE: "shipCountUpdate:event",
-        OPPONENT_HIT_ME: "opponentHitMe:event"
+        OPPONENT_HIT: "opponentHitMe:event",
+        OPPONENT_MISSED: "opponentMissed:event"
     }
 });

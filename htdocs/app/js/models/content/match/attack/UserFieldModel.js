@@ -9,12 +9,14 @@ define(function(require){
         
         defaults: 
         {
-            hits: []
+            hits: [],
+            misses: {}
         },
         
         initialize: function()
         {   
-            this.listenTo(app.vent, notification.event.OPPONENT_HIT_ME, this.setHits, this);
+            this.listenTo(app.vent, notification.event.OPPONENT_HIT, this.setHits, this);
+            this.listenTo(app.vent, notification.event.OPPONENT_MISSED, this.setMisses, this);
         },
         
         
@@ -26,18 +28,25 @@ define(function(require){
             var self = this;
             _.each(hits, function(hit, i)
             {
-                if(self.get("hits").length >= 1)
+                for(e in self.get("hits"))
                 {
-                    for(e in self.get("hits"))
+                    if(self.get("hits")[e][0] != hit[0] ||
+                        self.get("hits")[e][1] != hit[1])
                     {
-                        if(self.get("hits")[e][0] != hit[0] ||
-                            self.get("hits")[e][1] != hit[1])
-                        {
-                            self.get("hits").push(hit);
-                        }
+                        self.get("hits").push(hit);
                     }
                 }
             });
+        },
+        
+        
+        /**
+         * 
+         */
+        setMisses: function(misses)
+        {
+            this.get("misses")["x"] = misses["x"];
+            this.get("misses")["y"] = misses["y"];
         }
     });
     return UserFieldModel;

@@ -34,8 +34,8 @@ define(function(require){
 
         initialize: function()
         {
-            this.listenTo(this.model, "hit", this.handleHit, this);
-            this.listenTo(this.model, "miss", this.handleMiss, this);
+            this.listenTo(app.vent, "hit", this.handleHit, this);
+            this.listenTo(app.vent, "miss", this.handleMiss, this);
             this.render();
         },
         
@@ -67,7 +67,14 @@ define(function(require){
          */
         clickKoordinate: function(e)
         {   
-            if(app.matchModel.get("myTurn") == true)
+            console.log("myTurn: ", app.matchModel.get("myTurn"));
+            if(app.matchModel.get("myTurn") == true && 
+                (
+                    !( $(e.currentTarget).hasClass("active") ) &&
+                    !( $(e.currentTarget).hasClass("hit") ) &&
+                    !( $(e.currentTarget).hasClass("water") )
+                )
+            )
             {
                 app.global.showLoader();
                 $(e.currentTarget).addClass("active");
@@ -89,7 +96,7 @@ define(function(require){
         handleHit: function(a, b)
         {
             console.log("handleHit a: ", a, "b: ", b);
-            $(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
+            $("#opponentField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
         },
         
         
@@ -100,7 +107,7 @@ define(function(require){
         handleMiss: function(a, b)
         {
             console.log("handleMiss a: ", a, "b: ", b);
-            $(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
+            $("#opponentField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
         },
         
         
