@@ -85,13 +85,11 @@ define(function(require)
                             {
                                 if(response.Hits.length > 0)
                                 {
-                                    console.log("opponent did hit");
-                                    app.vent.trigger(notification.event.OPPONENT_HIT, hits);
+                                    app.vent.trigger(notification.event.OPPONENT_HIT, response.Hits);
                                 }
                                 if(response.Miss["x"] != undefined && response.Miss["y"])
                                 {
-                                    console.log("opponent did miss");
-                                    app.vent.trigger(notification.event.OPPONENT_MISSED, misses);
+                                    app.vent.trigger(notification.event.OPPONENT_MISSED, response.Miss);
                                 }
                                 if(response.OpponentReady == true)
                                 {

@@ -33,7 +33,7 @@ define(function(require){
 
         initialize: function()
         {
-            this.listenTo(this.model, "change:whoseTurn", this.render, this);
+            this.listenTo(this.model, "change:whoseTurn", this.handleTurnChange, this);
             this.render();
         },
         
@@ -45,6 +45,16 @@ define(function(require){
             app.vent.trigger(notification.event.SWITCH_GAME_FIELDS, "#" + $(e.currentTarget).attr('class').split(' ')[1]);
             this.$(".button").addClass("passive");
             $(e.currentTarget).removeClass("passive");
+        },
+        
+        
+        /**
+         * 
+         */
+        handleTurnChange: function()
+        {
+            this.switchFields();
+            this.render();
         },
         
         

@@ -14,8 +14,8 @@ define(function(require){
         
         initialize: function()
         {   
-            this.listenTo(app.vent, notification.event.OPPONENT_HIT, this.setHits, this);
-            this.listenTo(app.vent, notification.event.OPPONENT_MISSED, this.setMisses, this);
+            this.listenTo(app.vent, notification.event.OPPONENT_HIT, this.setHits);
+            this.listenTo(app.vent, notification.event.OPPONENT_MISSED, this.setMisses);
         },
         
         
@@ -26,11 +26,12 @@ define(function(require){
         {
             var self = this;
             var hitsArr = Array();
-            console.log("setHits()");
+            console.log("setHits(): " + hits);
             _.each(hits, function(hit, i)
             {
                 for(var i = 0; i <= self.get("hits").length; i++)
                 {
+                    console.log("hits: " + i);
                     if(i < self.get("hits").length)
                     {
                         if(self.get("hits")[e][0] != hit[0] ||
@@ -41,6 +42,7 @@ define(function(require){
                     }
                 }
             });
+            console.log("hitsArr: " + hitsArr);
             this.set("hits", hitsArr);
         },
         
