@@ -75,7 +75,7 @@ define(function(require){
          */
         showHits: function()
         {
-            console.log("showHits()");
+            console.log("showHits(): " + this.model.get("hits"));
             $(".button.userFieldView").trigger("click");
             
             var self = this;
@@ -94,6 +94,7 @@ define(function(require){
          */
         showMisses: function()
         {
+            console.log("showMisses()");
             $("#userField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).addClass("water");
         },
         

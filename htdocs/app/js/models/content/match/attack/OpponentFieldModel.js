@@ -18,8 +18,6 @@ define(function(require){
         
         initialize: function()
         {
-            this.on("change:y", this.sendShotToServer, this);
-            
             this.set("userID", parseInt( app.userModel.get("id") ));
         },
         
@@ -28,7 +26,7 @@ define(function(require){
          * sends my shot to the server and tells view about the hit or miss
          * further sets the myTurn prop. of matchModel to true or false
          */
-        sendShotToServer: function()
+        sendSHotToServer: function()
         {
             console.log("sendShotToServer()");
             this.set("matchID", app.matchModel.get("id"));

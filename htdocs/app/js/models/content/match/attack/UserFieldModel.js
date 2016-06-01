@@ -9,8 +9,7 @@ define(function(require){
         
         defaults: 
         {
-            hits: [],
-            misses: {}
+            hits: []
         },
         
         initialize: function()
@@ -26,17 +25,23 @@ define(function(require){
         setHits: function(hits)
         {
             var self = this;
+            var hitsArr = Array();
+            console.log("setHits()");
             _.each(hits, function(hit, i)
             {
-                for(e in self.get("hits"))
+                for(var i = 0; i <= self.get("hits").length; i++)
                 {
-                    if(self.get("hits")[e][0] != hit[0] ||
-                        self.get("hits")[e][1] != hit[1])
+                    if(i < self.get("hits").length)
                     {
-                        self.get("hits").push(hit);
+                        if(self.get("hits")[e][0] != hit[0] ||
+                            self.get("hits")[e][1] != hit[1])
+                        {
+                            hitsArr.push(hit);
+                        }
                     }
                 }
             });
+            this.set("hits", hitsArr);
         },
         
         
@@ -45,8 +50,8 @@ define(function(require){
          */
         setMisses: function(misses)
         {
-            this.get("misses")["x"] = misses["x"];
-            this.get("misses")["y"] = misses["y"];
+            this.set("misses")["x"] = misses["x"];
+            this.set("misses")["y"] = misses["y"];
         }
     });
     return UserFieldModel;

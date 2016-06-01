@@ -83,15 +83,12 @@ define(function(require)
                         {
                             if(response.OpponentWon == false)
                             {
-                                var hits = Array(response.Hits);
-                                var misses = Array(response.Miss);
-                                console.log("length hits: ", hits.length);
-                                if(hits.length > 0)
+                                if(response.Hits.length > 0)
                                 {
                                     console.log("opponent did hit");
                                     app.vent.trigger(notification.event.OPPONENT_HIT, hits);
                                 }
-                                if(misses.length > 0)
+                                if(response.Miss["x"] != undefined && response.Miss["y"])
                                 {
                                     console.log("opponent did miss");
                                     app.vent.trigger(notification.event.OPPONENT_MISSED, misses);

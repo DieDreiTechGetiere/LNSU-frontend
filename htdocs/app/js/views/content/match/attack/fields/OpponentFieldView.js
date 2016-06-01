@@ -81,6 +81,8 @@ define(function(require){
                 
                 this.model.set("x", $(e.currentTarget).data("x"));
                 this.model.set("y", $(e.currentTarget).data("y"));
+                
+                this.model.sendSHotToServer();
             }
             else
             {
