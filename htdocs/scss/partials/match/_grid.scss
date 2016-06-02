@@ -85,10 +85,15 @@
         .field
         {
             &:hover,
-            &.active
             {
-                background:none;
-                background-image:url("../media/image/aim_icon.png");
+                &:not(.water)
+                {
+                    &:not(.hit)
+                    {
+                        background:none;
+                        background-image:url("../media/image/aim_icon.png");
+                    }
+                }
             }
         }
     }

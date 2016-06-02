@@ -9,7 +9,8 @@ define(function(require){
         
         defaults: 
         {
-            hits: []
+            hits: new Array(),
+            misses: new Array()
         },
         
         initialize: function()
@@ -25,24 +26,28 @@ define(function(require){
         setHits: function(hits)
         {
             var self = this;
-            var hitsArr = Array();
-            console.log("setHits(): " + hits);
-            _.each(hits, function(hit, i)
+            var hitsArr = new Array();
+            
+            if(this.get("hits").length == 0)
+            {
+                this.get("hits")[0] = {"x": undefined, "y": undefined};
+            }
+            
+            _.each(hits, function(hit, e)
             {
                 for(var i = 0; i <= self.get("hits").length; i++)
                 {
-                    console.log("hits: " + i);
                     if(i < self.get("hits").length)
                     {
-                        if(self.get("hits")[e][0] != hit[0] ||
-                            self.get("hits")[e][1] != hit[1])
+                        if(self.get("hits")[i]["x"] != hit["x"] ||
+                            self.get("hits")[i]["y"] != hit["y"])
                         {
-                            hitsArr.push(hit);
+                            var tempObj = {"x": hit["x"], "y": hit["y"]};
+                            hitsArr.push(tempObj);
                         }
                     }
                 }
             });
-            console.log("hitsArr: " + hitsArr);
             this.set("hits", hitsArr);
         },
         
@@ -52,8 +57,13 @@ define(function(require){
          */
         setMisses: function(misses)
         {
-            this.set("misses")["x"] = misses["x"];
-            this.set("misses")["y"] = misses["y"];
+            console.log("setMisses");
+            var missesArr = new Array();
+            var tempObj = {"x": misses["x"], "y": misses["y"]};
+            
+            missesArr.push(tempObj);
+            
+            this.set("misses", missesArr);
         }
     });
     return UserFieldModel;

@@ -50,6 +50,7 @@ define(function(require){
             }
             else if(this.$el.attr("id") == "win" || this.$el.attr("id") == "loss")
             {
+                console.log("why no reload?");
                 location.reload();
                // app.router.navigate(notification.router.DASHBOARD, {trigger: true});
             }

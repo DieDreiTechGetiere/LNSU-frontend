@@ -80,9 +80,10 @@ define(function(require){
             
             var self = this;
             setTimeout(function(){
-                for(e in self.model.get("hits"))
+                for(var e = 0; e < self.model.get("hits").length; e++)
                 {
-                    self.$(".field_" + self.model.get("hits")[e][0] + "_" + self.model.get("hits")[e][1] + "").addClass("hit");
+                    console.log("showHit: ", e);
+                    self.$(".field_" + self.model.get("hits")[e]["x"] + "_" + self.model.get("hits")[e]["y"] + "").addClass("hit");
                 }
             }, 310);
             
@@ -94,8 +95,9 @@ define(function(require){
          */
         showMisses: function()
         {
-            console.log("showMisses()");
-            $("#userField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).addClass("water");
+            console.log("showMisses(): ", this.model.get("misses")[0]["x"]);
+            //$("#userField").find(;
+            this.$(".field_" + this.model.get("misses")[0]["x"] + "_" + this.model.get("misses")[0]["y"]).addClass("water")
         },
         
         

@@ -68,21 +68,22 @@ define(function(require){
         clickKoordinate: function(e)
         {   
             console.log("myTurn: ", app.matchModel.get("myTurn"));
-            if(app.matchModel.get("myTurn") == true && 
-                (
-                    !( $(e.currentTarget).hasClass("active") ) &&
-                    !( $(e.currentTarget).hasClass("hit") ) &&
-                    !( $(e.currentTarget).hasClass("water") )
-                )
-            )
+            if(app.matchModel.get("myTurn") == true)
             {
-                app.global.showLoader();
-                $(e.currentTarget).addClass("active");
-                
-                this.model.set("x", $(e.currentTarget).data("x"));
-                this.model.set("y", $(e.currentTarget).data("y"));
-                
-                this.model.sendSHotToServer();
+                if(
+                    !$(e.currentTarget).hasClass("active") &&
+                    !$(e.currentTarget).hasClass("hit") &&
+                    !$(e.currentTarget).hasClass("water")
+                )
+                {
+                    app.global.showLoader();
+                    $(e.currentTarget).addClass("active");
+                    
+                    this.model.set("x", $(e.currentTarget).data("x"));
+                    this.model.set("y", $(e.currentTarget).data("y"));
+                    
+                    this.model.sendSHotToServer();
+                }
             }
             else
             {

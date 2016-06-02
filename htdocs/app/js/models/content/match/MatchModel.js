@@ -87,9 +87,15 @@ define(function(require)
                                 {
                                     app.vent.trigger(notification.event.OPPONENT_HIT, response.Hits);
                                 }
-                                if(response.Miss["x"] != undefined && response.Miss["y"])
+                                if(response.Miss != undefined)
                                 {
-                                    app.vent.trigger(notification.event.OPPONENT_MISSED, response.Miss);
+                                    console.log("Miss != undefined");
+                                    if(response.Miss["x"] != null)
+                                    {
+                                        console.log("Miss x != null");
+                                        app.vent.trigger(notification.event.OPPONENT_MISSED, response.Miss);
+                                        
+                                    }
                                 }
                                 if(response.OpponentReady == true)
                                 {

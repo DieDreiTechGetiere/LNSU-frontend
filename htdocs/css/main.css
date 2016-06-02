@@ -755,7 +755,7 @@ h1 {
   background: url("../media/image/square.png") no-repeat;
 }
 
-.opponent_field #opponentField .field:hover, .opponent_field #opponentField .field.active {
+.opponent_field #opponentField .field:hover:not(.water):not(.hit) {
   background: none;
   background-image: url("../media/image/aim_icon.png");
 }

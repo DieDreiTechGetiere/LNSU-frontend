@@ -53,8 +53,18 @@ define(function(require){
          */
         handleTurnChange: function()
         {
-            this.switchFields();
             this.render();
+            
+            setTimeout(function(){
+                if(app.matchModel.get("myTurn") == true)
+                {
+                    $(".button.opponentFieldView").trigger("click");
+                }
+                else
+                {
+                    $(".button.userFieldView").trigger("click");
+                }
+            }, 600);
         },
         
         
