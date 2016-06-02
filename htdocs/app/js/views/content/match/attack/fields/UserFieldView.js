@@ -82,7 +82,6 @@ define(function(require){
             setTimeout(function(){
                 for(var e = 0; e < self.model.get("hits").length; e++)
                 {
-                    console.log("showHit: ", e);
                     self.$(".field_" + self.model.get("hits")[e]["x"] + "_" + self.model.get("hits")[e]["y"] + "").addClass("hit");
                 }
             }, 310);
