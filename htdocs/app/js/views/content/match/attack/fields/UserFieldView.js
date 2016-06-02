@@ -80,9 +80,9 @@ define(function(require){
             
             var self = this;
             setTimeout(function(){
-                for(e in self.model.get("hits"))
+                for(var e = 0; e < self.model.get("hits").length; e++)
                 {
-                    self.$(".field_" + self.model.get("hits")[e][0] + "_" + self.model.get("hits")[e][1] + "").addClass("hit");
+                    self.$(".field_" + self.model.get("hits")[e][0] + "_" + self.model.get("hits")[e][1]).addClass("hit");
                 }
             }, 310);
             
