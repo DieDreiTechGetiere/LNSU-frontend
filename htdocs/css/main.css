@@ -166,6 +166,10 @@ h1 {
   height: 12px;
 }
 
+.elo {
+  color: #bababa;
+}
+
 .signin_view {
   width: 100%;
   width: 350px;
@@ -396,9 +400,6 @@ h1 {
 .highscore_view .highscore_content .highscores .highscore_collection .highscore_item .username {
   color: #495c84;
 }
-.highscore_view .highscore_content .highscores .highscore_collection .highscore_item .elo {
-  color: #bababa;
-}
 
 .playersearch_view {
   width: 100%;
@@ -558,11 +559,12 @@ h1 {
 .recentgames_view {
   width: 100%;
   overflow: hidden;
-  height: 219px;
+  height: 222px;
 }
 .recentgames_view .recent_game_item {
+  height: 73px;
   cursor: pointer;
-  padding: 18px 0 19px 75px;
+  padding: 0 0 0 65px;
   border-top: 1px solid #eae9e8;
   position: relative;
   background-color: #faf9f7;
@@ -576,6 +578,9 @@ h1 {
 .recentgames_view .recent_game_item:hover .opponent {
   color: #bc4a77 !important;
 }
+.recentgames_view .recent_game_item .game_stats {
+  padding-top: 18px;
+}
 .recentgames_view .recent_game_item .game_stats .opponent {
   color: #495c84;
   font-weight: bold;
@@ -584,6 +589,7 @@ h1 {
 .recentgames_view .recent_game_item .game_stats .opponent_rank {
   font-size: 13px;
   color: #bcbcbc;
+  line-height: 20px;
 }
 .recentgames_view .recent_game_item .arrow_container {
   position: absolute;

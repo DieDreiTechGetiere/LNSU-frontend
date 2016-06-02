@@ -28,28 +28,26 @@ define(function(require){
          */
         sendSHotToServer: function()
         {
-            console.log("sendShotToServer()");
             this.set("matchID", app.matchModel.get("id"));
             
             this.save(null, {
                 success: function(data, response)
                 {
-                    console.log("success sendShotToServer: ", response);
-                    if(response.YouWon == false)
+                    if(response.IsHit == true)
                     {
-                        if(response.IsHit == true)
-                        {
-                            app.vent.trigger("hit");
-                        }
-                        else if(response.IsHit == false)
-                        {
-                            app.vent.trigger("miss");
-                            app.matchModel.set("myTurn", false);
-                        }
+                        app.vent.trigger("hit");
                     }
-                    else if(response.YouWon == true)
+                    else if(response.IsHit == false)
                     {
-                        app.execute(notification.command.application.OPEN_OVERLAY, "win");
+                        app.vent.trigger("miss");
+                        app.matchModel.set("myTurn", false);
+                    }
+                    
+                    if(response.YouWon == true)
+                    {
+                        _.defer(function(){
+                            app.execute(notification.command.application.OPEN_OVERLAY, "win");
+                        });
                     }
                     app.global.hideLoader();
                 },

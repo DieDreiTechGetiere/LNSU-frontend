@@ -57,7 +57,6 @@ define(function(require){
          */
         setMisses: function(misses)
         {
-            console.log("setMisses");
             var missesArr = new Array();
             var tempObj = {"x": misses["x"], "y": misses["y"]};
             

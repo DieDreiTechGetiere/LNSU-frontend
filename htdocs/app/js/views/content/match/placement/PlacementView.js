@@ -336,7 +336,6 @@ define(function(require){
             if(allShipsPlaced == true)
             {
                 this.saveShips();
-                console.log("shipsArray: ", this.model.get("ships"));
             }
             else
             {

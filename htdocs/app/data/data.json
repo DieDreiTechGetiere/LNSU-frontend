@@ -95,8 +95,8 @@
         "loss":
         {
             "headline": "That´s not how you play the game... You lost... Noob...",
-            "message": "You lost XX Elo<br>Your new elo is:",
-            "icon": "info_icon.png"
+            "message": "Your new elo is: <span class='new_elo'></span>",
+            "icon": "error_icon.png"
         }
     }
 }

@@ -196,6 +196,7 @@ define(function(require)
         {
             if (app.storageModel.checkIfUserIsLoggedIn() == true)
             {
+                app.global.showLoader();
                 app.userModel = new UserModel({
                     id: app.storageModel.get("userId"),
                     ingameName: app.storageModel.get("ingameName"),

@@ -51,7 +51,6 @@ define(function(require)
          */
         reactToTurnChange: function()
         {
-            console.log("reactToTurnChange()");
             if(this.get("myTurn") == false)
             {
                 this.initMyTurnPolling();
@@ -89,18 +88,17 @@ define(function(require)
                                 }
                                 if(response.Miss != undefined)
                                 {
-                                    console.log("Miss != undefined");
                                     if(response.Miss["x"] != null)
                                     {
-                                        console.log("Miss x != null");
                                         app.vent.trigger(notification.event.OPPONENT_MISSED, response.Miss);
-                                        
                                     }
                                 }
                                 if(response.OpponentReady == true)
                                 {
-                                    self.clearMyTurnPolling();
-                                    self.set("myTurn", true);
+                                    _.defer(function(){
+                                        self.clearMyTurnPolling();
+                                        self.set("myTurn", true);
+                                    });
                                 }
                             }
                             else

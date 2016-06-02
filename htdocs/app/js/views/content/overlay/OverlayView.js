@@ -43,14 +43,13 @@ define(function(require){
         closeOverlay: function()
         {
             app.model.set("overlayRegion", undefined);
-            
             if(this.$el.attr("id") != "error")
             {
                 app.router.navigate(notification.router.MATCH);
             }
-            else if(this.$el.attr("id") == "win" || this.$el.attr("id") == "loss")
+            if(this.$el.attr("id") == "win" || this.$el.attr("id") == "loss")
             {
-                console.log("why no reload?");
+                app.view.destroy();
                 location.reload();
                // app.router.navigate(notification.router.DASHBOARD, {trigger: true});
             }

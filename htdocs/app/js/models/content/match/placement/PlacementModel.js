@@ -99,8 +99,6 @@ define(function(require)
             {
                 success: function(data, response)
                 {
-                    console.log("send ships to server success response: ", response);
-                    
                     if(response.error != undefined)
                     {
                         app.execute(notification.command.application.OPEN_OVERLAY, "cheating");

@@ -66,8 +66,7 @@ define(function(require){
          * model send data on "y:change" to server, so always set y second
          */
         clickKoordinate: function(e)
-        {   
-            console.log("myTurn: ", app.matchModel.get("myTurn"));
+        {
             if(app.matchModel.get("myTurn") == true)
             {
                 if(
@@ -98,7 +97,6 @@ define(function(require){
          */
         handleHit: function(a, b)
         {
-            console.log("handleHit a: ", a, "b: ", b);
             $("#opponentField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("hit");
         },
         
@@ -109,7 +107,6 @@ define(function(require){
          */
         handleMiss: function(a, b)
         {
-            console.log("handleMiss a: ", a, "b: ", b);
             $("#opponentField").find(".field_" + this.model.get("x") + "_" + this.model.get("y")).removeClass("active").addClass("water");
         },
         

@@ -8,9 +8,15 @@ h1 {
     font-weight: normal;
 }
 
-.error {
+.error
+{
     color: red;
     line-height: 31px;
     margin: 0;
     height: 12px;
+}
+
+.elo 
+{
+    color: $font_grey;
 }
